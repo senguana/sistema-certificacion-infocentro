@@ -1,58 +1,22 @@
 <?php 
-require_once './../bd/conexion.php';
+// require_once './../bd/conexion.php';
 require_once './../core/configGeneral.php';
+require_once './../clases/login.php';
+require_once './../bd/configuracion.php';
 
-session_start();
+$login = new Login();
 
-if(isset($_SESSION['userId'])) {
-	header('location: ./home.php');	
-}
 
-$errors = array();
+$login = new Login();
 
-if($_POST) {		
+// ... ask if we are logged in here:
+if ($login->isUserLoggedIn() == true) {
 
-	$username = $_POST['username']; 
-	$password = $_POST['password'];
+   header("location: home.php");
 
-	if(empty($username) || empty($password)) {
-		if($username == "") {
-			$errors[] = "Se requiere nombre de usuario";
-		} 
+} else {
 
-		if($password == "") {
-			$errors[] = "Se requiere contraseña";
-		}
-	} else {
-		$sql = "SELECT * FROM usuario WHERE username_usua = '$username'";
-		$result = $db->query($sql);
-		$row=$result->fetchColumn();
-		if( $row== 1) {
-			$password = md5($password);
-			// exists
-			$mainSql = "SELECT * FROM usuario WHERE username_usua = '$username' AND password_usua = '$password'";
-			$mainResult = $db->query($mainSql);
-
-			if($mainResult) {
-				$value = $mainResult->fetch();
-				
-
-				// set session
-				$_SESSION['userId'] = $value['username_usua'];
-				$_SESSION['correo'] = $value['correo_usua'];
-
-				header('location: ./home.php');	
-			} else{
-				
-				$errors[] = "Combinación incorrecta de nombre de usuario y/o contraseña";
-			} // /else
-		} else {		
-			$errors[] = "El nombre de usuario no existe";		
-		} // /else
-	} // /else not empty username // password
-	
-} // /if $_POST
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,26 +44,35 @@ if($_POST) {
 <body class="login">
 	<div class="wrapper wrapper-login">
 		<div class="container container-login animated fadeIn">
-			<?php if($errors) {
-				foreach ($errors as $key => $value) {
-					echo '<div class="alert alert-warning" role="alert"><i class="glyphicon glyphicon-exclamation-sign"></i>
-					'.$value.'</div>';										
+			<?php
+				
+				if (isset($login)) {
+					if ($login->errors) {
+						?>
+						<div class="alert alert-warning" role="alert"><i class="glyphicon glyphicon-exclamation-sign"></i>
+						<?php
+						foreach ($login->errors as $error) {
+							echo $error;
+						}
+						?>
+						</div>
+						<?php
+					}
 				}
-			} 
-					?>
-	
+				?>
 			<h3 class="text-center">Iniciar Sesiòn</h3>
 			<div class="login-form">
-				<form action="" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="loginForm" accept-charset="utf-8">
+				<form action="login.php" method="post" id="loginForm" accept-charset="utf-8">
 					<div class="form-group">
-						<label for="username" class="placeholder"><b>Username</b></label>
-						<input id="username" name="username" type="text" class="form-control" required>
+						<label for="username" class="placeholder"><b>Nombre de usuario</b></label>
+						<input id="username" name="username" type="text" class="form-control" placeholder="Ingresa tu usuario" required>
 					</div>
 					<div class="form-group">
-						<label for="password" class="placeholder"><b>Password</b></label>
-						<a href="#" class="link float-right">Forget Password ?</a>
+						<label for="password" class="placeholder"><b>Contraseña</b></label>
+						<!-- <a href="#" class="link float-right">Forget Password ?</a> -->
+						<a href="login.php?logout" "email me">email me</a>
 						<div class="position-relative">
-							<input id="password" name="password" type="password" class="form-control" required>
+							<input id="password" name="password" type="password" class="form-control" placeholder="**********" required>
 							<div class="show-password">
 								<i class="flaticon-interface"></i>
 							</div>
@@ -109,10 +82,10 @@ if($_POST) {
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" id="rememberme">
 						<label class="custom-control-label m-0" for="rememberme">Remember Me</label>
-					</div>
+					</div> 
 					
-					<input type="hidden" name="entrar" value="entrar">
-					<button class="btn btn-primary col-md-5 float-right mt-3 mt-sm-0 fw-bold">Ingresar</button>
+					
+					<button type="submit" class="btn btn-primary col-md-5 float-right mt-3 mt-sm-0 fw-bold" name="login">Ingresar</button>
 				</div>
 
 				<div class="login-account">
@@ -122,7 +95,9 @@ if($_POST) {
 				</form>
 				
 			</div>
+			<?php echo date('l') .' '.date('d').', '.date('Y'); ?>
 		</div>
+
 		<?php include_once 'registrarse.php'; ?>
 	</div>
 	<script src="<?php echo SERVERURL; ?>assets/js/core/jquery.3.2.1.min.js"></script>
@@ -130,5 +105,8 @@ if($_POST) {
 	<script src="<?php echo SERVERURL; ?>assets/js/core/popper.min.js"></script>
 	<script src="<?php echo SERVERURL; ?>assets/js/core/bootstrap.min.js"></script>
 	<script src="<?php echo SERVERURL; ?>assets/js/ready.js"></script>
+	<script src="<?php echo SERVERURL; ?>assets/js/infocentro/usuario.js"></script>
 </body>
 </html>
+<?php
+}
