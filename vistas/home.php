@@ -1,4 +1,4 @@
-
+<?php include_once './../core/configGeneral.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +23,9 @@
 </head>
 <body>
 	<div class="wrapper">
-		<?php include_once './vistas/includes/navbar.php'; ?>
+		<?php include_once './includes/navbar.php'; ?>
 		<!-- Sidebar -->
-		<?php include_once './vistas/includes/nav_lateral.php'; ?>
+		<?php include_once './includes/nav_lateral.php'; ?>
 		<!-- End Sidebar -->
 
 		<div class="main-panel">
@@ -36,6 +36,6 @@
 		</div>
 	</div>
 
-<?php include_once './vistas/includes/scripts.php'; ?>
+<?php include_once './includes/scripts.php'; ?>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<?php include_once './core.php'; ?>
 <div class="main-header" data-background-color="purple">
 	<!-- Logo Header -->
 	<div class="logo-header">
@@ -52,8 +53,8 @@
 							<div class="user-box">
 								<div class="avatar-lg"><img src="<?php echo SERVERURL; ?>assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 								<div class="u-text">
-									<h4>Hizrian</h4>
-									<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+									<h4><?php echo $_SESSION['userId']; ?></h4>
+									<p class="text-muted"><?php echo $_SESSION['correo']; ?></p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
 								</div>
 							</div>
 						</li>
@@ -63,7 +64,7 @@
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Account Setting</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Cerrar Sesiòn</a>
+							<a class="dropdown-item" href="./logout.php">Cerrar Sesiòn</a>
 						</li>
 					</ul>
 				</li>

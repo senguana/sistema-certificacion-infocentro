@@ -8,7 +8,7 @@
   	
   	public function obtener_Home_controlador()
   	{
-  		return require_once './vistas/home.php';
+  		return require_once './vistas/index.php';
   	}
 
   	
