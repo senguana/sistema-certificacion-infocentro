@@ -90,7 +90,7 @@ if ($login->isUserLoggedIn() == true) {
 
 				<div class="login-account">
 					<span class="msg">Don't have an account yet ?</span>
-					<a href="#" id="show-signup" class="link">Sign Up</a>
+					<a href="registrarse.php" id="show-signup" class="link">Sign Up</a>
 				</div>
 				</form>
 				
@@ -98,7 +98,7 @@ if ($login->isUserLoggedIn() == true) {
 			<?php echo date('l') .' '.date('d').', '.date('Y'); ?>
 		</div>
 
-		<?php include_once 'registrarse.php'; ?>
+		
 	</div>
 	<script src="<?php echo SERVERURL; ?>assets/js/core/jquery.3.2.1.min.js"></script>
 	<script src="<?php echo SERVERURL; ?>assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>

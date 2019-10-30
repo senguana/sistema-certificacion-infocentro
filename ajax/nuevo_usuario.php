@@ -3,27 +3,19 @@
 	if (empty($_POST['correo_usua'])) {
            $errors[] = "Correo vacío";
         } else if (!empty($_POST['correo_usua'])){
-		/* Connect To Database*/
-		require_once ("../bd/conexion.php");//Contiene las variables de configuracion para conectar a la base de datos
+	
+		require_once ("../bd/conexion.php");
 		
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$correo =mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-		$apellido =mysqli_real_escape_string($con,(strip_tags($_POST["apellido"],ENT_QUOTES)));
-		$cedula =mysqli_real_escape_string($con,(strip_tags($_POST["cedula"],ENT_QUOTES)));
-		$provincia=mysqli_real_escape_string($con,(strip_tags($_POST["provincia"],ENT_QUOTES)));
-		$ciudad =mysqli_real_escape_string($con,(strip_tags($_POST["ciudad"],ENT_QUOTES)));
+		$correo =$_POST["correo_usua"];
+		$usuario =$_POST["usuario_usua"];
+		$password =$_POST["password_usua"];
+		// $confirPassword =$_POST["confirmpassword"];
 
-		$email=mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
-		$telefono=mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));
-		$celular=mysqli_real_escape_string($con,(strip_tags($_POST["celular"],ENT_QUOTES)));
-
-		$direccion=mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
-		$referencia=mysqli_real_escape_string($con,(strip_tags($_POST["referencia"],ENT_QUOTES)));
-		$estado=intval($_POST['estado']);
-		$date_added=date("Y-m-d H:i:s");
-		$sql="INSERT INTO `clientes`(`nombre_cliente`, `apellido_cliente`, `cedula_cliente`, `provincia`, `ciudad`, `email_cliente`, `telefono_cliente`, `celular_cliente`, `direccion_cliente`, `status_cliente`, `date_added`, `referencia_cliente`) VALUES ('$nombre','$apellido','$cedula','$provincia','$ciudad','$email', '$telefono','$celular','$direccion','$estado','$date_added','$referencia')";
-		$query_new_insert = mysqli_query($con,$sql);
-			if ($query_new_insert){
+		$sql="INSERT INTO `usuario`(`correo_usua`, `usuario_usua`, `password_usua) VALUES (?,?,?)";
+		$sentencia = $db->prepare($sql);
+		$sentencia->execute(array($correo, $usuario, $password ));
+			if ($sentencia){
 				$messages[] = "Cliente ha sido ingresado satisfactoriamente.";
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
