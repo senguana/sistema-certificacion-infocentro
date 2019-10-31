@@ -1,56 +1,28 @@
 <?php
-
-	if (empty($_POST['correo_usua'])) {
-           $errors[] = "Correo vacío";
-        } else if (!empty($_POST['correo_usua'])){
-	
-		require_once ("../bd/conexion.php");
+	require_once ("../bd/conexion.php");
+      
+        	$email= $_POST['email'];
+	    $user = $_POST['user'];
+	    $password_usua = $_POST['pass'];
+	    $confirpass = $_POST['confirmpass'];
+	   $password_usua = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+		$query_agregar = "INSERT INTO usuario(correo_usua, username_usua, password_usua) VALUES (:e, :u ,:p)";
 		
-		// escaping, additionally removing everything that could be (html/javascript-) code
-		$correo =$_POST["correo_usua"];
-		$usuario =$_POST["usuario_usua"];
-		$password =$_POST["password_usua"];
-		// $confirPassword =$_POST["confirmpassword"];
+		$nuevo_user = $db->prepare($query_agregar);
+		$nuevo_user->execute(array(
+			'e'=>$email, 
+			'u'=>$user, 
+			'p'=>$password_usua));
 
-		$sql="INSERT INTO `usuario`(`correo_usua`, `usuario_usua`, `password_usua) VALUES (?,?,?)";
-		$sentencia = $db->prepare($sql);
-		$sentencia->execute(array($correo, $usuario, $password ));
-			if ($sentencia){
-				$messages[] = "Cliente ha sido ingresado satisfactoriamente.";
-			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
-			}
-		} else {
-			$errors []= "Error desconocido.";
+		if ($nuevo_user) {
+			echo "se inserto";
+		}else{
+			echo "NO se pudo";
 		}
+		$nuevo_user = null;
+		$db= null;
+      
 
-		if (isset($errors)){
-
-			?>
-			<div class="alert alert-danger" role="alert">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>Error!</strong>
-					<?php
-						foreach ($errors as $error) {
-								echo $error;
-							}
-						?>
-			</div>
-			<?php
-			}
-			if (isset($messages)){
-
-				?>
-				<div class="alert alert-success" role="alert">
-						<button type="button" class="close" data-dismiss="alert">&times;</button>
-						<strong>¡Bien hecho!</strong>
-						<?php
-							foreach ($messages as $message) {
-									echo $message;
-								}
-							?>
-				</div>
-				<?php
-			}
-
+	
 ?>
+	

@@ -1,5 +1,7 @@
 <?php
 
+require_once './../bd/configuracion.php';
+
 class Login
 {
     /**
@@ -41,7 +43,7 @@ class Login
         } elseif (!empty($_POST['username']) && !empty($_POST['password'])) {
 
         
-            $this->db_connection = new mysqli(HOST_NAME, USER, PASSWORD, DATABASE_NAME);
+            $this->db_connection = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DATABASE_NAME);
 
             
             if (!$this->db_connection->set_charset("utf8")) {
@@ -51,14 +53,19 @@ class Login
             if (!$this->db_connection->connect_errno) {
 
                 
-                $user_name = $this->db_connection->real_escape_string($_POST['username']);
+                $user_name = $_POST['username'];
                 $password = $_POST['password'];
+                
 
     
                 $sql = "SELECT id_usua, username_usua, correo_usua, password_usua
                         FROM usuario
-                        WHERE username_usua = '" . $user_name . "' OR correo_usua = '" . $user_name . "';";
+                        WHERE username_usua = '" . $user_name . "'";
                 $result_of_login_check = $this->db_connection->query($sql);
+                
+                if (!$result_of_login_check) {
+                   $this->errors[] = "error.";
+                }
 
                 // if this user exists
                 if ($result_of_login_check->num_rows == 1) {

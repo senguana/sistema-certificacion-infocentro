@@ -1,22 +1,50 @@
 <?php 
-// require_once './../bd/conexion.php';
+require_once './../bd/conexion.php';
 require_once './../core/configGeneral.php';
-require_once './../clases/login.php';
-require_once './../bd/configuracion.php';
+// require_once './../clases/login.php';
 
-$login = new Login();
+if (isset($_POST['login'])) {
+	if (empty($_POST['username'])) {
+		 $errors[] = "El campo de nombre de usuario estaba vacío.";
 
+	}elseif (empty($_POST['password'])) {
+		$errors[] = "El campo de contraseña estaba vacío.";
+		
+	}elseif (!empty($_POST['username']) && !empty($_POST['password'])) {
+		 $user_name = $_POST['username'];
+         $password = $_POST['password'];
 
-$login = new Login();
+		$sql = "SELECT * FROM usuario WHERE username_usua = '$user_name'";
+		$result = $db->query($sql);
+		$row=$result->rowCount();
+		if ($row ==1) {
+			$sql = "SELECT username_usua, password_usua FROM usuario WHERE username_usua = :username";
+            $login_check = $db->prepare($sql);
+            $login_check->bindParam(':username', $user_name);
+            // $login_check->bindParam(':password', $password);
+            $login_check->execute();
 
-// ... ask if we are logged in here:
-if ($login->isUserLoggedIn() == true) {
+            if (password_verify($password, $user['password_usua'])) {
+            		   $user = $login_check->fetch(PDO::FETCH_ASSOC);
+                        $_SESSION['id_usua'] = $user['id_usua'];
+                        $_SESSION['username_usua'] = $user['username_usua'];
+                        $_SESSION['user_login_status'] = 1;
+                        $_SESSION['login_time'] = time();
 
-   header("location: home.php");
+                        header("location: home.php");
+                        exit;
 
-} else {
+                    }else{
+                    	$errors[] = "Usuario y/o contraseña no coinciden.";
+                    }
 
-    ?>
+		}else{
+			$errors[] = "Usuario no existe";
+		}
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,12 +74,12 @@ if ($login->isUserLoggedIn() == true) {
 		<div class="container container-login animated fadeIn">
 			<?php
 				
-				if (isset($login)) {
-					if ($login->errors) {
+				if (isset($_POST['login'])) {
+					if ($errors) {
 						?>
 						<div class="alert alert-warning" role="alert"><i class="glyphicon glyphicon-exclamation-sign"></i>
 						<?php
-						foreach ($login->errors as $error) {
+						foreach ($errors as $error) {
 							echo $error;
 						}
 						?>
@@ -62,7 +90,7 @@ if ($login->isUserLoggedIn() == true) {
 				?>
 			<h3 class="text-center">Iniciar Sesiòn</h3>
 			<div class="login-form">
-				<form action="login.php" method="post" id="loginForm" accept-charset="utf-8">
+				<form action="" method="post" id="loginForm" accept-charset="utf-8">
 					<div class="form-group">
 						<label for="username" class="placeholder"><b>Nombre de usuario</b></label>
 						<input id="username" name="username" type="text" class="form-control" placeholder="Ingresa tu usuario" required>
@@ -70,7 +98,7 @@ if ($login->isUserLoggedIn() == true) {
 					<div class="form-group">
 						<label for="password" class="placeholder"><b>Contraseña</b></label>
 						<!-- <a href="#" class="link float-right">Forget Password ?</a> -->
-						<a href="login.php?logout" "email me">email me</a>
+						
 						<div class="position-relative">
 							<input id="password" name="password" type="password" class="form-control" placeholder="**********" required>
 							<div class="show-password">
@@ -95,7 +123,7 @@ if ($login->isUserLoggedIn() == true) {
 				</form>
 				
 			</div>
-			<?php echo date('l') .' '.date('d').', '.date('Y'); ?>
+			
 		</div>
 
 		
@@ -105,8 +133,6 @@ if ($login->isUserLoggedIn() == true) {
 	<script src="<?php echo SERVERURL; ?>assets/js/core/popper.min.js"></script>
 	<script src="<?php echo SERVERURL; ?>assets/js/core/bootstrap.min.js"></script>
 	<script src="<?php echo SERVERURL; ?>assets/js/ready.js"></script>
-	<script src="<?php echo SERVERURL; ?>assets/js/infocentro/usuario.js"></script>
+	
 </body>
 </html>
-<?php
-}

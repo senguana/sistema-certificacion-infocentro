@@ -12,3 +12,4 @@ require_once './../bd/conexion.php';
 		exit;
         }
  ?>
+ 
