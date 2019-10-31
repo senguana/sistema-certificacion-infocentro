@@ -14,36 +14,34 @@ if (isset($_POST['login'])) {
 		 $user_name = $_POST['username'];
          $password = $_POST['password'];
 
-		$sql = "SELECT * FROM usuario WHERE username_usua = '$user_name'";
-		$result = $db->query($sql);
-		$row=$result->rowCount();
-		if ($row ==1) {
-			$sql = "SELECT username_usua, password_usua FROM usuario WHERE username_usua = :username";
-            $login_check = $db->prepare($sql);
-            $login_check->bindParam(':username', $user_name);
-            // $login_check->bindParam(':password', $password);
-            $login_check->execute();
+		$sql = "SELECT * FROM usuario WHERE username_usua =:username_usua";
+		$result = $db->prepare($sql);
+		$result->execute(array(':username_usua' => $user_name));
+		$row=$result->fetch(PDO::FETCH_ASSOC);
 
-            if (password_verify($password, $user['password_usua'])) {
-            		   $user = $login_check->fetch(PDO::FETCH_ASSOC);
-                        $_SESSION['id_usua'] = $user['id_usua'];
-                        $_SESSION['username_usua'] = $user['username_usua'];
-                        $_SESSION['user_login_status'] = 1;
-                        $_SESSION['login_time'] = time();
+		if ($result->rowCount() >0) {
+            if (password_verify($password, $row['password_usua'])) {
+            	
+                session_start();	   
+                $_SESSION['id_usua'] = $row['id_usua'];
+                $_SESSION['username_usua'] = $row['username_usua'];
+                $_SESSION['nombre_usua'] = $row['nombre_usua'];
+                $_SESSION['apellido_usua'] = $row['apellido_usua'];
+                $_SESSION['correo_usua'] = $row['correo_usua'];
+                $_SESSION['user_login_status'] = 1;
+                
+                header("location: ./home.php");
+                 exit;
 
-                        header("location: home.php");
-                        exit;
-
-                    }else{
-                    	$errors[] = "Usuario y/o contraseña no coinciden.";
-                    }
+            }else{
+            	$errors[] = "Usuario y/o contraseña no coinciden.";
+            }
 
 		}else{
 			$errors[] = "Usuario no existe";
 		}
 	}
-}
-
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,8 +106,8 @@ if (isset($_POST['login'])) {
 					</div>
 				<div class="form-group form-action-d-flex mb-3">
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="rememberme">
-						<label class="custom-control-label m-0" for="rememberme">Remember Me</label>
+						<!-- <input type="checkbox" class="custom-control-input" id="rememberme">
+						<label class="custom-control-label m-0" for="rememberme">Remember Me</label> -->
 					</div> 
 					
 					

@@ -1,4 +1,4 @@
 <?php 
-header('location: ./vistas/login.php');
+header('location: ./vistas/home.php');
 
  ?>

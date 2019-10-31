@@ -1,17 +1,6 @@
 <?php include_once './../core/configGeneral.php'; ?>
-<?php
-session_start();
- 
- 
-/**
- * Check if the user is logged in.
- */
-if(!isset($_SESSION['user_login_status']) || !isset($_SESSION['login_time'])){
-    
-    header('Location: login.php');
-    exit;
-}
-?>
+<?php include_once './../bd/conexion.php'; ?>
+<?php include_once 'core.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
