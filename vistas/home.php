@@ -1,28 +1,8 @@
 <?php include_once './../core/configGeneral.php'; ?>
 <?php include_once './../bd/conexion.php'; ?>
 <?php include_once 'core.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title><?php echo INFOCENTRO; ?></title>
-	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="<?php echo SERVERURL; ?>assets/img/icon.ico" type="image/x-icon"/>
 
-	<!-- Fonts and icons -->
-	<script src="<?php echo SERVERURL; ?>assets/js/plugin/webfont/webfont.min.js"></script>
-	<script>
-		WebFont.load({
-			google: {"families":["Open+Sans:300,400,600,700"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['<?php echo SERVERURL; ?>assets/css/fonts.css']},
-			active: function() {
-				sessionStorage.fonts = true;
-			}
-		});
-	</script>
-	<?php include_once 'includes/styles.php'; ?>
-	
-</head>
+<?php include_once 'includes/header.php'; ?>
 <body>
 	<div class="wrapper">
 		<?php include_once './includes/navbar.php'; ?>
@@ -32,12 +12,92 @@
 
 		<div class="main-panel">
 			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title">Dashboard</h4>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-round">
+								<div class="card-body ">
+									<div class="row align-items-center">
+										<div class="col-icon">
+											<div class="icon-big text-center icon-primary bubble-shadow-small">
+												<i class="fas fa-users"></i>
+											</div>
+										</div>
+										<div class="col col-stats ml-3 ml-sm-0">
+											<div class="numbers">
+												<p class="card-category">Visitors</p>
+												<h4 class="card-title">1,294</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-round">
+								<div class="card-body">
+									<div class="row align-items-center">
+										<div class="col-icon">
+											<div class="icon-big text-center icon-info bubble-shadow-small">
+												<i class="far fa-newspaper"></i>
+											</div>
+										</div>
+										<div class="col col-stats ml-3 ml-sm-0">
+											<div class="numbers">
+												<p class="card-category">Subscribers</p>
+												<h4 class="card-title">1303</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-round">
+								<div class="card-body">
+									<div class="row align-items-center">
+										<div class="col-icon">
+											<div class="icon-big text-center icon-success bubble-shadow-small">
+												<i class="far fa-chart-bar"></i>
+											</div>
+										</div>
+										<div class="col col-stats ml-3 ml-sm-0">
+											<div class="numbers">
+												<p class="card-category">Sales</p>
+												<h4 class="card-title">$ 1,345</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-round">
+								<div class="card-body">
+									<div class="row align-items-center">
+										<div class="col-icon">
+											<div class="icon-big text-center icon-secondary bubble-shadow-small">
+												<i class="far fa-check-circle"></i>
+											</div>
+										</div>
+										<div class="col col-stats ml-3 ml-sm-0">
+											<div class="numbers">
+												<p class="card-category">Order</p>
+												<h4 class="card-title">576</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				
+				</div>
 			</div>
 
 		</div>
 	</div>
-
-<?php include_once './includes/scripts.php'; ?>
-</body>
-</html>
+<?php include_once 'includes/footer.php'; ?>

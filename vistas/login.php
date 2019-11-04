@@ -2,6 +2,12 @@
 require_once './../bd/conexion.php';
 require_once './../core/configGeneral.php';
 // require_once './../clases/login.php';
+session_start();
+
+if (isset($_SESSION['loginIn'])) {
+	header('location: home.php');
+	exit;
+}
 
 if (isset($_POST['login'])) {
 	if (empty($_POST['username'])) {
@@ -11,8 +17,9 @@ if (isset($_POST['login'])) {
 		$errors[] = "El campo de contraseña estaba vacío.";
 		
 	}elseif (!empty($_POST['username']) && !empty($_POST['password'])) {
-		 $user_name = $_POST['username'];
-         $password = $_POST['password'];
+
+		 $user_name = htmlentities(addslashes($_POST['username']));
+         $password = htmlentities(addslashes($_POST['password']));
 
 		$sql = "SELECT * FROM usuario WHERE username_usua =:username_usua";
 		$result = $db->prepare($sql);
@@ -22,7 +29,7 @@ if (isset($_POST['login'])) {
 		if ($result->rowCount() >0) {
             if (password_verify($password, $row['password_usua'])) {
             	
-                session_start();	   
+                $_SESSION['loginIn'] = 1;	   
                 $_SESSION['id_usua'] = $row['id_usua'];
                 $_SESSION['username_usua'] = $row['username_usua'];
                 $_SESSION['nombre_usua'] = $row['nombre_usua'];
@@ -43,31 +50,11 @@ if (isset($_POST['login'])) {
 	}
 } 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Login</title>
-	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
-
-	<!-- Fonts and icons -->
-	<script src="<?php echo SERVERURL; ?>assets/js/plugin/webfont/webfont.min.js"></script>
-	<script>
-		WebFont.load({
-			google: {"families":["Open+Sans:300,400,600,700"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['<?php echo SERVERURL; ?>assets/css/fonts.css']},
-			active: function() {
-				sessionStorage.fonts = true;
-			}
-		});
-	</script>
-	
-	<!-- CSS Files -->
-	<link rel="stylesheet" href="<?php echo SERVERURL; ?>assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo SERVERURL; ?>assets/css/azzara.min.css">
-</head>
+<?php include_once 'includes/header.php'; ?>
 <body class="login">
+	<nav class="navbar sticky-top navbar-dark bg-primary">
+		<a class="navbar-brand" href="home.php">SISTEMA DE CERTIFICACIÒN</a>
+	</nav>
 	<div class="wrapper wrapper-login">
 		<div class="container container-login animated fadeIn">
 			<?php
@@ -88,7 +75,7 @@ if (isset($_POST['login'])) {
 				?>
 			<h3 class="text-center">Iniciar Sesiòn</h3>
 			<div class="login-form">
-				<form action="" method="post" id="loginForm" accept-charset="utf-8">
+				<form action="" method="post" id="loginForm" autocomplete="off" accept-charset="utf-8">
 					<div class="form-group">
 						<label for="username" class="placeholder"><b>Nombre de usuario</b></label>
 						<input id="username" name="username" type="text" class="form-control" placeholder="Ingresa tu usuario" required>
@@ -116,7 +103,7 @@ if (isset($_POST['login'])) {
 
 				<div class="login-account">
 					<span class="msg">Don't have an account yet ?</span>
-					<a href="registrarse.php" id="show-signup" class="link">Sign Up</a>
+					<a href="registrarse.php" id="show-signup" class="link">Registrarse</a>
 				</div>
 				</form>
 				
