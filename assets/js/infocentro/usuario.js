@@ -137,9 +137,9 @@
 //   }); // /submit brand form function
 
 // // });
-
-
-
+// $(document).ready(function() {
+//   $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
+//  });
 
   // GUARDAR USUARIO
  $("#guardar_usuario" ).submit(function( event ) {
@@ -152,7 +152,7 @@
              $("#error").html("Enviando...");
              },
            success: function(datos){
-           $("#error").html(datos);
+            $('#error').html(datos);
            $('#guardar_usuario').modal('hide');
            }
        });
@@ -218,12 +218,13 @@ $( "#delete_usuario" ).submit(function( event ) {
           type: "POST",
           url: "../ajax/usuarioDelete.php",
           data: parametros,
-           beforeSend: function(objeto){
-            $("#resultado").html("Enviando...");
-            },
+           // beforeSend: function(objeto){
+           //  $("#resultado").html("Enviando...");
+           //  },
           success: function(datos){
-          $("#resultado").html(datos);
-        
+          if (datos) {
+            $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
+          }
           $('#deleteUsuarioModal').modal('hide');
           }
       });
