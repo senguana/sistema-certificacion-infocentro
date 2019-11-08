@@ -101,10 +101,6 @@ if (isset($_POST['login'])) {
 					<button type="submit" class="btn btn-primary col-md-5 float-right mt-3 mt-sm-0 fw-bold" name="login">Ingresar</button>
 				</div>
 
-				<div class="login-account">
-					<span class="msg">Don't have an account yet ?</span>
-					<a href="registrarse.php" id="show-signup" class="link">Registrarse</a>
-				</div>
 				</form>
 				
 			</div>

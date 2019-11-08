@@ -19,43 +19,47 @@
 
 
 // recuperar datos 
-$('#EditUsuario').on('show.bs.modal', function (event) {
+$('#EditRepresentante').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var dni = button.data('dni') 
-      $('#dni_usua').val(dni)
+      $('#dni_repre').val(dni)
       var nombre = button.data('nombre') 
-      $('#nombre_usua').val(nombre)
+      $('#nombre_repre').val(nombre)
       var apellido = button.data('apellido')
-      $('#apell_usua').val(apellido)
-      var correo = button.data('correo')
-      $('#correo_usua').val(correo)
-
+      $('#apell_repre').val(apellido)
+  
       var genero = button.data('genero')
-      $('#genero_usua').val(genero)
+      $('#genero_repre').val(genero)
 
-      var user = button.data('user')
-      $('#usuario_usua').val(user)
+       var telefono = button.data('tel')
+      $('#repre_tel').val(telefono)
+
 
       var profesion = button.data('profesion')
-      $('#profesion_usua').val(profesion)
+      $('#profesion_repre').val(profesion)
       var id = button.data('id') 
-      $('#id_user').val(id)
+      $('#id_repre').val(id)
     });
 
 // editar usuario
-$( "#editar_usuario" ).submit(function( event ) {
+$( "#editar_representante" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/usuarioUpdate.php",
+          url: "../ajax/representanteUpdate.php",
           data: parametros,
            beforeSend: function(objeto){
             $("#resultado").html("Enviando...");
             },
           success: function(datos){
           $("#resultado").html(datos);
+           // if (datos==false) {
+           //   $("#resultado").html("Error...");
+           // }else{
+           //  $("#resultado").html("Se in serto...");
+           // }
          
-          $('#EditUsuario').modal('hide');
+          $('#EditRepresentante').modal('hide');
           }
       });
       event.preventDefault();
@@ -80,7 +84,7 @@ $("#delete_representante" ).submit(function( event ) {
             },
           success: function(datos){
           $("#resultado").html(datos);
-        
+
           $('#deleteRepresentanteModal').modal('hide');
           }
       });

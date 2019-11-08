@@ -70,23 +70,23 @@ function InsertarRepresentante($dni, $nom, $apell, $tel, $prof, $gen)
 			}
 }
 
-function actualizarRepre($dni, $nom, $apell, $tel, $prof, $id)
+function actualizarRepre($dni, $nom, $apell, $tel, $prof, $gen, $id)
 {
 	global $db;
 
-	$sql = "UPDATE representante SET dni_repre=:dni, nombres_repre=nom, apellidos_repre=:apell, telefono_repre=:tel, cod_profesion=:prof WHERE id_repre:id";
+	$sql = "UPDATE representante SET dni_repre=:dni, nombres_repre=:nom, apellidos_repre=:apell, telefono_repre=:tel, cod_profesion=:prof, genero=:gen  WHERE id_repre=:id";
 
 	$result = $db->prepare($sql);
 
-	$result->execute(
-		array(
-	    ":dni"   => $dni,
-	 	":nom"   => $nom,
-	 	":apell" => $apell,
-	 	":tel"   => $tel,
-	 	":prof"  => $prof,
-	 	":id"    => $id,
-	 ));
+	$result->execute(array(
+		":dni"=>$dni,
+		":nom"=>$nom,
+		":apell"=>$apell,
+		":tel"=>$tel,
+		":prof"=>$prof,
+		":gen"=>$gen,
+		":id"=>$id,
+	));
 
 	if ($result) {
 		return true;

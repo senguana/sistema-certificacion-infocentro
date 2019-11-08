@@ -4,7 +4,7 @@
 		<div class="sidebar-content">
 			<div class="user">
 				<div class="avatar-sm float-left mr-2">
-					<img src="<?php echo SERVERURL; ?>assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+					<img src="./../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -24,15 +24,39 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="./usuario.php">
+						<i class="fas fa-user"></i>
+						<p>Usuario</p>
+						
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="./representante.php">
+						<i class="fas fa-user-friends"></i>
+						<p>Representantes</p>
+						
+					</a>
+					
+				
+				</li>
+				<li class="nav-item">
+					<a href="./curso.php">
+						<i class="fas fa-chalkboard-teacher"></i>
+						<p>Cursos</p>
+						
+					</a>
+				</li>
+				<li class="nav-item">
 					<a data-toggle="collapse" href="#charts">
-						<i class="far fa-chart-bar"></i>
-					<p>ADMINISTRADOR</p>
+						<i class="fa fa-users-cog"></i>
+					<p>Administrador</p>
 						<span class="caret"></span>
 					</a>
 					<div class="collapse" id="charts">
 						<ul class="nav nav-collapse">
 							<li>
-								<a href="charts/charts.html">
+								<a href="./asignarCursos.php">
 									<span class="sub-item">Asignar Cursos</span>
 								</a>
 							</li>
@@ -45,42 +69,37 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a href="./usuario.php">
-						<i class="fas fa-user"></i>
-						<p>Usuario</p>
-						
+					<a data-toggle="collapse" href="#academico">
+						<i class="fas fa-users"></i>
+					<p>Académico</p>
+						<span class="caret"></span>
 					</a>
+					<div class="collapse" id="academico">
+						<ul class="nav nav-collapse">
+							<li>
+								<a href="./alumno.php">
+									<span class="sub-item">Alumnos</span>
+								</a>
+							</li>
+							<li>
+								<a href="./nivel.php">
+									<span class="sub-item">Niveles</span>
+								</a>
+							</li>
+							<li>
+								<a href="./institucion.php">
+									<span class="sub-item">Instituciones</span>
+								</a>
+							</li>
+							<li>
+								<a href="./docente.php">
+									<span class="sub-item">Docentes</span>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a data-toggle="collapse" href="#forms">
-						<i class="fas fa-pen-square"></i>
-						<p>Estuadiante</p>
-						
-					</a>
-				</li>
-				<li class="nav-item">
-					<a data-toggle="collapse" href="#forms">
-						<i class="fas fa-pen-square"></i>
-						<p>Docente</p>
-						
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="./representante.php">
-						<i class="fa fa-users" aria-hidden="true"></i>
-						<p>Representantes</p>
-						
-					</a>
-					
-				
-				</li>
-				<li class="nav-item">
-					<a data-toggle="collapse" href="#maps">
-						<i class="fas fa-map-marker-alt"></i>
-						<p>Cursos</p>
-						
-					</a>
-				</li>
+
 			</ul>
 		</div>
 	</div>
