@@ -11,6 +11,7 @@
 	
 	
 	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" type="text/css" href="./../assets/css/toarts.css">
 
 	<!-- Fonts and icons -->
 	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>

@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade  bd-example-modal-lg" id="NuevoDocente" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Nuevo Docente</h5>
@@ -10,20 +10,44 @@
 			</div>
 			<div class="modal-body">
 				<div id="add-brand-messages"></div>
-				<form id="guardarRepresentante" name="guardarRepresentante" autocomplete="off"   accept-charset="utf-8">
+				<form id="guardar_docente" name="guardar_docente" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
-						<div class="col-sm-6">
-							<p id="error"></p>
-						
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-md-12">
 							<div class="form-group form-inline">
-								<label for="dni_usua"  class="col-md-3 col-form-label">Institución</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="dni_repre" placeholder="Ingrese nùmero de cedula" required="">
+								<label for="nombres_docente" class="col-md-2 col-form-label">Nombres</label>
+								<div class="col-md-10 p-0">
+									<input type="text" class="form-control input-full" name="nombres_docente" placeholder="Ingresar nombres">
+								</div>
+							</div>
+							<div class="form-group form-inline">
+								<label for="apellidos_docente" class="col-md-2 col-form-label">Apellidos</label>
+								<div class="col-md-10 p-0">	
+									<input type="text" class="form-control input-full" name
+									="apellidos_docente" placeholder="Ingresar apellidos">
+								</div>
+							</div>
+							<div class="form-group form-inline">
+								<label for="correo_docente" class="col-md-2 col-form-label">Correo <br>Electrónico</label>
+								<div class="col-md-10 p-0">
+									<input type="email" class="form-control input-full" name="correo_docente" required="" placeholder="Ingresar el correo electrónico">
+								</div>
+							</div>
+							<div class="form-group form-inline">
+								<label for="tell_docente" class="col-md-2 col-form-label">Teléfono</label>
+								<div class="col-md-10 p-0">
+									<input type="number" class="form-control input-full" name="tell_docente" required="" placeholder="Ingresar el número de teléfono">
+								</div>
+							</div>
+
+							<div class="form-group form-inline">
+								<label for="genero_docente" class="col-md-2 col-form-label">Gènero</label>
+								<div class="col-md-10 P-0">
+									<select class="form-control input-full" name="genero_docente">
+										<option disabled="" selected="">Seleccionar...</option>
+										<option value="Masculino">Masculino</option>
+										<option value="Femenino">Femenino</option>
+										
+									</select>
 								</div>
 							</div>
 						</div>

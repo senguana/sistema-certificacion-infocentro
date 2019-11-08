@@ -23,7 +23,7 @@ function minMax($min, $max, $valor)
 function dniExiste($dni)
 {
 	global $db;
-	$consulta = "SELECT id_repre FROM representante WHERE  id_repre= ? LIMIT 1";
+	$consulta = "SELECT id_repre FROM representante WHERE  dni_repre= ? LIMIT 1";
 	$result_consulta = $db->prepare($consulta);
 	$result_consulta->execute([$dni]);
 	$row = $result_consulta->rowCount();

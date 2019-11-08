@@ -2,6 +2,8 @@
 	require_once ("../bd/conexion.php");
 	require_once ('./../funciones/representante.php');
 
+	$msg[];
+
 		$dni= $_POST['dni_repre'];
 		$nombre= $_POST['nombre_repre'];
 		$apellido= $_POST['apell_repre'];
@@ -25,7 +27,7 @@
 	}elseif (!empty($dni) && !empty($nombre) && !empty($apellido) && !empty($genero) && !empty($profesion)) {
 
 	    if (dniExiste($dni)) {
-	    	echo "Este Dni $dni ya está en uso.";
+	    	echo "Este $dni está en uso";
 			exit;
 			
 		}

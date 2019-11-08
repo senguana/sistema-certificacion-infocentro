@@ -77,8 +77,13 @@
 					<div class="collapse" id="academico">
 						<ul class="nav nav-collapse">
 							<li>
+								<a href="./alumnoBasica.php">
+									<span class="sub-item">Educación Básica</span>
+								</a>
+							</li>
+							<li>
 								<a href="./alumno.php">
-									<span class="sub-item">Alumnos</span>
+									<span class="sub-item">Educación Superior</span>
 								</a>
 							</li>
 							<li>

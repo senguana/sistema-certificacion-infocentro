@@ -1,20 +1,21 @@
- $("#guardarRepresentante" ).submit(function( event ) {
+ $("#guardar_docente" ).submit(function( event ) {
        var parametros = $(this).serialize();
        $.ajax({
            type: "POST",
-           url: "../ajax/representanteNuevo.php",
+           url: "../ajax/docenteNuevo.php",
            data: parametros,
-            // beforeSend: function(objeto){
-            //  $("#error").html("Enviando...");
-            //  },
+            beforeSend: function(objeto){
+              $("#error").html("Enviando...");
+              },
            success: function(datos){
+            $('#msg_error').html(datos);
            if (datos) {
             toastr.success('Se ha registrado correctamente', 'representante');
            }else{
             toastr.warning('No se ha podido guardar', 'Representante')
            }
 
-           $('#guardarRepresentante').modal('hide');
+           $('#NuevoDocente').modal('hide');
            }
        });
        event.preventDefault();

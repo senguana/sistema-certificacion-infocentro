@@ -8,7 +8,7 @@ $consulta = "SELECT *  FROM curso c INNER JOIN docente d ON c.docente_id = d.id_
 $query_listar = $db->prepare($consulta);
 $query_listar->execute();
 
-$result = $query_listar->fetchAll();
+
  ?>
 <body>
 	<div class="wrapper">
@@ -69,20 +69,20 @@ $result = $query_listar->fetchAll();
 												</tr>
 											</thead>
 											<tbody>
-												<?php foreach ($result as $dato): ?>
-												<tr>
+												<?php while ($result=$query_listar->fetch(PDO::FETCH_OBJ)) {?>
+													<tr>
 													
-													<td><?php echo $dato['nombre_curso']; ?></td>
-													<td><?php echo $dato['fecha_inicio']; ?></td>
-													<td><?php echo $dato['fecha_fin']; ?></td>
-													<td><?php echo $dato['total_horas']; ?></td>
-													<td><?php echo $dato['nombre'] ." " . $dato['apellido']; ?></td>
+													<td><?php echo $result->nombre_curso; ?></td>
+													<td><?php echo $result->fecha_inicio; ?></td>
+													<td><?php echo $result->fecha_fin; ?></td>
+													<td><?php echo $result->total_horas; ?></td>
+													<td><?php echo $result->nombre." " . $result->apellido; ?></td>
 													<td>
 														<div class="form-button-action">
-	<button type="button"  data-toggle="modal" data-target="#EditDocente" title="Editar" class="btn btn-link btn-primary" data-id='<?php echo $dato['id_curso']; ?>' id="Edit">
+	<button type="button"  data-toggle="modal" data-target="#EditDocente" title="Editar" class="btn btn-link btn-primary" data-id='<?php echo $result->id_curso; ?>' id="Edit">
 		<i class="fa fa-edit"></i>
 	</button>
-	<button type="button" data-toggle="modal" data-target="#deleteDocenteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $dato['id_curso'];?>"  data-original-title="Remove">
+	<button type="button" data-toggle="modal" data-target="#deleteDocenteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $result->id_curso;?>"  data-original-title="Remove">
 								<i class="fa fa-times"></i>
 							</button>
 
@@ -94,7 +94,11 @@ $result = $query_listar->fetchAll();
 													</td>
 													
 												</tr>
-											<?php endforeach; ?>
+												
+
+												<?php
+												} 
+												?>
 											</tbody>
 										</table>
 									</div>

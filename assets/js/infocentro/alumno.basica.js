@@ -1,21 +1,22 @@
- $("#guardarRepresentante" ).submit(function( event ) {
+ $("#guardar_alumno_basica" ).submit(function( event ) {
        var parametros = $(this).serialize();
        $.ajax({
            type: "POST",
-           url: "../ajax/representanteNuevo.php",
+           url: "../ajax/alumnoBasicaNuevo.php",
            data: parametros,
-            // beforeSend: function(objeto){
-            //  $("#error").html("Enviando...");
-            //  },
+            beforeSend: function(objeto){
+              $("#add-brand-messages").html("Enviando...");
+              },
            success: function(datos){
-           if (datos) {
-            toastr.success('Se ha registrado correctamente', 'representante');
-           }else{
-            toastr.warning('No se ha podido guardar', 'Representante')
-           }
+            $('#add-brand-messages').html(datos);
+            // if (datos) {
+            //  toastr.success('Se ha registrado correctamente', 'representante');
+            // }else{
+            //  toastr.warning('No se ha podido guardar', 'Representante');
+            // }
 
-           $('#guardarRepresentante').modal('hide');
-           }
+           // $('#NuevoAlumnoBasica').modal('hide');
+            }
        });
        event.preventDefault();
      });

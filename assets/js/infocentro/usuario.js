@@ -153,6 +153,7 @@
              },
            success: function(datos){
             $('#error').html(datos);
+             toastr.warning('Se ha Elimanado correctamente', 'Representante');
            $('#guardar_usuario').modal('hide');
            }
        });
@@ -197,7 +198,7 @@ $( "#editar_usuario" ).submit(function( event ) {
             },
           success: function(datos){
           $("#resultado").html(datos);
-         
+        
           $('#EditUsuario').modal('hide');
           }
       });
@@ -218,14 +219,15 @@ $( "#delete_usuario" ).submit(function( event ) {
           type: "POST",
           url: "../ajax/usuarioDelete.php",
           data: parametros,
-           // beforeSend: function(objeto){
-           //  $("#resultado").html("Enviando...");
-           //  },
+            beforeSend: function(objeto){
+             $("#resultado").html("Enviando...");
+           },
           success: function(datos){
-          if (datos) {
-            $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
-          }
-          $('#deleteUsuarioModal').modal('hide');
+            if (datos) {
+     
+           $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
+           }
+         
           }
       });
       event.preventDefault();

@@ -1,62 +1,101 @@
 <!-- Modal -->
-<div class="modal fade  bd-example-modal-lg" id="NuevoCurso" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-dialog" role="document">
+<div class="modal fade  bd-example-modal-lg" id="NuevoAlumnoBasica" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Nuevo Curso</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Nuevo Alumno</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
+
 				<div id="add-brand-messages"></div>
-				<form id="guardar_curso" name="guardar_curso" autocomplete="off"   accept-charset="utf-8">
+				<form id="guardar_alumno_basica" name="guardar_alumno_basica" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
-						<b id="msg_error"></b>
-						<div class="col-md-12">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label for="curso">Curso</label>
-								<input type="text" class="form-control" name="curso"  placeholder="Ingrese curso">
+								<label for="dni">DNI</label>
+								<input type="number" class="form-control input-square" name="dni" placeholder="Ingresar número de cédula">
 							</div>
 							<div class="form-group">
-								<label for="fecha_inicio">Fecha Inicio</label>
-								<input type="date" class="form-control" name="fecha_inicio" >
+								<label for="nombres">Nombres</label>
+								<input type="text" class="form-control input-square" name="nombres" placeholder="Ingresar dos nombres">
 							</div>
 							<div class="form-group">
-								<label for="fecha_fin">Fecha Fin</label>
-								<input type="date" class="form-control" name="fecha_fin" >
+								<label for="apellidos">Apellidos</label>
+								<input type="text" class="form-control input-square" name="apellidos" placeholder="Ingresar dos apellidos">
 							</div>
 							<div class="form-group">
-								<label for="total_horas">Total Horas</label>
-								<input type="text" class="form-control" name="total_horas" >
+								<label for="genero">Género</label>
+								<select class="form-control input-square" name="genero">
+									<option value="1" selected="">Seleccionar...</option>
+									<option value="Masculino">Masculino</option>
+									<option value="Femenino">Femenino</option>
+								</select>
 							</div>
+						</div>
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="docente">Seleccionar Docente</label>
-								<select class="form-control" name="docente">
+								<label for="fech_nac">Fecha de Nacimiento</label>
+								<input type="date" class="form-control input-square" name="fech_nac" placeholder="Ingresar Fecha de Nacimiento">
+							</div>
+
+							<div class="form-group">
+								<label for="institucion">Institución</label>
+								<select class="form-control input-square" name="institucion">
 									<option value="" selected="">Seleccionar...</option>}
 									option
 									<?php 
-									$sql = "SELECT id_docente, nombre, apellido from docente ";
+									$sql = "SELECT id_institucion, nombre_institucion from institucion ";
 									$stmt = $db->prepare($sql);
 									$result_consulta = $stmt->execute();
 									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
-										<option value="<?php echo $cargar_datos->id_docente;?> "><?php echo $cargar_datos->nombre. " ". $cargar_datos->apellido; ?></option>
+										<option value="<?php echo $cargar_datos->id_institucion;?> "><?php echo $cargar_datos->nombre_institucion; ?></option>
 										
 										
 									<?php 
 								}
 									
 									 ?>
+							
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="grado">Grado</label>
+								<select class="form-control input-square" name="grado">
+									<option value="" selected="">Seleccionar...</option>}
+									option
+									<?php 
+									$sql = "SELECT id_grado, descripcion from grado ";
+									$stmt = $db->prepare($sql);
+									$result_consulta = $stmt->execute();
+									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
+										<option value="<?php echo $cargar_datos->id_grado;?> "><?php echo $cargar_datos->descripcion; ?></option>
+										
+										
+									<?php 
+								}
+									
+									 ?>
+							
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="estado">Estado</label>
+								<select class="form-control input-square" name="estado">
+									<option value="0" selected="">Seleccionar...</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
 								
 								</select>
 							</div>
-
-					
-						</div>
+						</div>			
 
 					</div>
 					<div class="modal-footer">
 							<button type="submit" id="guardar_datos" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Registrarse</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 						
 					</div>
 				</form>

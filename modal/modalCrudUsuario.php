@@ -100,14 +100,9 @@
 						</div>
 
 					</div>
-					<div class="row form-action">
-						<div class="col-md-6">
-							<a href="login.php" id="show-signin" class="btn btn-danger btn-link w-100 fw-bold">Iniciar Sesiòn</a>
-						</div>
-						
-						<div class="col-md-6">
-							<button type="submit" id="guardar_datos" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Registrarse</button>
-						</div>
+					<div class="modal-footer">
+						<button type="submit" id="guardar_datos"  class="btn btn-primary">Nuevo usuario</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
 			</div>

@@ -40,6 +40,7 @@
 									</div>
 								</div>	
 								<div class="card-body">
+									
 									<p class="small" id="resultado"></p>
 										
 									<?php 
