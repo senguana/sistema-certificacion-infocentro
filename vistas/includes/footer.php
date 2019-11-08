@@ -9,7 +9,7 @@
 	<!-- Azzara DEMO methods, don't include it in your project! -->
 	<script src="./../assets/js/setting-demo.js"></script>
 	<script src="../assets/js/infocentro/usuario.js"></script>
-
+	
 	<script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({

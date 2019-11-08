@@ -26,7 +26,7 @@
 				<li class="nav-item">
 					<a data-toggle="collapse" href="#charts">
 						<i class="far fa-chart-bar"></i>
-						<p>aDMINISTRADOR</p>
+					<p>ADMINISTRADOR</p>
 						<span class="caret"></span>
 					</a>
 					<div class="collapse" id="charts">
@@ -71,6 +71,7 @@
 						<p>Representantes</p>
 						
 					</a>
+					
 				
 				</li>
 				<li class="nav-item">
@@ -83,4 +84,4 @@
 			</ul>
 		</div>
 	</div>
-</div>
+</div

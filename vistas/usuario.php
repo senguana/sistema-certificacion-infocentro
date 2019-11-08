@@ -52,12 +52,10 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 <?php include_once 'includes/footer.php'; ?>
 <script type="text/javascript" charset="utf-8" async defer>
 	$('document').ready(function() {
 		$('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
-	})
-</script>
+	}) </script>
