@@ -2,21 +2,13 @@
 <?php include_once './../bd/conexion.php'; ?>
 <?php include_once './core.php'; ?>
 <?php include_once 'includes/header.php'; ?>
-<?php 
-$consulta = "SELECT *  FROM curso c INNER JOIN docente d ON c.docente_id = d.id_docente ORDER BY id_curso ASC";
 
-$query_listar = $db->prepare($consulta);
-$query_listar->execute();
-
-
- ?>
 <body>
 	<div class="wrapper">
 		<?php include_once './includes/navbar.php'; ?>
 		<!-- Sidebar -->
 		<?php include_once './includes/nav_lateral.php'; ?>
 		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
@@ -48,59 +40,11 @@ $query_listar->execute();
 										</button>
 									</div>
 								</div>	
-								<div class="card-body">
-										
-										
-									<?php 
-									include("./../modal/modalCrudCurso.php");
-									 ?>
+								<div class="card-body">	
+								<?php include("./../modal/modalCrudCurso.php");?>
+
 									<div class="table-responsive" id="tablaRepre">
-										<table id="basic-datatables" class="display table table-striped table-hover"  >
-											<thead>
-												<tr>
-													<!-- <th>#</th> -->
-													<!-- <th>Dni</th> -->
-													<th>Curso</th>
-													<th>Fecha Inicio</th>
-													<th>Fecha Final</th>
-													<th>Total Horas</th>
-													<th>Docente</th>
-													<th style="width: 10%">Action</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php while ($result=$query_listar->fetch(PDO::FETCH_OBJ)) {?>
-													<tr>
-													
-													<td><?php echo $result->nombre_curso; ?></td>
-													<td><?php echo $result->fecha_inicio; ?></td>
-													<td><?php echo $result->fecha_fin; ?></td>
-													<td><?php echo $result->total_horas; ?></td>
-													<td><?php echo $result->nombre." " . $result->apellido; ?></td>
-													<td>
-														<div class="form-button-action">
-	<button type="button"  data-toggle="modal" data-target="#EditDocente" title="Editar" class="btn btn-link btn-primary" data-id='<?php echo $result->id_curso; ?>' id="Edit">
-		<i class="fa fa-edit"></i>
-	</button>
-	<button type="button" data-toggle="modal" data-target="#deleteDocenteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $result->id_curso;?>"  data-original-title="Remove">
-								<i class="fa fa-times"></i>
-							</button>
-
-
-
-	 
-
-														</div>
-													</td>
-													
-												</tr>
-												
-
-												<?php
-												} 
-												?>
-											</tbody>
-										</table>
+										
 									</div>
 								</div>
 							</div>
@@ -114,3 +58,8 @@ $query_listar->execute();
 
 <?php include_once 'includes/footer.php'; ?>
 <script src="./../assets/js/infocentro/representante.js" type="text/javascript" charset="utf-8" async defer></script>
+<script type="text/javascript" charset="utf-8" async defer>
+	$('document').ready(function() {
+		$('#tablaRepre').load('./../ajax/cursoTabla.php');
+	}) 
+</script>
