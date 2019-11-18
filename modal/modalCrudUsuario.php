@@ -9,16 +9,16 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div id="add-brand-messages"></div>
+				<div  id="error" class="btn-danger" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
+				</div>
 				<form id="guardar_usuario" name="guardar_usuario" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-sm-6">
-							<p id="error"></p>
 							<div class="form-group form-inline">
 								<label for="dni_usua"  class="col-md-3 col-form-label">DNI</label>
 								<div class="col-md-9 p-0">
 									<input type="hidden" name="id_user"  class="form-control">
-									<input type="text" class="form-control input-full" name="dni_usua" placeholder="Ingrese nùmero de cedula" required="">
+									<input type="text" class="form-control input-full" name="dni_usua" id="dni" required="" placeholder="Ingrese nùmero de cedula" >
 								</div>
 							</div>
 						</div>
@@ -29,25 +29,35 @@
 							<div class="form-group form-inline">
 								<label for="nombre_usua"  class="col-md-3 col-form-label">Nombre</label>
 								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="nombre_usua" placeholder="Ingrese nombre" required>
+									<input type="text" class="form-control input-full" name="nombre_usua" required=""  placeholder="Ingrese nombre" >
 								</div>
 							</div>
-							<div class="form-group form-inline">
-								<label for="apell_usua"  class="col-md-3 col-form-label">Apellido</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="apell_usua" placeholder="Ingrese apellido" required>
-								</div>
-							</div>
+						
 							<div class="form-group form-inline">
 								<label for="correo_usua"  class="col-md-3 col-form-label">Correo</label>
 								<div class="col-md-9 p-0">
-									<input type="email" class="form-control input-full" name="correo_usua" placeholder="Ingrese correo" required>
+									<input type="email" class="form-control input-full" name="correo_usua"  placeholder="Ingrese correo">
+								</div>
+							</div>
+							<div class="form-group form-inline">
+								<label for="usuario_usua"  class="col-md-3 col-form-label">Usuario</label>
+								<div class="col-md-9 p-0">
+									<input type="text" class="form-control input-full" name="usuario_usua" placeholder="usuario">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="form-group form-inline">
+								<label for="apell_usua"  class="col-md-3 col-form-label">Apellido</label>
+								<div class="col-md-9 p-0">
+									<input type="text" class="form-control input-full" name="apell_usua" placeholder="Ingrese apellido" >
 								</div>
 							</div>
 							<div class="form-group form-inline">
 								<label for="genero_usua"  class="col-md-3 col-form-label">Gènero</label>
 								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="genero_usua" >
+									<select class="form-control input-full" name="genero_usua" >
 										<option value="0" selected>Seleccionar...</option>
 										<option value="Masculino">Masculino</option>
 										<option value="Femenino">Femenino</option>
@@ -55,48 +65,13 @@
 									</select>
 								</div>
 							</div>
-					
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group form-inline">
-								<label for="profesion_usua"  class="col-md-3 col-form-label">Profesiòn</label>
-								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="profesion_usua" >
-										<option value="0" selected>Seleccionar...</option>
-									<?php 
-									$sql = "SELECT id_profesion, nombre_profesion from profesion ";
-									$stmt = $db->prepare($sql);
-									$result_consulta = $stmt->execute();
-									$cargar_datos = $stmt->fetchAll(PDO::FETCH_OBJ);	 
-									foreach ($cargar_datos as $dato) {
-										?>
-										<option value="<?php echo $dato->id_profesion;?> "><?php echo $dato->nombre_profesion; ?></option>
-									
-										<?php 
-									}
-									 ?>
-									
-									</select>
-								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="usuario_usua"  class="col-md-3 col-form-label">Usuario</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="usuario_usua" placeholder="usuario" required>
-								</div>
-							</div>
+	
 							<div class="form-group form-inline">
 								<label for="password_usua"  class="col-md-3 col-form-label">Password</label>
 								<div class="col-md-9 p-0">
-									<input type="password" class="form-control input-full" name="password_usua" placeholder="************" required="">
+									<input type="password" class="form-control input-full" name="password_usua" placeholder="************" >
 								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="confirmpassword"  class="col-md-3 col-form-label">Confirmar <br>Password</label>
-								<div class="col-md-9 p-0">
-									<input type="password" class="form-control input-full" name="confirmpassword" placeholder="************" required="">
-								</div>
-							</div>					
+							</div>				
 						</div>
 
 					</div>

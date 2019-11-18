@@ -11,7 +11,7 @@ if (isset($_SESSION['loginIn'])) {
 
 if (isset($_POST['login'])) {
 	if (empty($_POST['username'])) {
-		 $errors[] = "El campo de nombre de usuario estaba vacío.";
+		 $errors[] = " campo de nombre de usuario estaba vacío.";
 
 	}elseif (empty($_POST['password'])) {
 		$errors[] = "El campo de contraseña estaba vacío.";
@@ -57,12 +57,15 @@ if (isset($_POST['login'])) {
 	</nav>
 	<div class="wrapper wrapper-login">
 		<div class="container container-login animated fadeIn">
-			<?php
+			
+			<h3 class="text-center">Iniciar Sesiòn</h3>
+			<div class="login-form">
+				<?php
 				
 				if (isset($_POST['login'])) {
 					if ($errors) {
 						?>
-						<div class="alert alert-warning" role="alert"><i class="glyphicon glyphicon-exclamation-sign"></i>
+						<div class="btn-danger" style=" height: 30px; padding: 5px; text-align: center; border-radius: 2px;">				
 						<?php
 						foreach ($errors as $error) {
 							echo $error;
@@ -73,8 +76,6 @@ if (isset($_POST['login'])) {
 					}
 				}
 				?>
-			<h3 class="text-center">Iniciar Sesiòn</h3>
-			<div class="login-form">
 				<form action="" method="post" id="loginForm" autocomplete="off" accept-charset="utf-8">
 					<div class="form-group">
 						<label for="username" class="placeholder"><b>Nombre de usuario</b></label>
@@ -82,7 +83,6 @@ if (isset($_POST['login'])) {
 					</div>
 					<div class="form-group">
 						<label for="password" class="placeholder"><b>Contraseña</b></label>
-						<!-- <a href="#" class="link float-right">Forget Password ?</a> -->
 						
 						<div class="position-relative">
 							<input id="password" name="password" type="password" class="form-control" placeholder="**********" required>
@@ -91,13 +91,7 @@ if (isset($_POST['login'])) {
 							</div>
 						</div>
 					</div>
-				<div class="form-group form-action-d-flex mb-3">
-					<div class="custom-control custom-checkbox">
-						<!-- <input type="checkbox" class="custom-control-input" id="rememberme">
-						<label class="custom-control-label m-0" for="rememberme">Remember Me</label> -->
-					</div> 
-					
-					
+				<div class="form-group form-action-d-flex mb-3">					
 					<button type="submit" class="btn btn-primary col-md-5 float-right mt-3 mt-sm-0 fw-bold" name="login">Ingresar</button>
 				</div>
 

@@ -39,10 +39,7 @@
 										</button>
 									</div>
 								</div>	
-								<div class="card-body">
-									
-									<p class="small" id="resultado"></p>
-										
+								<div class="card-body">							
 									<?php 
 									include("./../modal/modalCrudUsuario.php");
 									 ?>

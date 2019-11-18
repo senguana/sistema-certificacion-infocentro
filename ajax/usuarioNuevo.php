@@ -8,11 +8,10 @@
 		$genero= strval($_POST['genero_usua']);
 	    $user = $_POST['usuario_usua'];
 	    $password_usua = $_POST['password_usua'];
-	    $confirPass = $_POST['confirmpassword'];
-	    $profesion = $_POST['profesion_usua'];
+	   
 	    $date_added=date("Y-m-d H:i:s");
 
-	if (isNull($dni, $nombre, $apellido, $email, $user, $password_usua, $confirPass)) {
+	if (isNull($dni, $nombre, $apellido, $email, $user, $password_usua)) {
 	    	echo "Todos los campos son requeridos";
 	    }    
 	elseif (empty($email)) {
@@ -21,10 +20,10 @@
 	}elseif (empty($_POST['usuario_usua'])) {
 		echo "Campo usuario vaciò";
 
-	}elseif (empty($_POST['password_usua']) || empty($_POST['confirmpassword'])) {
+	}elseif (empty($_POST['password_usua'])) {
 		echo "Contraseña vacia";
 
-	}elseif (!empty($_POST['correo_usua']) && !empty($_POST['usuario_usua']) && !empty($_POST['password_usua']) && !empty($_POST['confirmpassword'])) {
+	}elseif (!empty($_POST['correo_usua']) && !empty($_POST['usuario_usua']) && !empty($_POST['password_usua'])) {
 
 
 	    $user_password_hash = password_hash($password_usua, PASSWORD_DEFAULT);
@@ -41,12 +40,10 @@
 			echo "Este $user ya está en uso.";
 
 			exit;
-		}elseif (confirmPassword($password_usua, $confirPass)) {
-			echo "la contraseña y la repetición de la contraseña no son lo mismo";
 		}
 		else{
 
-			$query_agregar = "INSERT INTO usuario(dni_usua, nombre_usua, apellido_usua, correo_usua, genero_usua, username_usua, password_usua, date_agregado, profesion) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+			$query_agregar = "INSERT INTO usuario(dni_usua, nombre_usua, apellido_usua, correo_usua, genero_usua, username_usua, password_usua, date_agregado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
 			$nuevo_user = $db->prepare($query_agregar);
 			$nuevo_user->bindParam(1, $dni);
@@ -57,7 +54,7 @@
 			$nuevo_user->bindParam(6, $user);
 			$nuevo_user->bindParam(7, $user_password_hash);
 			$nuevo_user->bindParam(8, $date_added);
-			$nuevo_user->bindParam(9, $profesion);
+			
 			
 			$nuevo_user->execute();
 
