@@ -25,34 +25,33 @@
 
 
 // recuperar datos 
-$('#EditRepresentante').on('show.bs.modal', function (event) {
+$('#EditCurso').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
-      var dni = button.data('dni') 
-      $('#dni_repre').val(dni)
-      var nombre = button.data('nombre') 
-      $('#nombre_repre').val(nombre)
-      var apellido = button.data('apellido')
-      $('#apell_repre').val(apellido)
+      var curso = button.data('curso') 
+      $('#curso').val(curso)
+
+      var fechaInicio = button.data('fechaInicio') 
+      $('#fecha_inicio').val(fechaInicio)
+
+      var fechaFin = button.data('fechaFin')
+      $('#fecha_fin').val(fechaFin)
   
-      var genero = button.data('genero')
-      $('#genero_repre').val(genero)
+      var total_horas = button.data('horas')
+      $('#total_horas').val(total_horas)
 
-       var telefono = button.data('tel')
-      $('#repre_tel').val(telefono)
+       var docente = button.data('docente')
+      $('#docente').val(docente)
 
-
-      var profesion = button.data('profesion')
-      $('#profesion_repre').val(profesion)
       var id = button.data('id') 
-      $('#id_repre').val(id)
+      $('#id_curso').val(id)
     });
 
 // editar usuario
-$( "#editar_representante" ).submit(function( event ) {
+$( "#editar_curso" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/representanteUpdate.php",
+          url: "../ajax/cursoUpdate.php",
           data: parametros,
            beforeSend: function(objeto){
             $("#resultado").html("Enviando...");
@@ -70,7 +69,6 @@ $( "#editar_representante" ).submit(function( event ) {
       });
       event.preventDefault();
     });
-
 
 // eliminar usuario
 $('#deleteRepresentanteModal').on('show.bs.modal', function (event) {
