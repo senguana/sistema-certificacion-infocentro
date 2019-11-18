@@ -1,22 +1,33 @@
 
 $("#guardar_usuario" ).submit(function( event ) {
        var parametros = $(this).serialize();
+
+       $('#error').hide();
+      
        $.ajax({
            type: "POST",
            url: "../ajax/usuarioNuevo.php",
            data: parametros,
             beforeSend: function(objeto){
-             $("#error").html("Enviando...");
-             },
+               $("#error").html("Enviando...");
+               },
            success: function(datos){
             $('#error').html(datos);
-            $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
+            $('#error').show(datos);
+            if (datos) {
+               // $('input[type="text"]').val('');
+               //  $('input[type="email"]').val('');
+              $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
+            }
+            
            
            $('#guardar_usuario').modal('hide');
            }
        });
+     
        event.preventDefault();
      });
+
 
 
 // recuperar datos 

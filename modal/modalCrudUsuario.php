@@ -11,6 +11,9 @@
 			<div class="modal-body">
 				<div  id="error" class="btn-danger" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
 				</div>
+				<div  id="success" class="btn-success" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
+				</div>
+				
 				<form id="guardar_usuario" name="guardar_usuario" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-sm-6">
@@ -18,7 +21,7 @@
 								<label for="dni_usua"  class="col-md-3 col-form-label">DNI</label>
 								<div class="col-md-9 p-0">
 									<input type="hidden" name="id_user"  class="form-control">
-									<input type="text" class="form-control input-full" name="dni_usua" id="dni" required="" placeholder="Ingrese nùmero de cedula" >
+									<input type="number" class="form-control input-full" name="dni_usua" id="dni" maxlength="12" placeholder="Ingrese nùmero de cedula" ><i>(Máximo 10 dígitos)</i>
 								</div>
 							</div>
 						</div>
@@ -29,7 +32,7 @@
 							<div class="form-group form-inline">
 								<label for="nombre_usua"  class="col-md-3 col-form-label">Nombre</label>
 								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="nombre_usua" required=""  placeholder="Ingrese nombre" >
+									<input type="text" class="form-control input-full" name="nombre_usua"   placeholder="Ingrese nombre" >
 								</div>
 							</div>
 						
@@ -146,27 +149,6 @@
 					
 						</div>
 						<div class="col-sm-6">
-							<div class="form-group form-inline">
-								<label for="profesion_usua"  class="col-md-3 col-form-label">Profesiòn</label>
-								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="profesion_usua" id="profesion_usua" >
-										<option value="0" selected>Seleccionar...</option>
-									<?php 
-									$sql = "SELECT id_profesion, nombre_profesion from profesion ";
-									$stmt = $db->prepare($sql);
-									$result_consulta = $stmt->execute();
-									$cargar_datos = $stmt->fetchAll(PDO::FETCH_OBJ);	 
-									foreach ($cargar_datos as $dato) {
-										?>
-										<option value="<?php echo $dato->id_profesion;?> "><?php echo $dato->nombre_profesion; ?></option>
-									
-										<?php 
-									}
-									 ?>
-									
-									</select>
-								</div>
-							</div>
 							<div class="form-group form-inline">
 								<label for="usuario_usua"  class="col-md-3 col-form-label">Usuario</label>
 								<div class="col-md-9 p-0">

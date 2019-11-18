@@ -2,7 +2,7 @@
 	require_once ("../bd/conexion.php");
 	require_once ('./../funciones/representante.php');
 
-	$msg[];
+	// $msg[];
 
 		$dni= $_POST['dni_repre'];
 		$nombre= $_POST['nombre_repre'];
