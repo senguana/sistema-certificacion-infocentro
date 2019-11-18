@@ -11,8 +11,7 @@
 			<div class="modal-body">
 				<div  id="error" class="btn-danger" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
 				</div>
-				<div  id="success" class="btn-success" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
-				</div>
+			
 				
 				<form id="guardar_usuario" name="guardar_usuario" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
@@ -101,6 +100,8 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				<div  id="success" class="btn-success" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
+				</div>
 				<form id="editar_usuario" name="editar_usuario" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-sm-6">
@@ -123,6 +124,16 @@
 									<input type="text" class="form-control input-full" name="nombre_usua" id="nombre_usua" placeholder="Ingrese nombre" required>
 								</div>
 							</div>
+						
+							<div class="form-group form-inline">
+								<label for="correo_usua"  class="col-md-3 col-form-label">Correo</label>
+								<div class="col-md-9 p-0">
+									<input type="email" class="form-control input-full" name="correo_usua" id="correo_usua" placeholder="Ingrese correo" required>
+								</div>
+							</div>
+							
+						</div>
+						<div class="col-sm-6">
 							<div class="form-group form-inline">
 								<label for="apell_usua"  class="col-md-3 col-form-label">Apellido</label>
 								<div class="col-md-9 p-0">
@@ -130,53 +141,64 @@
 								</div>
 							</div>
 							<div class="form-group form-inline">
-								<label for="correo_usua"  class="col-md-3 col-form-label">Correo</label>
-								<div class="col-md-9 p-0">
-									<input type="email" class="form-control input-full" name="correo_usua" id="correo_usua" placeholder="Ingrese correo" required>
-								</div>
-							</div>
-							<div class="form-group form-inline">
 								<label for="genero_usua"  class="col-md-3 col-form-label">Gènero</label>
 								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="genero_usua" id="genero_usua" >
+									<select class="form-control input-full" name="genero_usua" id="genero_usua" >
 										<option value="0" selected>Seleccionar...</option>
 										<option value="Masculino">Masculino</option>
 										<option value="Femenino">Femenino</option>
 									
 									</select>
 								</div>
-							</div>
-					
+							</div>				
 						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" name="actualizar_datos" id="actualizar_datos"  class="btn btn-primary">Actualizar usuario</button>
+					</div>
+				</form>
+
+				<h4 class="card-title">Cambiar contraseña o usuario</h4>
+				<hr>
+				
+				<form id="editar_password" name="editar_password" autocomplete="off"   accept-charset="utf-8">
+					<h4 id="notificacion" class="btn-warning" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;"></h4>
+					<div class="row">
+
 						<div class="col-sm-6">
+							<input type="hidden" name="id_user1" id="id_user1" class="form-control">
 							<div class="form-group form-inline">
 								<label for="usuario_usua"  class="col-md-3 col-form-label">Usuario</label>
 								<div class="col-md-9 p-0">
 									<input type="text" class="form-control input-full" name="usuario_usua" id="usuario_usua" placeholder="usuario" required>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
 							<div class="form-group form-inline">
 								<label for="password_usua"  class="col-md-3 col-form-label">Password</label>
 								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="password_usua" placeholder="************" required="">
+									<input type="text" class="form-control input-full" name="password_usua" placeholder="************" >
 								</div>
 							</div>
+						</div>
+						<div class="col-sm-6">
 							<div class="form-group form-inline ">
 								<label for="confirmpassword"  class="col-md-3 col-form-label">Confirmar <br>Password</label>
 								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="confirmpassword" placeholder="************" required="">
+									<input type="text" class="form-control input-full" name="confirmpassword" placeholder="************" >
 								</div>
-							</div>					
-						</div>
-
+							</div>
+						</div>	
 					</div>
 					<div class="modal-footer">
-						<button type="submit" name="actualizar_datos" id="actualizar_datos"  class="btn btn-primary">Actualizar usuario</button>
+						<button type="submit" name="actualizar_password" id="actualizar_password"  class="btn btn-primary">Actualizar usuario</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
 			</div>
-			
 		</div>
 	</div>
 </div>

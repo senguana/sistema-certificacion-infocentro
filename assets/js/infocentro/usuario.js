@@ -48,27 +48,34 @@ $('#EditUsuario').on('show.bs.modal', function (event) {
       var user = button.data('user')
       $('#usuario_usua').val(user)
 
-      var profesion = button.data('profesion')
-      $('#profesion_usua').val(profesion)
       var id = button.data('id') 
       $('#id_user').val(id)
+      $('#id_user1').val(id)
     });
 
 // editar usuario
 $( "#editar_usuario" ).submit(function( event ) {
       var parametros = $(this).serialize();
+      $('#success').hide();
       $.ajax({
           type: "POST",
           url: "../ajax/usuarioUpdate.php",
           data: parametros,
            beforeSend: function(objeto){
-            $("#resultado").html("Enviando...");
+            $("#success").html("Enviando...");
             },
           success: function(datos){
-          $("#resultado").html(datos);
-        
-          $('#EditUsuario').modal('hide');
-          }
+            $('#success').html(datos);
+            $('#success').show(datos);
+
+          if (datos) {
+
+               // $('input[type="text"]').val('');
+               //  $('input[type="email"]').val('');
+              $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
+            }
+        }
+            
       });
       event.preventDefault();
     });
@@ -101,6 +108,35 @@ $( "#delete_usuario" ).submit(function( event ) {
            
          
           }
+      });
+      event.preventDefault();
+    });
+
+
+
+// editar usuario
+$( "#editar_password" ).submit(function( event ) {
+      var parametros = $(this).serialize();
+      $('#notificacion').hide();
+      $.ajax({
+          type: "POST",
+          url: "../ajax/cambiarPasswordUsuario.php",
+          data: parametros,
+           beforeSend: function(objeto){
+            $("#notificacion").html("Enviando...");
+            },
+          success: function(datos){
+            $('#notificacion').html(datos);
+            $('#notificacion').show(datos);
+
+          if (datos) {
+
+               // $('input[type="text"]').val('');
+               //  $('input[type="email"]').val('');
+              $('#resultadoTablaUsuario').load('./../ajax/usuarioTabla.php');
+            }
+        }
+            
       });
       event.preventDefault();
     });

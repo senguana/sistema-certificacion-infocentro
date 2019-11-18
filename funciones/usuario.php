@@ -72,17 +72,17 @@ function confirmPassword($pass, $confirmPass)
 	}
 }
 
-function actualizar($dni, $nom, $apell, $correo, $genero, $user, $pass, $date, $prof, $id)
+function actualizar($dni, $nom, $apell, $correo, $genero, $date, $id)
 {
 	global $db;
 
 	// $sql = "UPDATE usuario SET dni_usua=:dni, nombre_usua=:nom, apellido_usua=:apell, correo_usua =:correo, genero_usua = :gen, username_usua =:user, password_usua =:pass, date_agregado =:dat, profesion=:prof WHERE id_usua:id";
 
-	$sql = "UPDATE usuario SET dni_usua=?, nombre_usua=?, apellido_usua=?, correo_usua =?, genero_usua =?, username_usua =?, password_usua =?, date_agregado =?, profesion=? WHERE id_usua=?";
+	$sql = "UPDATE usuario SET dni_usua=?, nombre_usua=?, apellido_usua=?, correo_usua =?, genero_usua =?, date_agregado =? WHERE id_usua=?";
 
 	$result = $db->prepare($sql);
 
-	$result->execute([$dni, $nom, $apell, $correo, $genero, $user, $pass, $date, $prof, $id]);
+	$result->execute([$dni, $nom, $apell, $correo, $genero,  $date, $id]);
 	// array(
 	// 	":dni"   => $dni,
 	// 	":nom"   => $nom,
@@ -95,6 +95,24 @@ function actualizar($dni, $nom, $apell, $correo, $genero, $user, $pass, $date, $
 	// 	":prof"  => $prof,
 	// 	":id"    => $id,
 	// )
+
+	if ($result) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function actualizarPassword($usuario, $password, $id)
+{
+	global $db;
+
+
+	$sql = "UPDATE usuario SET username_usua=?, password_usua=? WHERE id_usua=?";
+
+	$result = $db->prepare($sql);
+
+	$result->execute([$usuario, $password, $id]);
 
 	if ($result) {
 		return true;
