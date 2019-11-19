@@ -4,18 +4,17 @@
            type: "POST",
            url: "../ajax/cursoNuevo.php",
            data: parametros,
-            // beforeSend: function(objeto){
-            //  $("#error").html("Enviando...");
-            //  },
+            beforeSend: function(objeto){
+              $("#error").html("Enviando...");
+              },
            success: function(datos){
-            $('#msg_error').html(datos);
-           if (datos) {
-            toastr.success('Se ha registrado correctamente', 'representante');
-           }else{
-            toastr.warning('No se ha podido guardar', 'Representante')
-           }
+            $('#error').html(datos);
+            $('#error').show(datos);
+            
+            $('#TablaCurso').load('./../ajax/cursoTabla.php');
 
            $('#guardar_curso').modal('hide');
+         
            }
        });
        event.preventDefault();
@@ -47,50 +46,47 @@ $('#EditCurso').on('show.bs.modal', function (event) {
     });
 
 // editar usuario
-$( "#editar_curso" ).submit(function( event ) {
+$('#actualizar_curso').submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
           url: "../ajax/cursoUpdate.php",
           data: parametros,
            beforeSend: function(objeto){
-            $("#resultado").html("Enviando...");
+            $("#error1").html("Enviando...");
             },
           success: function(datos){
-          $("#resultado").html(datos);
-           // if (datos==false) {
-           //   $("#resultado").html("Error...");
-           // }else{
-           //  $("#resultado").html("Se in serto...");
-           // }
+          $('#error1').html(datos);
+            $('#error1').show(datos);
+             $('#TablaCurso').load('./../ajax/cursoTabla.php');
          
-          // $('#EditRepresentante').modal('hide');
-          }
+           $('#guardar_curso').modal('hide');
+          
+        }
       });
       event.preventDefault();
     });
 
 // eliminar usuario
-$('#deleteRepresentanteModal').on('show.bs.modal', function (event) {
+$('#deleteCursoModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) 
       var id = button.data('id') 
       $('#delete_id').val(id)
     });
 
-$("#delete_representante" ).submit(function( event ) {
+$("#delete_curso" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/representanteDelete.php",
+          url: "../ajax/cursoDelete.php",
           data: parametros,
-           beforeSend: function(objeto){
-            $("#resultado").html("Enviando...");
-            },
+           // beforeSend: function(objeto){
+           //  $("#error3").html("Enviando...");
+           //  },
           success: function(datos){
-            if (datos) {
-              toastr.warning('Se ha Elimanado correctamente', 'Representante');
-            }
-          $('#deleteRepresentanteModal').modal('hide');
+              toastr.warning('Se ha Elimanado correctamente', 'Curso');
+               $('#TablaCurso').load('./../ajax/cursoTabla.php');
+               $('#deleteCursoModal').modal('hide');
           }
       });
       event.preventDefault();

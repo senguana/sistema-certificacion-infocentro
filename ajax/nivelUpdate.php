@@ -2,22 +2,22 @@
 require_once ("../bd/conexion.php");
 
 
-if (empty($_POST['id_institucion'])) {
+if (empty($_POST['id_nivel'])) {
     echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Id vacio
                 </div>";
 
-}elseif (empty($_POST['nombre_institucion'])) {
+}elseif (empty($_POST['nivel'])) {
     echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Debes completar el campo  </div>";
 
-}elseif (!empty($_POST['id_institucion']) && !empty($_POST['nombre_institucion'])) {
+}elseif (!empty($_POST['id_nivel']) && !empty($_POST['nivel'])) {
 
-    $institucion = $_POST['nombre_institucion'];
-    $id_institucion= $_POST['id_institucion'];
+    $nivel= $_POST['nivel'];
+    $id_nivel= $_POST['id_nivel'];
  
-    $sql = " UPDATE institucion SET nombre_institucion =:a WHERE id_institucion =:id";
+    $sql = " UPDATE grado SET descripcion =:grado WHERE id_grado =:id";
 	$stmt2 = $db->prepare($sql);
-	$stmt2->bindParam(':a', $institucion, PDO::PARAM_STR); 
-	$stmt2->bindParam(':id', $id_institucion, PDO::PARAM_INT); 
+	$stmt2->bindParam(':grado', $nivel, PDO::PARAM_STR); 
+	$stmt2->bindParam(':id', $id_nivel, PDO::PARAM_INT); 
 	$stmt2->execute();
 
     if ($stmt2) {

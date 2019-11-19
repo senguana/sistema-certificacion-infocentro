@@ -2,14 +2,14 @@
 <?php include_once './../bd/conexion.php'; ?>
 <?php include_once './core.php'; ?>
 <?php include_once 'includes/header.php'; ?>
-<?php 
-$consulta = "SELECT * FROM nivel";
+<!-- <?php 
+// $consulta = "SELECT * FROM nivel";
 
-$query_listar = $db->prepare($consulta);
-$query_listar->execute();
+// $query_listar = $db->prepare($consulta);
+// $query_listar->execute();
 
-$result = $query_listar->fetchAll();
- ?>
+// $result = $query_listar->fetchAll();
+ ?> -->
 <body>
 	<div class="wrapper">
 		<?php include_once './includes/navbar.php'; ?>
@@ -42,55 +42,19 @@ $result = $query_listar->fetchAll();
 									<div class="d-flex align-items-center">
 									
 										<h4 class="card-title">Registro de Niveles</h4>
-										<button class="btn btn-primary btn ml-auto" data-toggle="modal" data-target="#NuevaInstitucion">
+										<button class="btn btn-primary btn ml-auto" data-toggle="modal" data-target="#NuevoNivel">
 											<i class="fa fa-plus"></i>
 											Nuevo Nivel
 										</button>
 									</div>
 								</div>	
-								<div class="card-body">
-										
-										
+								<div class="card-body">	
 									<?php 
-									include("./../modal/modalCrudInstitucion.php");
+									include("./../modal/modalCrudNivel.php");
 									 ?>
-									<div class="table-responsive" id="tablaRepre">
-										<table id="basic-datatables" class="display table table-striped table-hover"  >
-											<thead>
-												<tr>
-													<!-- <th>#</th> -->
-													<!-- <th>Dni</th> -->
-													<th>Id</th>
-													<th>Niveles</th>
-													<th style="width: 10%">Action</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($result as $dato): ?>
-												<tr>
-													
-													<td><?php echo $dato['id_nivel']; ?></td>
-													<td><?php echo $dato['descripcion']; ?></td>
-													<td>
-														<div class="form-button-action">
-	<button type="button"  data-toggle="modal" data-target="#EditDocente" title="Editar" class="btn btn-link btn-primary" data-nombre='<?php echo $dato['descripcion']; ?>' data-id='<?php echo $dato['id_nivel']; ?>' id="Edit">
-		<i class="fa fa-edit"></i>
-	</button>
-	<button type="button" data-toggle="modal" data-target="#deleteDocenteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $dato['id_nivel'];?>"  data-original-title="Remove">
-								<i class="fa fa-times"></i>
-							</button>
-
-
-
-	 
-
-														</div>
-													</td>
-													
-												</tr>
-											<?php endforeach; ?>
-											</tbody>
-										</table>
+									<div id="tablaNivel"></div>
+											
+									
 									</div>
 								</div>
 							</div>
@@ -103,4 +67,9 @@ $result = $query_listar->fetchAll();
 	</div>
 
 <?php include_once 'includes/footer.php'; ?>
-<script src="./../assets/js/infocentro/representante.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="./../assets/js/infocentro/nivel.js" type="text/javascript" charset="utf-8" async defer></script>
+<script>
+$(document).ready(function() {
+	$('#tablaNivel').load('./../ajax/nivelTabla.php');
+})
+</script>

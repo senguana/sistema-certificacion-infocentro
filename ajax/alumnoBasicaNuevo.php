@@ -31,7 +31,8 @@ if (empty($_POST['dni'])) {
     $query->execute([$dni]);
     $row = $query->rowCount();
      if ($row > 0) {
-         echo "Este $dni ya ha sido Asignado";
+         echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'> 
+                Este $dni ya ha sido Asignado</div>";
 
          die();
      }

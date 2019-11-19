@@ -42,10 +42,8 @@
 								</div>	
 								<div class="card-body">	
 								<?php include("./../modal/modalCrudCurso.php");?>
-
-									<div class="table-responsive" id="tablaRepre">
-										
-									</div>
+								<div id="TablaCurso"></div>
+									
 								</div>
 							</div>
 						</div>
@@ -57,9 +55,9 @@
 	</div>
 
 <?php include_once 'includes/footer.php'; ?>
-<script src="./../assets/js/infocentro/representante.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="./../assets/js/infocentro/curso.js" type="text/javascript" charset="utf-8" async defer></script>
 <script type="text/javascript" charset="utf-8" async defer>
 	$('document').ready(function() {
-		$('#tablaRepre').load('./../ajax/cursoTabla.php');
+		$('#TablaCurso').load('./../ajax/cursoTabla.php');
 	}) 
 </script>

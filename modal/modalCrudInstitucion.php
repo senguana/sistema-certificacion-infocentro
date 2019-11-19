@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade  bd-example-modal-lg" id="NuevaInstitucion" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Nueva Institución</h5>
@@ -9,21 +9,14 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div id="add-brand-messages"></div>
-				<form id="guardarRepresentante" name="guardarRepresentante" autocomplete="off"   accept-charset="utf-8">
-					<div class="row">
-						<div class="col-sm-6">
-							<p id="error"></p>
-						
-						</div>
-
-					</div>
+				<div id="error"></div>
+				<form id="guardar_institucion" name="guardar_institucion" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group form-inline">
 								<label for="dni_usua"  class="col-md-3 col-form-label">Institución</label>
 								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="dni_repre" placeholder="Ingrese nombre de la Institución" required="">
+									<input type="text" class="form-control input-full" name="institucion" placeholder="Ingrese nombre de la Institución" required="">
 								</div>
 							</div>
 						</div>
@@ -31,7 +24,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" name="guardar_datos" id="guardar_datos"  class="btn btn-primary">Crear Institucióne</button>
+						<button type="submit" name="guardar_datos" id="guardar_datos"  class="btn btn-primary">Crear Institución</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
@@ -43,86 +36,33 @@
 
 
 <!-- MODAL ACTUALIZAR  -->
-<div class="modal fade  bd-example-modal-lg" id="EditRepresentante">
-	<div class="modal-dialog modal-lg" role="document">
+<div class="modal fade  bd-example-modal-lg" id="EditInstitucion" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Editar Representante</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Actualizar Institución</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<p class="small" id="resultado"></p>
-				<form id="editar_representante" name="editar_representante" autocomplete="off"   accept-charset="utf-8">
+				<div id="error1"></div>
+				<form id="actualizar_institucion" name="actualizar_institucion" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<div class="form-group form-inline">
-								<label for="dni_usua"  class="col-md-3 col-form-label">DNI</label>
+								<label for="institucion"  class="col-md-3 col-form-label">Institución</label>
 								<div class="col-md-9 p-0">
-									<input type="hidden" name="id_repre" id="id_repre" class="form-control">
-									<input type="text" class="form-control input-full" name="dni_repre" id="dni_repre" placeholder="Ingrese nùmero de cedula" required="">
+									<input type="text" class="form-control input-full" name="nombre_institucion" id="nombre_institucion" placeholder="Ingrese nombre de la Institución" required="">
+									<input type="text" hidden="" name="id_institucion" id="id_institucion" value="">
 								</div>
 							</div>
-							
-							<div class="form-group form-inline">
-								<label for="apell_repre"  class="col-md-3 col-form-label">Apellidos</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="apell_repre" id="apell_repre" placeholder="Ingrese apellido" required>
-								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="genero_repre"  class="col-md-3 col-form-label">Gènero</label>
-								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="genero_repre" id="genero_repre" >
-										<option value="0" selected>Seleccionar...</option>
-										<option value="Masculino">Masculino</option>
-										<option value="Femenino">Femenino</option>
-									
-									</select>
-								</div>
-							</div>
-					
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group form-inline">
-								<label for="nombre_usua"  class="col-md-3 col-form-label">Nombres</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="nombre_repre" id="nombre_repre" placeholder="Ingrese nombre" required>
-								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="repre_tel"  class="col-md-3 col-form-label">Telèfono</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="repre_tel" id="repre_tel" placeholder="Ingrese telèfono" required>
-								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="profesion_repre"  class="col-md-3 col-form-label">Profesiòn</label>
-								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="profesion_repre"  id="profesion_repre">
-										<option value="0" selected>Seleccionar...</option>
-									<?php 
-									$sql = "SELECT id_profesion, nombre_profesion from profesion ";
-									$stmt = $db->prepare($sql);
-									$result_consulta = $stmt->execute();
-									$cargar_datos = $stmt->fetchAll(PDO::FETCH_OBJ);	 
-									foreach ($cargar_datos as $dato) {
-										?>
-										<option value="<?php echo $dato->id_profesion;?> " selected><?php echo $dato->nombre_profesion; ?></option>
-									
-										<?php 
-									}
-									 ?>
-									
-									</select>
-								</div>
-							</div>					
-						</div>
+						
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" name="actualizar_datos" id="actualizar_datos"  class="btn btn-primary">Actualizar representante</button>
+						<button type="submit" name="guardar_datos" id="guardar_datos"  class="btn btn-primary">Actualizar Institución</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
@@ -134,18 +74,19 @@
 
 
 <!-- ELIMINAR REPRESENTANTE -->
-<div id="deleteRepresentanteModal" class="modal fade">
+<div id="deleteInstitucionModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form name="delete_representante" id="delete_representante">
+
+			<form name="delete_institucion" id="delete_institucion">
 				<div class="modal-header">						
-					<h4 class="modal-title">Eliminar Representante</h4>
+					<h4 class="modal-title">Eliminar Institución</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<p>¿Seguro que quieres eliminar este registro?</p>
 					<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
-					<input type="hidden" name="delete_id" id="delete_id">
+					<input type="text" name="id_delete" id="id_delete">
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

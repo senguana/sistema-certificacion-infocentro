@@ -9,7 +9,8 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div id="add-brand-messages"></div>
+				<div  id="error" class="btn-warning" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
+				</div>
 				<form id="guardar_curso" name="guardar_curso" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<b id="msg_error"></b>
@@ -78,7 +79,8 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div id="add-brand-messages"></div>
+				<div  id="error1" class="btn-warning" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
+				</div>
 				<form id="actualizar_curso" name="actualizar_curso" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<b id="msg_error"></b>
@@ -126,7 +128,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" id="actualizar_datos" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Actualizar curso</button>
+						<button type="submit" id="actualizar_curso" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Actualizar curso</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 						
 					</div>
@@ -142,15 +144,17 @@
 <div id="deleteCursoModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form name="delete_usuario" id="delete_usuario">
+			<form name="delete_curso" id="delete_curso">
 				<div class="modal-header">						
 					<h4 class="modal-title">Eliminar Curso</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
+				<div  id="error3" class="btn-warning" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
+				</div>
 				<div class="modal-body">					
 					<p>¿Seguro que quieres eliminar este registro?</p>
 					<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
-					<input type="hidden" name="delete_id" id="delete_id">
+					<input type="text" hidden="" name="delete_id" id="delete_id">
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

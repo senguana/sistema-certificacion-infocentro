@@ -1,19 +1,19 @@
-$('#guardar_institucion').submit(function(e) {
+$('#guardar_nivel').submit(function(e) {
 	var parametros = $(this).serialize();
   $('#error').hide();
   
 $('input[type="text"]').val('');
 	$.ajax({
 		type: "POST",
-		url: "./../ajax/institucionNuevo.php",
+		url: "./../ajax/nivelNuevo.php",
 		data: parametros,
-		beforeSend: function(b) {
+		beforeSend: function(event) {
 			$('#error').html("Enviando");
 		},
 		success:function(datos) {
 			$('#error').html(datos);
       $('#error').show(datos);
-			$('#tablaInstitucion').load('./../ajax/institucionTabla.php');
+			$('#tablaNivel').load('./../ajax/nivelTabla.php');
 
 		}
 	});
@@ -23,28 +23,28 @@ $('input[type="text"]').val('');
 
 // obtener datos 
 // recuperar datos 
-$('#EditInstitucion').on('show.bs.modal', function (event) {
+$('#EditNivel').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
-      var institucion = button.data('nombre') 
-      $('#nombre_institucion').val(institucion)
+      var curso = button.data('nombre') 
+      $('#nivel').val(curso)
 
       var id = button.data('id') 
-      $('#id_institucion').val(id)
+      $('#id_nivel').val(id)
     });
 
 // editar usuario
-$('#actualizar_institucion').submit(function( event ) {
+$('#actualizar_nivel').submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/institucionUpdate.php",
+          url: "../ajax/nivelUpdate.php",
           data: parametros,
            beforeSend: function(objeto){
             $("#error1").html("Enviando...");
             },
           success: function(datos){
           $('#error1').html(datos);
-             $('#tablaInstitucion').load('./../ajax/institucionTabla.php');
+             $('#tablaNivel').load('./../ajax/nivelTabla.php');
          
            // $('#EditNivel').modal('hide');
           
@@ -54,27 +54,26 @@ $('#actualizar_institucion').submit(function( event ) {
     });
 
 // eliminar usuario
-$('#deleteInstitucionModal').on('show.bs.modal', function (event) {
+$('#deleteNivelModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) 
       var id = button.data('id') 
-      $('#id_delete').val(id)
+      $('#delete_id').val(id)
     });
 
-$("#delete_institucion" ).submit(function( event ) {
+$("#delete_nivel" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/institucionDelete.php",
+          url: "../ajax/nivelDelete.php",
           data: parametros,
            // beforeSend: function(objeto){
            //  $("#error3").html("Enviando...");
            //  },
           success: function(datos){
-            
-            $('#tablaInstitucion').load('./../ajax/institucionTabla.php');
-              // toastr.success('Se ha Elimanado correctamente', 'Institucion');
+            $('#tablaNivel').load('./../ajax/nivelTabla.php');
+              toastr.success('Se ha Elimanado correctamente', 'Curso');
               
-              // $('#deleteInstitucionModal').modal('hide');  
+              $('#deleteNivelModal').modal('hide');  
           }
       });
       event.preventDefault();

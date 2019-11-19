@@ -2,9 +2,26 @@
 require_once ("../bd/conexion.php");
 require_once '../funciones/usuario.php';
 
-if (empty($_POST['curso'])) {
+if (empty($_POST['curso']) && empty($_POST['fecha_inicio']) && empty($_POST['fecha_fin']) && empty($_POST['total_horas']) && empty($_POST['docente'])) {
+    echo "Campos vacíos";
+
+}elseif (empty($_POST['curso'])) {
     echo "Campo curso está vacio";
-}elseif (!empty($_POST['curso'])) {
+
+}elseif (empty($_POST['fecha_inicio'])) {
+    echo "Tienes que agregar fecha de inicio";
+
+}elseif (empty($_POST['fecha_fin'])) {
+    echo "Tienes que agregar fecha de finalización del curso";
+
+}elseif (empty($_POST['total_horas'])) {
+    echo "Debes agregar total horas del curso";
+
+}elseif (empty($_POST['docente'])) {
+    echo "Debes agregar el docente";
+}
+elseif (!empty($_POST['curso']) && !empty($_POST['fecha_inicio']) && !empty($_POST['fecha_fin']) && !empty($_POST['total_horas']) && !empty($_POST['docente'])) {
+
     $curso= strtoupper($_POST['curso']);
     $fecha_inicio= $_POST['fecha_inicio'];
     $fecha_fin= $_POST['fecha_fin'];
@@ -20,8 +37,7 @@ if (empty($_POST['curso'])) {
         echo "Este curso ya ha sido Asignado";
 
         exit();
-    }
-
+    }else {
     $query_agregar = "INSERT INTO curso (nombre_curso, fecha_inicio, fecha_fin, total_horas, docente_id) VALUES (?,?,?,?,?)";
 
     $insertar=$db->prepare($query_agregar);
@@ -34,5 +50,6 @@ if (empty($_POST['curso'])) {
     }
 }
 
+}
 
  ?>

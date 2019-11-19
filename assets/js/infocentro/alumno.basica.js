@@ -5,12 +5,12 @@
            url: "../ajax/alumnoBasicaNuevo.php",
            data: parametros,
             beforeSend: function(objeto){
-              $("#add-brand-messages").html("Enviando...");
+              $("#error").html("Enviando...");
               },
            success: function(datos){
-            $('#add-brand-messages').html(datos);
-            // if (datos) {
-            //  toastr.success('Se ha registrado correctamente', 'representante');
+            $('#error').html(datos)
+            $('#error').show(datos)
+            toastr.success('Se ha registrado correctamente', 'Alumno');
             // }else{
             //  toastr.warning('No se ha podido guardar', 'Representante');
             // }
