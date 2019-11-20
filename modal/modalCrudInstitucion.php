@@ -86,7 +86,7 @@
 				<div class="modal-body">					
 					<p>¿Seguro que quieres eliminar este registro?</p>
 					<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
-					<input type="text" name="id_delete" id="id_delete">
+					<input type="text" hidden="" name="id_delete" id="id_delete">
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

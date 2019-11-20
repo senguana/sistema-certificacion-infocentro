@@ -45,3 +45,7 @@
 		</tbody>
 	</table>
 </div>
+<script type="text/javascript">
+		$('#basic-datatables').DataTable({
+			});
+	</script>

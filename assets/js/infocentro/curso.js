@@ -84,7 +84,7 @@ $("#delete_curso" ).submit(function( event ) {
            //  $("#error3").html("Enviando...");
            //  },
           success: function(datos){
-              toastr.warning('Se ha Elimanado correctamente', 'Curso');
+              // toastr.warning('Se ha Elimanado correctamente', 'Curso');
                $('#TablaCurso').load('./../ajax/cursoTabla.php');
                $('#deleteCursoModal').modal('hide');
           }

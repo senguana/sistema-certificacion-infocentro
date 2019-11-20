@@ -4,7 +4,10 @@ require_once ("../bd/conexion.php");
 
 if (empty($_POST['id_repre'])) {
     echo "ID esta vacio";
-}elseif (!empty($_POST['id_repre'])) {
+}elseif (empty( $_POST['profesion_repre'])) {
+    echo "<p class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Debes ingresar la profesiòn del representante</p>";
+}
+elseif (!empty($_POST['id_repre'])) {
     $dni= $_POST['dni_repre'];
     $nombre= $_POST['nombre_repre'];
     $apellido= $_POST['apell_repre'];
@@ -23,7 +26,7 @@ if (empty($_POST['id_repre'])) {
     // $insertar = actualizarRepre($dni, $nombre, $apellido, $telefono, $genero, $profesion, $id_repre);
 
     if ($result==true) {
-        echo "Se actualizò los datos correctamente";
+        echo "<p class='btn-success' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Se actualizò los datos correctamente</p>";
     }else{
         echo "Tuvimos un problema en el proceso, intente de nuevo";
     }

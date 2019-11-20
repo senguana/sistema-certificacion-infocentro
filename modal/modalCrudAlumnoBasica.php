@@ -10,7 +10,7 @@
 			</div>
 			<div class="modal-body">
 
-				<div id="error"></div>
+				<div id="resultado"></div>
 				<form id="guardar_alumno_basica" name="guardar_alumno_basica" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-md-6">
@@ -18,10 +18,7 @@
 								<label for="dni">DNI</label>
 								<input type="number" class="form-control input-square" name="dni" placeholder="Ingresar número de cédula">
 							</div>
-							<div class="form-group">
-								<label for="nombres">Nombres</label>
-								<input type="text" class="form-control input-square" name="nombres" placeholder="Ingresar dos nombres">
-							</div>
+
 							<div class="form-group">
 								<label for="apellidos">Apellidos</label>
 								<input type="text" class="form-control input-square" name="apellidos" placeholder="Ingresar dos apellidos">
@@ -34,8 +31,32 @@
 									<option value="Femenino">Femenino</option>
 								</select>
 							</div>
+							<div class="form-group">
+								<label for="grado">Grado</label>
+								<select class="form-control input-square" name="grado">
+									<option value="" selected="">Seleccionar...</option>
+								
+									<?php 
+									$sql = "SELECT id_grado, descripcion from grado ";
+									$stmt = $db->prepare($sql);
+									$result_consulta = $stmt->execute();
+									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
+										<option value="<?php echo $cargar_datos->id_grado;?> "><?php echo $cargar_datos->descripcion; ?></option>
+										
+										
+									<?php 
+								}
+									
+									 ?>
+							
+								</select>
+							</div>
 						</div>
 						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="nombres">Nombres</label>
+								<input type="text" class="form-control input-square" name="nombres" placeholder="Ingresar dos nombres">
+							</div>
 							<div class="form-group">
 								<label for="fech_nac">Fecha de Nacimiento</label>
 								<input type="date" class="form-control input-square" name="fech_nac" placeholder="Ingresar Fecha de Nacimiento">
@@ -61,27 +82,8 @@
 							
 								</select>
 							</div>
-							<div class="form-group">
-								<label for="grado">Grado</label>
-								<select class="form-control input-square" name="grado">
-									<option value="" selected="">Seleccionar...</option>
-								
-									<?php 
-									$sql = "SELECT id_grado, descripcion from grado ";
-									$stmt = $db->prepare($sql);
-									$result_consulta = $stmt->execute();
-									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
-										<option value="<?php echo $cargar_datos->id_grado;?> "><?php echo $cargar_datos->descripcion; ?></option>
-										
-										
-									<?php 
-								}
-									
-									 ?>
 							
-								</select>
-							</div>
-							<div class="form-group">
+						<!-- 	<div class="form-group">
 								<label for="estado">Estado</label>
 								<select class="form-control input-square" name="estado">
 									<option value="0" selected="">Seleccionar...</option>
@@ -89,7 +91,7 @@
 									<option value="Inactivo">Inactivo</option>
 								
 								</select>
-							</div>
+							</div> -->
 						</div>			
 
 					</div>

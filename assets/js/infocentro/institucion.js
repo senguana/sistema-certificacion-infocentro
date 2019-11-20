@@ -74,7 +74,7 @@ $("#delete_institucion" ).submit(function( event ) {
             $('#tablaInstitucion').load('./../ajax/institucionTabla.php');
               // toastr.success('Se ha Elimanado correctamente', 'Institucion');
               
-              // $('#deleteInstitucionModal').modal('hide');  
+             $('#deleteInstitucionModal').modal('hide');  
           }
       });
       event.preventDefault();

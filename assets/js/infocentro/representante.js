@@ -4,9 +4,9 @@
            type: "POST",
            url: "../ajax/representanteNuevo.php",
            data: parametros,
-            // beforeSend: function(objeto){
-            //  $("#error").html("Enviando...");
-            //  },
+            beforeSend: function(objeto){
+              $("#resultado").html("Enviando...");
+              },
            success: function(datos){
            if (datos) {
             toastr.success('Se ha registrado correctamente', 'representante');
@@ -57,7 +57,8 @@ $( "#editar_representante" ).submit(function( event ) {
             $("#resultado").html("Enviando...");
             },
           success: function(datos){
-          $("#resultado").html(datos);
+            $('#resultado').html(datos)
+            $('#resultado').show(datos);
           $('#tablaRepre').load('./../ajax/representanteTabla.php');
            // if (datos==false) {
            //   $("#resultado").html("Error...");
@@ -89,7 +90,7 @@ $("#delete_representante" ).submit(function( event ) {
             $("#resultado").html("Enviando...");
             },
           success: function(datos){
-            
+
               $('#tablaRepre').load('./../ajax/representanteTabla.php');
             
           $('#deleteRepresentanteModal').modal('hide');

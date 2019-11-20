@@ -42,3 +42,7 @@
 			<?php endforeach; ?>
 		</tbody>
 	</table>
+	<script type="text/javascript">
+		$('#basic-datatables').DataTable({
+			});
+	</script>
