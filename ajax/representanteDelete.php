@@ -1,6 +1,6 @@
 <?php 
 if (empty($_POST['delete_id'])){
-        $errors[] = "Id vacío.";
+        echo "Id vacío.";
     } elseif (!empty($_POST['delete_id'])){
     
     include_once '../bd/conexion.php';

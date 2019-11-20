@@ -58,6 +58,7 @@ $( "#editar_representante" ).submit(function( event ) {
             },
           success: function(datos){
           $("#resultado").html(datos);
+          $('#tablaRepre').load('./../ajax/representanteTabla.php');
            // if (datos==false) {
            //   $("#resultado").html("Error...");
            // }else{
@@ -88,9 +89,9 @@ $("#delete_representante" ).submit(function( event ) {
             $("#resultado").html("Enviando...");
             },
           success: function(datos){
-            if (datos) {
-              toastr.warning('Se ha Elimanado correctamente', 'Representante');
-            }
+            
+              $('#tablaRepre').load('./../ajax/representanteTabla.php');
+            
           $('#deleteRepresentanteModal').modal('hide');
           }
       });

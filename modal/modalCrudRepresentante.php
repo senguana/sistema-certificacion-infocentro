@@ -113,7 +113,7 @@
 							<div class="form-group form-inline">
 								<label for="dni_usua"  class="col-md-3 col-form-label">DNI</label>
 								<div class="col-md-9 p-0">
-									<input type="hidden" name="id_repre" id="id_repre" class="form-control">
+									<input type="text" hidden="" name="id_repre" id="id_repre" class="form-control">
 									<input type="text" class="form-control input-full" name="dni_repre" id="dni_repre" placeholder="Ingrese nùmero de cedula" required="">
 								</div>
 							</div>
@@ -158,12 +158,11 @@
 									<?php 
 									$sql = "SELECT id_profesion, nombre_profesion from profesion ";
 									$stmt = $db->prepare($sql);
-									$result_consulta = $stmt->execute();
-									$cargar_datos = $stmt->fetchAll(PDO::FETCH_OBJ);	 
-									foreach ($cargar_datos as $dato) {
-										?>
-										<option value="<?php echo $dato->id_profesion;?> " selected><?php echo $dato->nombre_profesion; ?></option>
-									
+									 $stmt->execute();
+									while ($cargar_datos = $stmt->fetch(PDO::FETCH_ASSOC)) {?>
+
+									 <option value="<?php echo $cargar_datos['id_profesion'];?> " selected><?php echo $cargar_datos['nombre_profesion']; ?></option>
+				
 										<?php 
 									}
 									 ?>
