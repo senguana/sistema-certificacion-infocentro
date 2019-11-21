@@ -52,9 +52,13 @@ if (isset($_POST['login'])) {
 ?>
 <?php include_once 'includes/header.php'; ?>
 <body class="login">
-	<nav class="navbar sticky-top navbar-dark bg-primary">
-		<a class="navbar-brand" href="home.php">SISTEMA DE CERTIFICACIÒN</a>
-	</nav>
+	<nav class="navbar navbar-expand-lg bg-secondary">
+	<a class="navbar-brand" href="#">SISTEMA DE CERTIFICACIÓN INFOCENTRO</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+</nav>
 	<div class="wrapper wrapper-login">
 		<div class="container container-login animated fadeIn">
 			

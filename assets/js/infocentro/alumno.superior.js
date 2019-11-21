@@ -1,8 +1,8 @@
- $("#guardar_alumno_basica" ).submit(function( event ) {
+ $("#guardar_alumno_superior" ).submit(function( event ) {
        var parametros = $(this).serialize();
        $.ajax({
            type: "POST",
-           url: "../ajax/alumnoBasicaNuevo.php",
+           url: "./../ajax/alumnoSuperiorNuevo.php",
            data: parametros,
             beforeSend: function(objeto){
               $("#resultado").html("Enviando...");
@@ -10,7 +10,7 @@
            success: function(datos){
             $('#resultado').html(datos)
             $('#resultado').show(datos)
-            $('#alumnoBasicaTabla').load('../ajax/alumnoBasicaTabla.php')
+            $('#alumnoSuperiorTabla').load('../ajax/alumnoSuperiorTabla.php')
             // }else{
             //  toastr.warning('No se ha podido guardar', 'Representante');
             // }
@@ -97,5 +97,3 @@ $("#delete_representante" ).submit(function( event ) {
       });
       event.preventDefault();
     });
-
-

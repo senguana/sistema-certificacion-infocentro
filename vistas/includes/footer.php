@@ -12,6 +12,7 @@
 	<script src="./../assets/js/toarts.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="./../assets/js/toarts.min.js" type="text/javascript" charset="utf-8" async defer></script>
 	
+	
 	<!-- <script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({

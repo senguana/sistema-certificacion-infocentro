@@ -30,10 +30,10 @@ elseif (empty($_POST['apellidos'])) {
 }elseif (empty($_POST['institucion'])) {
     echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Complete el campo instituciòn
                 </div>";
-}elseif (empty($_POST['grado'])) {
-   echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Elije el grado a la que pertenece el alumno
+}elseif (empty($_POST['seccion'])) {
+   echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Elije la sección a la que pertenece el alumno
                 </div>";
-}elseif (!empty($_POST['dni']) && !empty($_POST['nombres']) && !empty($_POST['apellidos']) && !empty($_POST['genero']) && !empty($_POST['fech_nac']) && !empty($_POST['institucion']) && !empty($_POST['grado']) ) {
+}elseif (!empty($_POST['dni']) && !empty($_POST['nombres']) && !empty($_POST['apellidos']) && !empty($_POST['genero']) && !empty($_POST['fech_nac']) && !empty($_POST['institucion']) && !empty($_POST['seccion'])) {
 
     $dni        = $_POST['dni'];
     $nombres    = $_POST['nombres'];
@@ -41,40 +41,49 @@ elseif (empty($_POST['apellidos'])) {
     $genero     = $_POST['genero'];
     $fech_nac   = $_POST['fech_nac'];
     $institucion= $_POST['institucion'];
-    $grado      = $_POST['grado'];
-    $edad       = busca_edad($fech_nac);
-
-    $AlumnoExist = "SELECT * FROM alumno_basica WHERE dni_alum_s = ?";
-     $query = $db->prepare($AlumnoExist);
+    $seccion    = $_POST['seccion'];
+  
+    $alumno_exist = "SELECT * FROM alumno WHERE dni_alum = ?";
+    $query = $db->prepare($alumno_exist);
     $query->execute([$dni]);
     $row = $query->rowCount();
-     if ($row > 0) {
+
+    if ($row > 0) {
          echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'> 
                 Este $dni ya ha sido asignado</div>";
-
          die();
-     }else {
+    }else{
 
-    $query_agregar = "INSERT INTO alumno_basica (dni_alum_s, nombres_alum_s, apellidos_alumn_s, genero, edad, fech_nac, institucion_id, grado_id) VALUES  (:dni, :nom, :apell, :gen, :edad, :fecha, :inst, :grado)";
+        $query_agregar = "INSERT INTO alumno (dni_alum, nombres_alum, apellidos_alum, genero_alum, fecha_nac, cod_institucion, cod_carrera) VALUES  (:dni, :nom, :apell, :gen, :fech_nac, :inst, :carrera)";
 
     $insertar=$db->prepare($query_agregar);
     $insertar->bindParam(':dni', $dni);
     $insertar->bindParam(':nom', $nombres);
     $insertar->bindParam(':apell', $apellidos);
     $insertar->bindParam(':gen', $genero);
-    $insertar->bindParam(':edad', $edad);
-    $insertar->bindParam(':fecha', $fech_nac);
+    $insertar->bindParam(':fech_nac', $fech_nac);
     $insertar->bindParam(':inst', $institucion);
-    $insertar->bindParam(':grado', $grado);
+    $insertar->bindParam(':carrera', $seccion);
     $insertar->execute();
 
-    if ($insertar) {
+    if ($insertar==true) {
         echo "<div  class='btn-success' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Se guardó los datos correctamente
                 </div>";
     }else{
         echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Tuvimos un problema en el proceso, intente de nuevo</div>";
     }
 }
+  // $estado     = $_POST['estado'];
+
+     // $fech_nac = strtotime($fech_nac);
+     //     $edad = date('Y', $fech_nac);
+     //      if (($mes = (date('m') - date('m', $fech_nac))) < 0) {
+     //       $edad++;
+     //      } elseif ($mes == 0 && date('d') - date('d', $fech_nac) < 0) {
+     //       $edad++;
+     //      }
+
+     // $anno = date('Y') - $edad;
 }
 
 

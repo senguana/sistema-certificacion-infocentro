@@ -34,7 +34,7 @@ $query_listar->execute();
 					<div class="form-button-action">
 						<button type="button"  data-toggle="modal" data-target="#EditCurso" title="Editar" class="btn btn-link btn-success" data-id = '<?php echo $result->id_curso; ?>' data-curso='<?php echo $result->nombre_curso; ?>' data-fechaInicio= '<?php echo $result->fecha_inicio; ?>' data-fechaFin = '<?php echo $result->fecha_fin; ?>' data-horas = '<?php echo $result->total_horas; ?>' data-docente = '<?php echo $result->nombre;?>'> <i class="fa fa-edit"></i>
 						</button>
-						<button type="button" data-toggle="modal" data-target="#deleteCursoModal" title="" class="btn btn-link btn-warning" data-id="<?php echo $result->id_curso;?>"  data-original-title="Remove"><i class="fa fa-times"></i>
+						<button type="button" data-toggle="modal" data-target="#deleteCursoModal" title="" class="btn btn-link btn-warning" data-id="<?php echo $result->id_curso;?>"  data-original-title="Remove"><i class="fa fa-trash"></i>
 						</button>
 						<button type="button" data-toggle="modal" data-target="#deleteCursoModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $result->id_curso;?>"  data-original-title="Remove"><i class="fas fa-eye"></i>
 						</button>

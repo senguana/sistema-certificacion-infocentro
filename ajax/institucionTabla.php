@@ -37,7 +37,7 @@
  	
 		<tr>
 			
-			<td><?php echo $row->nombre_institucion; ?></td>
+			<td><a href="alumnoBasica.php?q=<?php echo $row->id_institucion;?>"><?php echo $row->nombre_institucion; ?></a></td>
 			<td>
 				<div class="form-button-action">
 					<button type="button"  data-toggle="modal" data-target="#EditInstitucion" title="Editar" class="btn btn-link btn-success" data-id = '<?php echo $row->id_institucion; ?>' data-nombre='<?php echo $row->nombre_institucion; ?>' id="Edit"><i class="fa fa-edit"></i></button>
