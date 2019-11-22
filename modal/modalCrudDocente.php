@@ -59,9 +59,6 @@
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 						</div>
 					</form>
-
-
-
 			</div>
 		</div>
 	</div>
@@ -69,86 +66,64 @@
 
 
 <!-- MODAL ACTUALIZAR  -->
-<div class="modal fade  bd-example-modal-lg" id="EditRepresentante">
-	<div class="modal-dialog modal-lg" role="document">
+<div class="modal fade  bd-example-modal-lg" id="EditDocente">
+	<div class="modal-dialog modal-lx" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Editar Representante</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Editar Docente</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
 				<p class="small" id="resultado"></p>
-				<form id="editar_representante" name="editar_representante" autocomplete="off"   accept-charset="utf-8">
+				<form id="editar_docente" name="editar_docente" autocomplete="off" accept-charset="utf-8">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<div class="form-group form-inline">
-								<label for="dni_usua"  class="col-md-3 col-form-label">DNI</label>
+								<label for="nombre_docente"  class="col-md-3 col-form-label">Nombres</label>
 								<div class="col-md-9 p-0">
-									<input type="hidden" name="id_repre" id="id_repre" class="form-control">
-									<input type="text" class="form-control input-full" name="dni_repre" id="dni_repre" placeholder="Ingrese nùmero de cedula" required="">
+									<input type="hidden" name="id_docente" id="id_docente" class="form-control">
+									<input type="text" class="form-control input-full" name="nombre_docente" id="nombre_docente" placeholder="Ingrese nombre" required>
+								</div>
+							</div>
+							<div class="form-group form-inline">
+								<label for="apell_docente"  class="col-md-3 col-form-label">Apellidos</label>
+								<div class="col-md-9 p-0">
+									<input type="text" class="form-control input-full" name="apell_docente" id="apell_docente" placeholder="Ingrese apellido" required>
+								</div>
+							</div>
+							<div class="form-group form-inline">
+								<label for="correo_docente"  class="col-md-3 col-form-label">Correo</label>
+								<div class="col-md-9 p-0">
+									<input type="text" class="form-control input-full" name="correo_docente" id="correo_docente" placeholder="Ingrese correo" required>
 								</div>
 							</div>
 
 							<div class="form-group form-inline">
-								<label for="apell_repre"  class="col-md-3 col-form-label">Apellidos</label>
+								<label for="tel_docente"  class="col-md-3 col-form-label">Telèfono</label>
 								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="apell_repre" id="apell_repre" placeholder="Ingrese apellido" required>
+									<input type="text" class="form-control input-full" name="tel_docente" id="tel_docente" placeholder="Ingrese telèfono" required>
 								</div>
 							</div>
-							<div class="form-group form-inline">
-								<label for="genero_repre"  class="col-md-3 col-form-label">Gènero</label>
-								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="genero_repre" id="genero_repre" >
-										<option value="0" selected>Seleccionar...</option>
+
+							<div class="col-sm-12">
+							   <div class="form-group form-inline">
+								<label for="genero_docente"  class="col-md-3 col-form-label">Gènero</label>
+								<div class="col-md-8 p-0">
+									<select class="form-control input-square" name="genero_docente" id="genero_docente" >
+										<option value="0" disabled selected>Seleccionar...</option>
 										<option value="Masculino">Masculino</option>
 										<option value="Femenino">Femenino</option>
-
 									</select>
 								</div>
 							</div>
-
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group form-inline">
-								<label for="nombre_usua"  class="col-md-3 col-form-label">Nombres</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="nombre_repre" id="nombre_repre" placeholder="Ingrese nombre" required>
-								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="repre_tel"  class="col-md-3 col-form-label">Telèfono</label>
-								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="repre_tel" id="repre_tel" placeholder="Ingrese telèfono" required>
-								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="profesion_repre"  class="col-md-3 col-form-label">Profesiòn</label>
-								<div class="col-md-9 p-0">
-									<select class="form-control input-square" name="profesion_repre"  id="profesion_repre">
-										<option value="0" selected>Seleccionar...</option>
-									<?php
-									$sql = "SELECT id_profesion, nombre_profesion from profesion ";
-									$stmt = $db->prepare($sql);
-									$result_consulta = $stmt->execute();
-									$cargar_datos = $stmt->fetchAll(PDO::FETCH_OBJ);
-									foreach ($cargar_datos as $dato) {
-										?>
-										<option value="<?php echo $dato->id_profesion;?> " selected><?php echo $dato->nombre_profesion; ?></option>
-
-										<?php
-									}
-									 ?>
-
-									</select>
-								</div>
 							</div>
 						</div>
-
 					</div>
+
 					<div class="modal-footer">
-						<button type="submit" name="actualizar_datos" id="actualizar_datos"  class="btn btn-primary">Actualizar representante</button>
+						<button type="submit" name="actualizar_datos" id="actualizar_datos"  class="btn btn-primary">Actualizar docente</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
