@@ -2,7 +2,7 @@
 <?php include_once './../bd/conexion.php'; ?>
 <?php include_once './core.php'; ?>
 <?php include_once 'includes/header.php'; ?>
-<?php 
+<?php
 $consulta = "SELECT * FROM docente";
 
 $query_listar = $db->prepare($consulta);
@@ -40,63 +40,22 @@ $result = $query_listar->fetchAll();
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-									
+
 										<h4 class="card-title">Registro de Docentes</h4>
 										<button class="btn btn-primary btn ml-auto" data-toggle="modal" data-target="#NuevoDocente">
 											<i class="fa fa-plus"></i>
 											Nuevo Docente
 										</button>
 									</div>
-								</div>	
+								</div>
 								<div class="card-body">
-										
-										
-									<?php 
+
+
+									<?php
 									include("./../modal/modalCrudDocente.php");
 									 ?>
-									<div class="table-responsive" id="tablaRepre">
-										<table id="basic-datatables" class="display table table-striped table-hover"  >
-											<thead>
-												<tr>
-													<!-- <th>#</th> -->
-													<!-- <th>Dni</th> -->
-													<th>Nombres</th>
-													<th>Apellidos</th>
-													<th>Correo</th>
-													<th>Telefono</th>
-													<th>Género</th>
-													<th style="width: 10%">Action</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($result as $dato): ?>
-												<tr>
-													
-													<td><?php echo $dato['nombre']; ?></td>
-													<td><?php echo $dato['apellido']; ?></td>
-													<td><?php echo $dato['correo']; ?></td>
-													<td><?php echo $dato['telefono']; ?></td>
-													<td><?php echo $dato['genero']; ?></td>
-													<td>
-														<div class="form-button-action">
-	<button type="button"  data-toggle="modal" data-target="#EditDocente" title="Editar" class="btn btn-link btn-primary" data-nombre='<?php echo $dato['nombre']; ?>' data-apellido= '<?php echo $dato['apellido']; ?>' data-correo='<?php echo $dato['correo']; ?>' data-tel='<?php echo $dato['telefono']; ?>' data-genero = '<?php echo $dato['genero']; ?>' data-id='<?php echo $dato['id_docente']; ?>' id="Edit">
-		<i class="fa fa-edit"></i>
-	</button>
-	<button type="button" data-toggle="modal" data-target="#deleteDocenteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $dato['id_docente'];?>"  data-original-title="Remove">
-								<i class="fa fa-times"></i>
-							</button>
-
-
-
-	 
-
-														</div>
-													</td>
-													
-												</tr>
-											<?php endforeach; ?>
-											</tbody>
-										</table>
+									<div class="table-responsive" id="tablaDocente">
+									
 									</div>
 								</div>
 							</div>
@@ -109,4 +68,7 @@ $result = $query_listar->fetchAll();
 	</div>
 
 <?php include_once 'includes/footer.php'; ?>
-<script src="./../assets/js/infocentro/representante.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="./../assets/js/infocentro/docente.js" type="text/javascript" charset="utf-8" async defer></script>
+<script>
+  $('#tablaDocente').load('./../ajax/docenteTabla.php')
+</script>
