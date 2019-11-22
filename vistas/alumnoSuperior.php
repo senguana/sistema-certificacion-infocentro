@@ -34,8 +34,8 @@
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 									
-										<h4 class="card-title">Registro de Alumnos de Básica</h4>
-										<button class="btn btn-primary btn ml-auto" data-toggle="modal" data-target="#NuevoAlumnoBasica">
+										<h4 class="card-title">Registro de Alumnos de Superior</h4>
+										<button class="btn btn-success btn ml-auto" data-toggle="modal" data-target="#NuevoAlumnoSuperior">
 											<i class="fa fa-plus"></i>
 											Nuevo Alumno
 										</button>
@@ -45,9 +45,9 @@
 										
 										
 									<?php 
-									include("./../modal/modalCrudAlumnoBasica.php");
+									include("./../modal/modalCrudAlumnoSuperior.php");
 									 ?>
-									<div id="alumnoBasicaTabla">
+									<div id="alumnoSuperiorTabla">
 										
 									</div>
 								</div>
@@ -61,10 +61,8 @@
 	</div>
 
 <?php include_once 'includes/footer.php'; ?>
-<script src="./../assets/js/infocentro/alumno.basica.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="./../assets/js/infocentro/alumno.superior.js" type="text/javascript" charset="utf-8" async defer></script>
 <script>
-	$('#alumnoBasicaTabla').load('../ajax/alumnoBasicaTabla.php');
-
-
+	$('#alumnoSuperiorTabla').load('../ajax/alumnoSuperiorTabla.php')
 </script>
 

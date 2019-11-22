@@ -10,12 +10,8 @@
 
            success: function(datos){
             $('#msg_error').html(datos);
-           if (datos) {
-            toastr.success('Se ha registrado correctamente', 'representante');
-           }else{
-            toastr.warning('No se ha podido guardar', 'Representante')
-           }
-
+            $('#msg_error').show();
+           
            $('#NuevoDocente').modal('hide');
            }
        });

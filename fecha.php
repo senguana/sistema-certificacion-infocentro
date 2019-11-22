@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 function busca_edad($fecha_nacimiento){
 $dia=date("d");
 $mes=date("m");
@@ -31,4 +30,5 @@ return $edad;
 
 }
  
-?>
+//Edad en formato aaaa/mm/dd
+echo "La edad del usuario es: ". busca_edad('01/06/2001');

@@ -84,7 +84,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" name="guardar_datos" id="guardar_datos"  class="btn btn-primary">Crear Representante</button>
+						<button type="submit" name="guardar_datos" class="btn btn-primary">Crear Representante</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
@@ -106,7 +106,8 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<p class="small" id="resultado"></p>
+				<div  id="resultado">	
+				</div>
 				<form id="editar_representante" name="editar_representante" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-sm-6">

@@ -56,7 +56,7 @@
 					<div class="collapse" id="charts">
 						<ul class="nav nav-collapse">
 							<li>
-								<a href="./asignarCursos.php">
+								<a href="./panelInstitucion.php">
 									<span class="sub-item">Asignar Cursos</span>
 								</a>
 							</li>
@@ -82,7 +82,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="./alumno.php">
+								<a href="./alumnoSuperior.php">
 									<span class="sub-item">Educación Superior</span>
 								</a>
 							</li>

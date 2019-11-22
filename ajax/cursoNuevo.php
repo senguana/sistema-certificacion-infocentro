@@ -41,7 +41,12 @@ elseif (!empty($_POST['curso']) && !empty($_POST['fecha_inicio']) && !empty($_PO
     $query_agregar = "INSERT INTO curso (nombre_curso, fecha_inicio, fecha_fin, total_horas, docente_id) VALUES (?,?,?,?,?)";
 
     $insertar=$db->prepare($query_agregar);
-    $insertar->execute([$curso, $fecha_inicio, $fecha_fin, $total_horas, $docente]);
+    $insertar->bindParam(1, $curso);
+    $insertar->bindParam(2, $fecha_inicio);
+    $insertar->bindParam(3, $fecha_fin);
+    $insertar->bindParam(4, $total_horas);
+    $insertar->bindParam(5, $docente);
+    $insertar->execute();
 
     if ($insertar) {
         echo "Se guardó los datos correctamente";

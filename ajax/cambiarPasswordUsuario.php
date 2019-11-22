@@ -17,10 +17,9 @@ elseif (userName($_POST['usuario_usua'])) {
     $usuario= $_POST['usuario_usua'];
     $password= strval($_POST['password_usua']);    
     $id_user1= intval($_POST['id_user1']);
+    $user_password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-
-
-    $insertar = actualizarPassword($usuario, $password, $id_user1);
+    $insertar = actualizarPassword($usuario, $user_password_hash, $id_user1);
 
     if ($insertar===true) {
         echo "Se cambio usuario y password correctamente";
