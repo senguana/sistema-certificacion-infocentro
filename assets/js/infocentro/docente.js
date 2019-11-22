@@ -7,6 +7,7 @@
             beforeSend: function(objeto){
               $("#error").html("Enviando...");
               },
+
            success: function(datos){
             $('#msg_error').html(datos);
            if (datos) {

@@ -10,57 +10,59 @@
 			</div>
 			<div class="modal-body">
 				<div id="add-brand-messages"></div>
-				<form id="guardar_docente" name="guardar_docente" autocomplete="off"   accept-charset="utf-8">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group form-inline">
-								<label for="nombres_docente" class="col-md-2 col-form-label">Nombres</label>
-								<div class="col-md-10 p-0">
-									<input type="text" class="form-control input-full" name="nombres_docente" placeholder="Ingresar nombres">
+
+					<form id="guardar_docente" name="guardar_docente" autocomplete="off"   accept-charset="utf-8">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group form-inline">
+									<label for="nombres_docente" class="col-md-2 col-form-label">Nombres</label>
+									<div class="col-md-10 p-0">
+										<input type="text" class="form-control input-full" name="nombres_docente" placeholder="Ingresar nombres">
+									</div>
 								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="apellidos_docente" class="col-md-2 col-form-label">Apellidos</label>
-								<div class="col-md-10 p-0">	
-									<input type="text" class="form-control input-full" name
-									="apellidos_docente" placeholder="Ingresar apellidos">
+								<div class="form-group form-inline">
+									<label for="apellidos_docente" class="col-md-2 col-form-label">Apellidos</label>
+									<div class="col-md-10 p-0">
+										<input type="text" class="form-control input-full" name
+										="apellidos_docente" placeholder="Ingresar apellidos">
+									</div>
 								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="correo_docente" class="col-md-2 col-form-label">Correo <br>Electrónico</label>
-								<div class="col-md-10 p-0">
-									<input type="email" class="form-control input-full" name="correo_docente" required="" placeholder="Ingresar el correo electrónico">
+								<div class="form-group form-inline">
+									<label for="correo_docente" class="col-md-2 col-form-label">Correo <br>Electrónico</label>
+									<div class="col-md-10 p-0">
+										<input type="email" class="form-control input-full" name="correo_docente" required="" placeholder="Ingresar el correo electrónico">
+									</div>
 								</div>
-							</div>
-							<div class="form-group form-inline">
-								<label for="tell_docente" class="col-md-2 col-form-label">Teléfono</label>
-								<div class="col-md-10 p-0">
-									<input type="number" class="form-control input-full" name="tell_docente" required="" placeholder="Ingresar el número de teléfono">
+								<div class="form-group form-inline">
+									<label for="tell_docente" class="col-md-2 col-form-label">Teléfono</label>
+									<div class="col-md-10 p-0">
+										<input type="number" class="form-control input-full" name="tell_docente" required="" placeholder="Ingresar el número de teléfono">
+									</div>
+								</div>
+
+								<div class="form-group form-inline">
+									<label for="genero_docente" class="col-md-2 col-form-label">Gènero</label>
+									<div class="col-md-10 P-0">
+										<select class="form-control input-full" name="genero_docente">
+											<option disabled="" selected="">Seleccionar...</option>
+											<option value="Masculino">Masculino</option>
+											<option value="Femenino">Femenino</option>
+										</select>
+									</div>
 								</div>
 							</div>
 
-							<div class="form-group form-inline">
-								<label for="genero_docente" class="col-md-2 col-form-label">Gènero</label>
-								<div class="col-md-10 P-0">
-									<select class="form-control input-full" name="genero_docente">
-										<option disabled="" selected="">Seleccionar...</option>
-										<option value="Masculino">Masculino</option>
-										<option value="Femenino">Femenino</option>
-										
-									</select>
-								</div>
-							</div>
+
 						</div>
+						<div class="modal-footer">
+							<button type="submit" name="guardar_datos" id="guardar_datos"  class="btn btn-primary">Crear Representante</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+						</div>
+					</form>
 
 
-					</div>
-					<div class="modal-footer">
-						<button type="submit" name="guardar_datos" id="guardar_datos"  class="btn btn-primary">Crear Representante</button>
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-					</div>
-				</form>
+
 			</div>
-			
 		</div>
 	</div>
 </div>
@@ -88,7 +90,7 @@
 									<input type="text" class="form-control input-full" name="dni_repre" id="dni_repre" placeholder="Ingrese nùmero de cedula" required="">
 								</div>
 							</div>
-							
+
 							<div class="form-group form-inline">
 								<label for="apell_repre"  class="col-md-3 col-form-label">Apellidos</label>
 								<div class="col-md-9 p-0">
@@ -102,11 +104,11 @@
 										<option value="0" selected>Seleccionar...</option>
 										<option value="Masculino">Masculino</option>
 										<option value="Femenino">Femenino</option>
-									
+
 									</select>
 								</div>
 							</div>
-					
+
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group form-inline">
@@ -126,22 +128,22 @@
 								<div class="col-md-9 p-0">
 									<select class="form-control input-square" name="profesion_repre"  id="profesion_repre">
 										<option value="0" selected>Seleccionar...</option>
-									<?php 
+									<?php
 									$sql = "SELECT id_profesion, nombre_profesion from profesion ";
 									$stmt = $db->prepare($sql);
 									$result_consulta = $stmt->execute();
-									$cargar_datos = $stmt->fetchAll(PDO::FETCH_OBJ);	 
+									$cargar_datos = $stmt->fetchAll(PDO::FETCH_OBJ);
 									foreach ($cargar_datos as $dato) {
 										?>
 										<option value="<?php echo $dato->id_profesion;?> " selected><?php echo $dato->nombre_profesion; ?></option>
-									
-										<?php 
+
+										<?php
 									}
 									 ?>
-									
+
 									</select>
 								</div>
-							</div>					
+							</div>
 						</div>
 
 					</div>
@@ -151,7 +153,7 @@
 					</div>
 				</form>
 			</div>
-			
+
 		</div>
 	</div>
 </div>
@@ -162,11 +164,11 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form name="delete_representante" id="delete_representante">
-				<div class="modal-header">						
+				<div class="modal-header">
 					<h4 class="modal-title">Eliminar Representante</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<p>¿Seguro que quieres eliminar este registro?</p>
 					<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
 					<input type="hidden" name="delete_id" id="delete_id">

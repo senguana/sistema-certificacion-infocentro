@@ -1,6 +1,6 @@
 <?php
 require_once ("../bd/conexion.php");
-require_once '../funciones/usuario.php';
+
 
 if (empty($_POST['nombres_docente'])) {
     echo "Campo docente está vacio";
@@ -20,7 +20,7 @@ if (empty($_POST['nombres_docente'])) {
     $insertar=$db->prepare($query_agregar);
     $insertar->execute([$nombres, $apellidos, $correo, $telefono, $genero]);
 
-    if ($insertar==true) {
+    if ($insertar) {
         echo "Se guardó los datos correctamente";
     }else{
         echo "Tuvimos un problema en el proceso, intente de nuevo";
