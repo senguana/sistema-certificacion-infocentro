@@ -48,7 +48,7 @@ $('#EditDocente').on('show.bs.modal', function (event) {
 
 
 // editar docente.
-$( "#EditDocente").submit(function( event ) {
+$( "#editar_docente").submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",

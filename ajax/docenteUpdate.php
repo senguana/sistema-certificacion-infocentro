@@ -1,27 +1,23 @@
 <?php
 require_once ("../bd/conexion.php");
-// require_once '../funciones/representante.php';
+
 
 if (empty($_POST['id_docente'])) {
     echo "ID esta vacio";
-}elseif (empty( $_POST['nombre_docente'])) {
-    echo "<p class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>Debes ingresar la profesiòn del  docente</p>";
-}
-elseif (!empty($_POST['id_docente'])) {
-    $dni= $_POST['dni_docente'];
+}elseif (!empty($_POST['id_docente'])) {
     $nombre= $_POST['nombre_docente'];
     $apellido= $_POST['apell_docente'];
-    $telefono= $_POST['repre_tel'];
-    $profesion = $_POST['profesion_repre'];
-    $genero= strval($_POST['genero_repre']);
+    $correo= $_POST['correo_docente'];
+    $telefono= $_POST['tel_docente'];
+    $genero= strval($_POST['genero_docente']);
 
-    $id_repre= intval($_POST['id_repre']);
+    $id_docente= intval($_POST['id_docente']);
 
-    $sql = "UPDATE representante SET dni_repre=?, nombres_repre=?, apellidos_repre=?, telefono_repre=?, cod_profesion=?, genero=?  WHERE id_repre=?";
+    $sql = "UPDATE docente SET nombre=?,apellido=?,correo=?,telefono=?,genero=? WHERE id_docente=?";
 
     $result = $db->prepare($sql);
 
-    $result->execute([$dni,$nombre,$apellido,$telefono, $profesion, $genero,$id_repre]);
+    $result->execute([$nombre,$apellido,$correo,$telefono, $genero, $id_docente]);
 
     // $insertar = actualizarRepre($dni, $nombre, $apellido, $telefono, $genero, $profesion, $id_repre);
 
