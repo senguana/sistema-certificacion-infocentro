@@ -32,7 +32,7 @@
 							<i class="fa fa-edit"></i>
 						</button>
 
-						<button type="button" data-toggle="modal" data-target="#deleteRepresentanteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $dato['id_docente'];?>"  data-original-title="Remove">
+						<button type="button" data-toggle="modal" data-target="#deleteDocente" title="" class="btn btn-link btn-danger" data-id="<?php echo $dato['id_docente'];?>"  data-original-title="Remove">
 								<i class="fa fa-times"></i>
 							</button>
 					</div>

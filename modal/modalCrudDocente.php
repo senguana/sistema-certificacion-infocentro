@@ -138,7 +138,7 @@
 <div id="deleteDocente" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form name="delete_de" id="delete_representante">
+			<form name="delete_docente" id="delete_docente">
 				<div class="modal-header">
 					<h4 class="modal-title">Eliminar Representante</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

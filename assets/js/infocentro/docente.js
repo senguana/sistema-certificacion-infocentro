@@ -11,6 +11,7 @@
            success: function(datos){
             $('#msg_error').html(datos);
             $('#msg_error').show();
+            $('#tablaDocente').load('./../ajax/docenteTabla.php')
 
            $('#NuevoDocente').modal('hide');
            }
@@ -70,18 +71,18 @@ $( "#editar_docente").submit(function( event ) {
 
 
 
-// eliminar usuario
-$('#deleteRepresentanteModal').on('show.bs.modal', function (event) {
+// eliminar docente
+$('#deleteDocente').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget)
       var id = button.data('id')
       $('#delete_id').val(id)
     });
 
-$("#delete_representante" ).submit(function( event ) {
+$("#delete_docente" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/representanteDelete.php",
+          url: "../ajax/docenteDelete.php",
           data: parametros,
            beforeSend: function(objeto){
             $("#resultado").html("Enviando...");
@@ -89,8 +90,9 @@ $("#delete_representante" ).submit(function( event ) {
           success: function(datos){
             if (datos) {
               toastr.warning('Se ha Elimanado correctamente', 'Representante');
+              $('#tablaDocente').load('./../ajax/docenteTabla.php')
             }
-          $('#deleteRepresentanteModal').modal('hide');
+          $('#deleteDocente').modal('hide');
           }
       });
       event.preventDefault();
