@@ -25,40 +25,41 @@
 
 
 // recuperar datos 
-$('#EditRepresentante').on('show.bs.modal', function (event) {
+$('#EditAlumnoBasica').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var dni = button.data('dni') 
-      $('#dni_repre').val(dni)
-      var nombre = button.data('nombre') 
-      $('#nombre_repre').val(nombre)
-      var apellido = button.data('apellido')
-      $('#apell_repre').val(apellido)
+      $('#dni_alumn').val(dni)
+      var nombre = button.data('name') 
+      $('#name_alumn').val(nombre)
+      var apellido = button.data('last')
+      $('#last_alumn').val(apellido)
   
       var genero = button.data('genero')
-      $('#genero_repre').val(genero)
+      $('#genero_alumn').val(genero)
 
-       var telefono = button.data('tel')
-      $('#repre_tel').val(telefono)
+       var fecha = button.data('fecha')
+      $('#fecha_alumn').val(fecha)
 
 
-      var profesion = button.data('profesion')
-      $('#profesion_repre').val(profesion)
+      var institucion = button.data('institucion')
+      $('#institucion_alumn').val(institucion)
+
       var id = button.data('id') 
-      $('#id_repre').val(id)
+      $('#id_alumno').val(id)
     });
 
 // editar usuario
-$( "#editar_representante" ).submit(function( event ) {
+$( "#actualizar_alumno" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/representanteUpdate.php",
+          url: "../ajax/alumnosBasicaUpdate.php",
           data: parametros,
            beforeSend: function(objeto){
-            $("#resultado").html("Enviando...");
+            $("#response").html("Enviando...");
             },
           success: function(datos){
-          $("#resultado").html(datos);
+          $("#response").html(datos);
            // if (datos==false) {
            //   $("#resultado").html("Error...");
            // }else{
@@ -73,7 +74,7 @@ $( "#editar_representante" ).submit(function( event ) {
 
 
 // eliminar usuario
-$('#deleteRepresentanteModal').on('show.bs.modal', function (event) {
+$('#deleteAlumnoBasicaModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) 
       var id = button.data('id') 
       $('#delete_id').val(id)

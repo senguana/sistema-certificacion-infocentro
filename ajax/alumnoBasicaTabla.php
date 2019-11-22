@@ -34,7 +34,17 @@
 				<td><?php echo $result->descripcion; ?></td>
 				<td>
 					<div class="form-button-action">
-						<button type="button"  data-toggle="modal" data-target="#EditAlumnoBasica" title="Editar" class="btn btn-link btn-primary" id="Edit"><i class="fa fa-edit"></i>
+						<button type="button"  data-toggle="modal" data-target="#EditAlumnoBasica" 
+						data-dni="<?php echo $result->dni_alum_s; ?>"
+						data-name="<?php echo $result->nombres_alum_s; ?>" 
+						data-last="<?php echo $result->apellidos_alumn_s; ?>"
+						data-genero="<?php echo $result->genero; ?>"
+						data-fecha="<?php echo $result->fech_nac; ?>"
+						data-institucion="<?php echo $result->nombre_institucion; ?>"
+						data-id="<?php echo $result->id_alumno_s; ?>"
+
+
+						title="Editar" class="btn btn-link btn-primary" id="Edit"><i class="fa fa-edit"></i>
 						</button>
 						<button type="button" data-toggle="modal" data-target="#deleteAlumnoBasicaModal" title="" class="btn btn-link btn-danger"   data-original-title="Remove"><i class="fa fa-trash"></i>
 							</button>
