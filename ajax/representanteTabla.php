@@ -34,7 +34,7 @@
 							<i class="fa fa-edit"></i>
 						</button>
 						<button type="button" data-toggle="modal" data-target="#deleteRepresentanteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $dato['id_repre'];?>"  data-original-title="Remove">
-								<i class="fa fa-times"></i>
+								<i class="fa fa-trash"></i>
 							</button>
 					</div>
 				</td>
