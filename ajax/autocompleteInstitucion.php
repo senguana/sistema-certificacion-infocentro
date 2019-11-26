@@ -8,7 +8,7 @@ if (isset($_POST['query'])) {
 	$search = "%$a%";
 
 	
-	$query = "SELECT * FROM alumno_basica a INNER JOIN institucion WHERE nombre_institucion LIKE :i";
+	$query = "SELECT * FROM alumno_basica a INNER JOIN institucion WHERE nombre_institucion LIKE :i GROUP BY nombre_institucion";
 	$stmt = $db->prepare($query);
 	$stmt->bindParam(':i', $search);
 	$stmt->execute();

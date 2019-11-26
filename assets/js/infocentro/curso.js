@@ -80,11 +80,7 @@ $("#delete_curso" ).submit(function( event ) {
           type: "POST",
           url: "../ajax/cursoDelete.php",
           data: parametros,
-           // beforeSend: function(objeto){
-           //  $("#error3").html("Enviando...");
-           //  },
           success: function(datos){
-              // toastr.warning('Se ha Elimanado correctamente', 'Curso');
                $('#TablaCurso').load('./../ajax/cursoTabla.php');
                $('#deleteCursoModal').modal('hide');
           }
