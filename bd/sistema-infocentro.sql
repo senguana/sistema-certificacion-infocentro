@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-11-2019 a las 03:01:09
+-- Tiempo de generación: 27-11-2019 a las 14:40:01
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.0.33
 
@@ -172,6 +172,7 @@ CREATE TABLE IF NOT EXISTS `certificado` (
   `configuracion_id` int(15) NOT NULL,
   `add_curso_id` int(15) NOT NULL,
   `representante_id` int(15) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id_certificado`),
   KEY `configuracion_id` (`configuracion_id`),
   KEY `add_curso_id` (`add_curso_id`),
@@ -248,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
   `telefono` int(10) NOT NULL,
   `genero` varchar(30) NOT NULL,
   PRIMARY KEY (`id_docente`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `docente`
@@ -256,9 +257,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
 
 INSERT INTO `docente` (`id_docente`, `nombre`, `apellido`, `correo`, `telefono`, `genero`) VALUES
 (1, 'Emilio Yankuam', 'Senguana Wisuma', 'emilio.senguana@itsae.edu.ec', 997780813, 'Masculino'),
-(2, 'Alexis PaÃºl', 'Ramirez Quezada', 'alexis.ramirez@itsae.edu.ec', 997780812, 'Masculino'),
-(3, 'Danis Ignacio', 'Manchu Tumink', 'danis.manchu@itsae.edue.c', 99708014, 'Masculino'),
-(5, 'Darwin Cacay', 'Espinoza Punocho', 'darwin.espinoza@itsae.edu.ec', 997780813, 'Masculino');
+(3, 'Danis Ignacio', 'Manchu Tumink', 'danis.manchu@itsae.edue.c', 99708014, 'Masculino');
 
 -- --------------------------------------------------------
 
@@ -393,14 +392,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `date_agregado` date DEFAULT NULL,
   `estado` int(2) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_usua`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usua`, `dni_usua`, `nombre_usua`, `apellido_usua`, `correo_usua`, `genero_usua`, `username_usua`, `password_usua`, `date_agregado`, `estado`) VALUES
-(1, 1450152325, 'Emilio', 'Senguana', 'emilio.senguana@itsae.edu.ec', 'Masculino', 'admin', '$2y$10$FlIH0ZouvtvNW/wfqtGBMeG4w7BQ36BsMcWauP3JdFgR9U4Z6.yBW', '2019-11-19', 1);
+(1, 1450152325, 'Emilio', 'Senguana', 'emilio.senguana@itsae.edu.ec', 'Masculino', 'admin', '$2y$10$FlIH0ZouvtvNW/wfqtGBMeG4w7BQ36BsMcWauP3JdFgR9U4Z6.yBW', '2019-11-19', 1),
+(3, 1450152399, 'Emilio Yankuam', 'Senguana Emilio', 'emilio.senguana2019@itsae.edu.ec', 'Masculino', 'emilio2019', '$2y$10$SC0vVwATE5vL1Ocg3Ldh5O/QSyhl9oZP2P2Qqe2ACzfnuWd9n3yie', '2019-11-27', 1);
 
 --
 -- Restricciones para tablas volcadas
