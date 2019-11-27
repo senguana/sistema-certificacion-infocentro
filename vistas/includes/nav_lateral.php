@@ -56,14 +56,13 @@
 					<div class="collapse" id="charts">
 						<ul class="nav nav-collapse">
 							<li>
-								<a href="./panelInstitucion.php">
+								<a href="./asignarCursos.php">
 									<span class="sub-item">Asignar Cursos</span>
 								</a>
 							</li>
 							<li>
-								<a href="charts/sparkline.html">
-									<span class="sub-item">Generar Certificados</span>
-								</a>
+								<a href="./registroCursosAlumnos.php">
+									<span class="sub-item">Registro de cursos asignados</span></a>
 							</li>
 						</ul>
 					</div>
@@ -103,6 +102,13 @@
 							</li>
 						</ul>
 					</div>
+				</li>
+				<li class="nav-item">
+					<a href="./configuracion.php">
+						<i class="fas fa-cog"></i>
+						<p>Configuración</p>
+						
+					</a>
 				</li>
 
 			</ul>

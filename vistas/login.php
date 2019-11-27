@@ -51,9 +51,15 @@ if (isset($_POST['login'])) {
 } 
 ?>
 <?php include_once 'includes/header.php'; ?>
+<?php 
+ $query = "SELECT * FROM configuracion";
+ $consulta = $db->prepare($query);
+ $consulta->execute();
+  $row= $consulta->fetch(PDO::FETCH_OBJ);
+ ?>
 <body class="login">
 	<nav class="navbar navbar-expand-lg bg-secondary">
-	<a class="navbar-brand" href="#">SISTEMA DE CERTIFICACIÓN INFOCENTRO</a>
+	<a class="navbar-brand" href="#"><?php echo $row->entidad; ?></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -107,11 +113,7 @@ if (isset($_POST['login'])) {
 
 		
 	</div>
-	<script src="<?php echo SERVERURL; ?>assets/js/core/jquery.3.2.1.min.js"></script>
-	<script src="<?php echo SERVERURL; ?>assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="<?php echo SERVERURL; ?>assets/js/core/popper.min.js"></script>
-	<script src="<?php echo SERVERURL; ?>assets/js/core/bootstrap.min.js"></script>
-	<script src="<?php echo SERVERURL; ?>assets/js/ready.js"></script>
+	
 	
 </body>
 </html>

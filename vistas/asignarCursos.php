@@ -1,15 +1,8 @@
 <?php include_once './../core/configGeneral.php'; ?>
 <?php include_once './../bd/conexion.php'; ?>
-<?php include_once './core.php'; ?>
+<?php include_once 'core.php'; ?>
+
 <?php include_once 'includes/header.php'; ?>
-<?php 
-$consulta = "SELECT * FROM docente";
-
-$query_listar = $db->prepare($consulta);
-$query_listar->execute();
-
-$result = $query_listar->fetchAll();
- ?>
 <body>
 	<div class="wrapper">
 		<?php include_once './includes/navbar.php'; ?>
@@ -20,93 +13,81 @@ $result = $query_listar->fetchAll();
 		<div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
-					<div class="page-header">
-						<ul class="breadcrumbs">
-							<li class="nav-home">
-								<a href="#">
-									<i class="flaticon-home"></i>
-								</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a href="#">Docentes</a>
-							</li>
-						</ul>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<div class="d-flex align-items-center">
-									
-										<h4 class="card-title">Registro de Docentes</h4>
-										<button class="btn btn-primary btn ml-auto" data-toggle="modal" data-target="#NuevoDocente">
-											<i class="fa fa-plus"></i>
-											Nuevo Docente
-										</button>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item active"><a href="home.php">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Agregar cursos</li>
+						</ol>
+					</nav>
+					<div class="card">
+						<div class="card-body">
+							<div id="resultado" style="display: none;" class="alert alert-danger" role="alert">
+							</div>
+
+							<form id="consultar_alumno" name="consultar_alumno" autocomplete="off"   accept-charset="utf-8">
+								<div class="row">
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="buscar_institucion" name="buscar_institucion" value="" placeholder="Buscar institucion"> 
+									</div>
+									<div class="col-sm-3">
+										<select class="form-control input-square" id="listar_grado" name="listar_grado">
+											<option value=""></option>}
+											
+											<option value="0" >Seleccionar el grado...</option>
+											
+											<option value="1">Primero de Básica</option>
+											<option value="2">Segundo de Básica</option>
+											<option value="3">Tercero de Básica</option>
+											<option value="4">Cuarto de Básica</option>
+											<option value="5">Quinto de Básica</option>
+											<option value="6">Sexto de Básica</option>
+											<option value="7">Septimo de Básica</option>
+											<option value="8">Octavo de Básica</option>
+											<option value="9">Noveno de Básica</option>
+											<option value="10">Décimo de Básica</option>
+											<option value="11">Primero de Bachillerato</option>
+											<option value="12">Segundo de Bachillerato</option>
+											<option value="13">Tercero de Bachillerato</option>
+											
+									</select> 
+										
+									</div> 
+									<div class="col-md-1">
+										<button type="submit" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" ><i class="fas fa-search"></i></button>
+										<!-- <button type="submit" class="btn btn-primary"></button> -->
 									</div>
 								</div>	
-								<div class="card-body">
-										
-										
-									<?php 
-									include("./../modal/modalCrudDocente.php");
-									 ?>
-									<div class="table-responsive" id="tablaRepre">
-										<table id="basic-datatables" class="display table table-striped table-hover"  >
-											<thead>
-												<tr>
-													<!-- <th>#</th> -->
-													<!-- <th>Dni</th> -->
-													<th>Curso</th>
-													<th>Fecha Inicio</th>
-													<th>Fecha Final</th>
-													<th>Total Horas</th>
-													<th>Docente</th>
-													<th style="width: 10%">Action</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($result as $dato): ?>
-												<tr>
-													
-													<td><?php echo $dato['nombre']; ?></td>
-													<td><?php echo $dato['apellido']; ?></td>
-													<td><?php echo $dato['correo']; ?></td>
-													<td><?php echo $dato['telefono']; ?></td>
-													<td><?php echo $dato['genero']; ?></td>
-													<td>
-														<div class="form-button-action">
-	<button type="button"  data-toggle="modal" data-target="#EditDocente" title="Editar" class="btn btn-link btn-primary" data-nombre='<?php echo $dato['nombre']; ?>' data-apellido= '<?php echo $dato['apellido']; ?>' data-correo='<?php echo $dato['correo']; ?>' data-tel='<?php echo $dato['telefono']; ?>' data-genero = '<?php echo $dato['genero']; ?>' data-id='<?php echo $dato['id_docente']; ?>' id="Edit">
-		<i class="fa fa-edit"></i>
-	</button>
-	<button type="button" data-toggle="modal" data-target="#deleteDocenteModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $dato['id_docente'];?>"  data-original-title="Remove">
-								<i class="fa fa-times"></i>
-							</button>
-
-
-
-	 
-
-														</div>
-													</td>
-													
-												</tr>
-											<?php endforeach; ?>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+							</form>
 						</div>
+					
 					</div>
+					<?php include_once './../modal/modalAsignarCurso.php' ?>
+					<div class="card">
+						<div class="card-body">		
+							<div id="alumnoBasicaTabla"> </div>
+						</div>
+				    </div>
 				</div>
 			</div>
-
 		</div>
 	</div>
+</body>
 
-<?php include_once 'includes/footer.php'; ?>
-<script src="./../assets/js/infocentro/representante.js" type="text/javascript" charset="utf-8" async defer></script>
+ <!-- <script src="./../assets/js/core/jquery.3.2.1.min.js"></script>  -->
+<!-- <script src="../assets/js/core/popper.min.js"></script> -->
+
+
+<!-- jQuery UI -->
+
+<!-- <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>  -->
+<!-- <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script> -->
+
+ <script src="./../lib/jquery-1.12.1.min.js"></script>  
+<script src="../assets/js/core/bootstrap.min.js"></script> 
+ <script src="./../lib/jquery-ui.js"></script>  
+<!--   Core JS Files   -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+
+
+<script src="./../assets/js/infocentro/cargarInstitucion.js" ></script>
