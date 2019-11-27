@@ -9,7 +9,7 @@
 		<!-- Sidebar -->
 		<?php include_once './includes/nav_lateral.php'; ?>
 		<!-- End Sidebar -->
-				<div class="main-panel">
+		<div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
@@ -72,14 +72,17 @@
 
 								<td>
 									<div class="btn-group">
+										<button type="submit" dni="<?php echo $row['dni_alum_s']; ?>" curso="<?php echo $row['curso_id']; ?>" id="verAlumnoCurso"  class="btn btn-primary" ><i class="fas fa-print"></i></button>
+										
 										<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<i class="fas fa-cog"></i>
 										</button>
 										<div class="dropdown-menu">
 											<a class="dropdown-item" data-toggle="modal" data-target="#verAlumnoCurso" id="verAlumnoCurso" href="#"><i class="fas fa-trash-alt"></i> Eliminar</a>
-											<a class="dropdown-item" dni="<?php echo $row['dni_alum_s']; ?>" curso="<?php echo $row['curso_id']; ?>" id="verAlumnoCurso" href=""><i class="far fa-eye"></i> Ver</a>
+											
+											<a class="dropdown-item" dni="<?php echo $row['dni_alum_s']; ?>" curso="<?php echo $row['curso_id']; ?>" id="" href="certificado/certificado_plantilla.php"><i class="far fa-eye"></i> Ver</a>
 											<a class="dropdown-item" data-toggle="modal" data-target="#EditAlumnoCurso" href="#"><i class="fas fa-edit"></i> Actualizar</a>
-											<a class="dropdown-item" href="#"><i class="fas fa-print"></i>Generar certificado</a>
+										
 											
 										</div>
 									</div>
@@ -109,5 +112,9 @@
 
 <?php include_once 'includes/footer.php'; ?>
 <script src="./../assets/js/infocentro/registroCursosAlumnos.js" type="text/javascript" charset="utf-8" async defer></script>
+<script type="text/javascript">
+		$('#basic-datatables').DataTable({
+			});
+	</script>
 
 
