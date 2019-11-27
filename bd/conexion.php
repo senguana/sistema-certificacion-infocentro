@@ -5,7 +5,7 @@
  $link = 'mysql:host=localhost;dbname=sistema-infocentro;charset=utf8';
 
  $usuario  = 'root';
- $password = '';
+ $password = 'bi5gqTzWkY7deNRj';
 
   try {
 

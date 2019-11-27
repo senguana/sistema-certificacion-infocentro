@@ -22,11 +22,22 @@
 		$curso = $_REQUEST['curso'];
 		$anulada = '';
 
-		$query_config   = $db->prepare("SELECT * FROM configuracion");
-		$query_config->execute();
-		$result_config= $query_config->rowCount();
-		if($result_config > 0){
-			$configuracion = $query_config->fetch(PDO::FETCH_ASSOC);
+		
+
+		$query1 = "SELECT * FROM representante r INNER JOIN profesion p ON r.cod_profesion = p.id_profesion";
+		$consulta1=$db->prepare($query1);
+		$consulta1->execute();
+		$representante = $consulta1->fetch(PDO::FETCH_ASSOC);
+
+		$query = "SELECT * FROM configuracion";
+		$consulta = $db->prepare($query);
+		$consulta->execute();
+		if($consulta->rowCount() > 0){
+			$row= $consulta->fetch(PDO::FETCH_ASSOC);
+			$foto1 = "../../upload/".$row['imagen1'];
+			$foto2 = "../../upload/".$row['imagen2'];
+			$foto3 = "../../upload/".$row['imagen3'];
+			$foto4 = "../../upload/".$row['imagen4'];
 		}
 
 		$query = $db->prepare("SELECT a.dni_alum_s, a.nombres_alum_s, a.apellidos_alumn_s, c.nombre_curso, c.fecha_inicio, c.fecha_fin, c.total_horas FROM add_curso_estudiante ad INNER JOIN alumno_basica a ON ad.alumno_basica_id = a.id_alumno_s INNER JOIN curso c ON c.id_curso = ad.curso_id WHERE a.dni_alum_s = $dni AND c.id_curso = $curso");

@@ -31,7 +31,7 @@
 									</div>
 									<div class="col-sm-3">
 										<select class="form-control input-square" id="listar_grado" name="listar_grado">
-											<option value=""></option>}
+											<option value=""></option>
 											
 											<option value="0" >Seleccionar el grado...</option>
 											
@@ -73,21 +73,7 @@
 	</div>
 </body>
 
- <!-- <script src="./../assets/js/core/jquery.3.2.1.min.js"></script>  -->
-<!-- <script src="../assets/js/core/popper.min.js"></script> -->
-
-
-<!-- jQuery UI -->
-
-<!-- <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>  -->
-<!-- <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script> -->
-
  <script src="./../lib/jquery-1.12.1.min.js"></script>  
 <script src="../assets/js/core/bootstrap.min.js"></script> 
  <script src="./../lib/jquery-ui.js"></script>  
-<!--   Core JS Files   -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-
-
-
 <script src="./../assets/js/infocentro/cargarInstitucion.js" ></script>
