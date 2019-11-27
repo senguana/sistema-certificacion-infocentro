@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 25-11-2019 a las 14:56:30
+-- Tiempo de generación: 27-11-2019 a las 03:01:09
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.0.33
 
@@ -187,13 +187,21 @@ CREATE TABLE IF NOT EXISTS `certificado` (
 DROP TABLE IF EXISTS `configuracion`;
 CREATE TABLE IF NOT EXISTS `configuracion` (
   `id_conf` int(11) NOT NULL AUTO_INCREMENT,
-  `imagen_fondo` blob NOT NULL,
-  `imagen1` blob NOT NULL,
-  `imagen2` blob NOT NULL,
-  `imagen3` blob NOT NULL,
-  `imagen4` blob NOT NULL,
+  `entidad` varchar(100) NOT NULL,
+  `imagen_fondo` text NOT NULL,
+  `imagen1` text NOT NULL,
+  `imagen2` text NOT NULL,
+  `imagen3` text NOT NULL,
+  `imagen4` text NOT NULL,
   PRIMARY KEY (`id_conf`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `configuracion`
+--
+
+INSERT INTO `configuracion` (`id_conf`, `entidad`, `imagen_fondo`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES
+(17, 'INFOCENTRO', '../upload/34ed387fe94036f6efec766c73810c55.jpg', '../upload/d9eacd6f9874435f9a197edcda5d2364.jpg', '../upload/56957945f9617c8e196e7577fdd72471.jpg', '../upload/9fba4d3bd9a2083753d9e62d1ac04e5c.jpg', '../upload/620ffdaa0332c5f9fd332ad0bca9ec1f.jpg');
 
 -- --------------------------------------------------------
 
@@ -392,8 +400,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usua`, `dni_usua`, `nombre_usua`, `apellido_usua`, `correo_usua`, `genero_usua`, `username_usua`, `password_usua`, `date_agregado`, `estado`) VALUES
-(1, 1450152325, 'Emilio', 'Senguana', 'emilio.senguana@itsae.edu.ec', 'Masculino', 'admin', '$2y$10$FlIH0ZouvtvNW/wfqtGBMeG4w7BQ36BsMcWauP3JdFgR9U4Z6.yBW', '2019-11-19', 1),
-(2, 1450152328, 'ADIEL', 'SENGUANA', 'adiel.senguana@gmail.com', 'Masculino', 'adiel.senguana', 'adiel2019', '2019-11-03', 0);
+(1, 1450152325, 'Emilio', 'Senguana', 'emilio.senguana@itsae.edu.ec', 'Masculino', 'admin', '$2y$10$FlIH0ZouvtvNW/wfqtGBMeG4w7BQ36BsMcWauP3JdFgR9U4Z6.yBW', '2019-11-19', 1);
 
 --
 -- Restricciones para tablas volcadas
