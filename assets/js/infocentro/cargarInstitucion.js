@@ -21,6 +21,8 @@ $(document).ready(function() {
   	});
   });
 
+// traer datos de alumns 
+
  $('#consultar_alumno').submit(function( event ) {
         // var parametros = $(this).serialize();
         var institucion = $('#buscar_institucion').val();
@@ -74,7 +76,6 @@ $(document).ready(function() {
                         "<td>" +iterar[i].genero+"</td>"+
                         "<td>" +iterar[i].nombre_institucion+"</td>"+
                         "<td>" +iterar[i].descripcion+"</td>"+
-                        "<td>" +iterar[i].id_alumno_s+"</td>"+
                         "<td><div class='form-button-action'>"+
                             "<button type='button' data-id='"+iterar[i].id_alumno_s+"' data-toggle='modal' data-target='#agregarCurso' title='Agregar Curso a los EStudiantes' class='btn btn-primary' id='AgregarCurso'><i class='far fa-plus-square fa-sm'></i></button>"+
                         "</div></td></tr>"
@@ -92,8 +93,6 @@ $(document).ready(function() {
                 
               }
               
-              
-
              
                 },error: function(error) {
                   console.log(error)
@@ -104,10 +103,7 @@ $(document).ready(function() {
 });
 
 
-// function asignarCurso(){
-// $('#AgregarCurso').modal('show');
-
-// }
+// agregar cusrso
 
 $('#agregarCurso').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal

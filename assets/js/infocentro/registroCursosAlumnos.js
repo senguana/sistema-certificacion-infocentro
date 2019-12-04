@@ -17,7 +17,7 @@ function generarPDF(dni, curso) {
 	var x = parseInt((window.screen.width/2)-(ancho/2));
 	var y = parseInt((window.screen.width/2)-(alto/2));
 
-	$url = '';
-	window.open()
+	$url = 'certificado/generarCertificado.php?dni='+dni+'&curso='+curso;
+	window.open($url, "Certificado", "left="+x+",top="+y+", height="+alto+", width="+ancho+",scrollbar=si, location=no, resizable=si, nombar=no");
 
 }

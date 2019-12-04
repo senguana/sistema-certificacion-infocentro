@@ -9,7 +9,7 @@
 		<!-- Sidebar -->
 		<?php include_once './includes/nav_lateral.php'; ?>
 		<!-- End Sidebar -->
-				<div class="main-panel">
+		<div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
@@ -57,7 +57,8 @@
 										<?php include_once './../modal/modalCrudRegistroCurso.php'; ?>
 										<?php 
 					include_once '../bd/conexion.php';
-		$query = "SELECT a.id_alumno_s, a.dni_alum_s, a.nombres_alum_s, a.apellidos_alumn_s, a.genero, c.nombre_curso, c.total_horas, curso_id FROM add_curso_estudiante ad INNER JOIN alumno_basica a ON ad.alumno_basica_id = a.id_alumno_s INNER JOIN curso c ON ad.curso_id = c.id_curso GROUP BY nombre_curso, nombres_alum_s";
+					
+		$query = "SELECT a.id_alumno_s, a.dni_alum_s, a.nombres_alum_s, a.apellidos_alumn_s, a.genero, c.nombre_curso, c.total_horas, curso_id FROM add_curso_estudiante ad INNER JOIN alumno_basica a ON ad.alumno_basica_id = a.id_alumno_s INNER JOIN curso c ON ad.curso_id = c.id_curso GROUP BY nombre_curso, nombres_alum_s ORDER BY id_add";
 							$smt = $db->prepare($query);
 							$smt->execute();
 							while ($row = $smt->fetch(PDO::FETCH_ASSOC)) {?>
@@ -71,17 +72,8 @@
 
 
 								<td>
-									<div class="btn-group">
-										<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fas fa-cog"></i>
-										</button>
-										<div class="dropdown-menu">
-											<a class="dropdown-item" data-toggle="modal" data-target="#verAlumnoCurso" id="verAlumnoCurso" href="#"><i class="fas fa-trash-alt"></i> Eliminar</a>
-											<a class="dropdown-item" dni="<?php echo $row['dni_alum_s']; ?>" curso="<?php echo $row['curso_id']; ?>" id="verAlumnoCurso" href=""><i class="far fa-eye"></i> Ver</a>
-											<a class="dropdown-item" data-toggle="modal" data-target="#EditAlumnoCurso" href="#"><i class="fas fa-edit"></i> Actualizar</a>
-											<a class="dropdown-item" href="#"><i class="fas fa-print"></i>Generar certificado</a>
-											
-										</div>
+									<div class="form-button-action">
+										<button type="submit" dni="<?php echo $row['dni_alum_s']; ?>" curso="<?php echo $row['curso_id']; ?>" id="verAlumnoCurso"  class="btn btn-primary" ><i class="fas fa-print"></i></button>
 									</div>
 								</td>
 							</tr>
@@ -109,5 +101,9 @@
 
 <?php include_once 'includes/footer.php'; ?>
 <script src="./../assets/js/infocentro/registroCursosAlumnos.js" type="text/javascript" charset="utf-8" async defer></script>
+<script type="text/javascript">
+		$('#basic-datatables').DataTable({
+			});
+	</script>
 
 

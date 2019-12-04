@@ -3,50 +3,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Certificado</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" type="text/css" href="../../assets/css/azzara.css">
+    <link rel="stylesheet" href="estilos.css"> 
 </head>
 <body>
-	<div class="col-md-6 ml-auto mr-auto">
-		<table>
-			<tr>
-				<div class="user-profile text-center">
-					<div class="name">Hizrian, 19</div>
-					<p class="dni"><b><h1>OTORGA EL PRESENTE CERTIFICADO A:</h1></b></p>
-					<span class="h2">SENGUANA WISUMA EMILIO YANKUAM</span>
-					<p><b><h1>C.I.1450152325</h1></b></p>
-					
-				</div>
-			</tr>
-			<tbody>
-				<tr>
-					<td>data</td>
-				</tr>
-			</tbody>
-		</table>
-		
-	</div>
-<div id="page_pdf">
-	
-	<table id="factura_cliente">
-		<tr>
-			<td class="info_cliente">
-				<div class="round">
-					<span class="h3">Por haber aprobado el curso:</span>
-					<table class="datos_cliente">
-						<tr>
-							<td>PROGRAMACIÓN PHP</td>
-						</tr>
-					</table>
-				</div>
-			</td>
+	<table>
+		<thead>
+			<div class="header">
+				<hr>
+				<span>MINISTERIO <b>DE TELECOMUNICACIONES Y DE LA SOCIEDAD DE LA INFORMACIÓN</b></span>
+				<hr>
+				<br><br>
+				<span id="header1">OTORGA EL PRESENTE CERTIFICADO A:</span>
+			</div>
+		</thead>
+		<tbody>
 
-		</tr>
+			<div class="alumnos">
+				<span>TULCAN MELENDRES ANGEL EDUARDO</span>
+				<p>C.I. 1450152325</p>
+			</div>
+		</tbody>
 	</table>
-	<div>
-		<p class="nota">Si usted tiene preguntas sobre esta factura, <br>pongase en contacto con nombre, teléfono y Email</p>
-		<h4 class="label_gracias">¡Gracias por su compra!</h4>
-	</div>
+	<table>
+		<thead>
+			<div class="curso">
+				<span>Por haber aprobado el curso:</span>
+				<h3>INTRODUCCIÓN A LAS TICS</h3>
+			</div>
+
+			<div class="descripcion">
+				<p>Que forma parte del "Plan Nacional de Alistamiento Digital - PLANADI", y fue dictado desde el 16 de Septiembre de 2019 hasta el 11 de Octubre de 2019 con una duración de 20 horas.</p>
+				
+			</div>
+			<div class="fecha">
+				<p>"Certificado generado el 2019-10-18</p>
+			</div>
+
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
 
 </div>
 

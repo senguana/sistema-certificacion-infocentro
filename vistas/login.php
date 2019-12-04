@@ -53,13 +53,13 @@ if (isset($_POST['login'])) {
 <?php include_once 'includes/header.php'; ?>
 <?php 
  $query = "SELECT * FROM configuracion";
- $consulta = $db->prepare($query);
- $consulta->execute();
-  $row= $consulta->fetch(PDO::FETCH_OBJ);
+  $consulta = $db->prepare($query);
+  $consulta->execute();
+   $row= $consulta->fetch(PDO::FETCH_OBJ);
  ?>
 <body class="login">
 	<nav class="navbar navbar-expand-lg bg-secondary">
-	<a class="navbar-brand" href="#"><?php echo $row->entidad; ?></a>
+	<a class="navbar-brand" href="#"><?php  echo strtoupper($row->entidad);?></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
