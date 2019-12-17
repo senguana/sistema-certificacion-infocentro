@@ -18,7 +18,7 @@
 		<tbody>
 			<?php 
 			 include_once './../bd/conexion.php'; 
-			$consulta = "SELECT *  FROM alumno_basica a INNER JOIN institucion i ON a.institucion_id = i.id_institucion INNER JOIN grado g ON a.grado_id = g.id_grado"; 
+			$consulta = "SELECT *  FROM alumno_basica a INNER JOIN institucion i ON a.institucion_id = i.id_institucion INNER JOIN grado g ON a.grado_id = g.id_grado WHERE id_grado <=9 AND estado = 1"; 
 			$query_listar = $db->prepare($consulta);
 			$query_listar->execute();
 			while ($result = $query_listar->fetch(PDO::FETCH_OBJ)) {?>
@@ -46,7 +46,7 @@
 
 						title="Editar" class="btn btn-link btn-primary" id="Edit"><i class="fa fa-edit"></i>
 						</button>
-						<button type="button" data-toggle="modal" data-target="#deleteAlumnoBasicaModal" title="" class="btn btn-link btn-danger"   data-original-title="Remove"><i class="fa fa-trash"></i>
+						<button type="button" data-id="<?php echo $result->id_alumno_s; ?>"  data-toggle="modal" data-target="#deleteAlumnoBasicaModal" title="" class="btn btn-link btn-danger"   data-original-title="Remove"><i class="fa fa-trash"></i>
 							</button>
 					</div>
 				</td>									

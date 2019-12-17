@@ -36,8 +36,7 @@ $query_listar->execute();
 						</button>
 						<button type="button" data-toggle="modal" data-target="#deleteCursoModal" title="" class="btn btn-link btn-warning" data-id="<?php echo $result->id_curso;?>"  data-original-title="Remove"><i class="fa fa-trash"></i>
 						</button>
-						<button type="button" data-toggle="modal" data-target="#deleteCursoModal" title="" class="btn btn-link btn-danger" data-id="<?php echo $result->id_curso;?>"  data-original-title="Remove"><i class="fas fa-eye"></i>
-						</button>
+
 					</div>
 				</td>	
 			</tr>

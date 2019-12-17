@@ -13,29 +13,20 @@
 		<div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
-					<div class="page-header">
-						<ul class="breadcrumbs">
-							<li class="nav-home">
-								<a href="#">
-									<i class="flaticon-home"></i>
-								</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a href="#">Alumnos</a>
-							</li>
-						</ul>
-					</div>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index.php">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Alumno Superior</li>
+						</ol>
+					</nav>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 									
-										<h4 class="card-title">Registro de Alumnos de Superior</h4>
-										<button class="btn btn-success btn ml-auto" data-toggle="modal" data-target="#NuevoAlumnoSuperior">
+										<h4 class="card-title"><i class="fas fa-user-friends"></i> Registro de Alumnos de Superior</h4>
+										<button class="btn btn-primary btn ml-auto" data-toggle="modal" data-target="#NuevoAlumnoBasica">
 											<i class="fa fa-plus"></i>
 											Nuevo Alumno
 										</button>
@@ -47,7 +38,7 @@
 									<?php 
 									include("./../modal/modalCrudAlumnoSuperior.php");
 									 ?>
-									<div id="alumnoSuperiorTabla">
+									<div id="alumnoBasicaTabla">
 										
 									</div>
 								</div>
@@ -63,6 +54,6 @@
 <?php include_once 'includes/footer.php'; ?>
 <script src="./../assets/js/infocentro/alumno.superior.js" type="text/javascript" charset="utf-8" async defer></script>
 <script>
-	$('#alumnoSuperiorTabla').load('../ajax/alumnoSuperiorTabla.php')
+	$('#alumnoBasicaTabla').load('../ajax/alumnoSuperiorTabla.php');
 </script>
 

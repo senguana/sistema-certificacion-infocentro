@@ -37,7 +37,7 @@
 									<option value="" selected="">Seleccionar...</option>
 								
 									<?php 
-									$sql = "SELECT id_grado, descripcion from grado ";
+									$sql = "SELECT id_grado, descripcion from grado WHERE id_grado <=9 ";
 									$stmt = $db->prepare($sql);
 									$result_consulta = $stmt->execute();
 									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
@@ -175,7 +175,7 @@
 									<option value="" selected="">Seleccionar...</option>
 								
 									<?php 
-									$sql = "SELECT id_grado, descripcion from grado ";
+									$sql = "SELECT id_grado, descripcion from grado WHERE id_grado <=9 ";
 									$stmt = $db->prepare($sql);
 									$result_consulta = $stmt->execute();
 									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
@@ -189,20 +189,12 @@
 							
 								</select>
 							</div>
-							<div class="form-group">
-								<label for="estado">Estado</label>
-								<select class="form-control input-square" name="estado">
-									<option value="0" selected="">Seleccionar...</option>
-									<option value="Activo">Activo</option>
-									<option value="Inactivo">Inactivo</option>
-								
-								</select>
-							</div>
+			
 						</div>			
 
 					</div>
 					<div class="modal-footer">
-							<button type="submit" id="guardar_datos" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Registrarse</button>
+							<button type="submit" id="guardar_datos" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Actualizar</button>
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 						
 					</div>
@@ -220,13 +212,13 @@
 		<div class="modal-content">
 			<form name="delete_usuario" id="delete_usuario">
 				<div class="modal-header">						
-					<h4 class="modal-title">Eliminar Usuario</h4>
+					<h4 class="modal-title">Eliminar Alumno</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<p>¿Seguro que quieres eliminar este registro?</p>
 					<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
-					<input type="hidden" name="delete_id" id="delete_id">
+					<input type="text" hidden="" name="delete_id" id="delete_id">
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

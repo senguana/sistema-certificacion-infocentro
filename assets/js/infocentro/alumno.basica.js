@@ -60,6 +60,8 @@ $( "#actualizar_alumno" ).submit(function( event ) {
             },
           success: function(datos){
           $("#response").html(datos);
+                        $('#alumnoBasicaTabla').load('../ajax/alumnoBasicaTabla.php');
+
            // if (datos==false) {
            //   $("#resultado").html("Error...");
            // }else{
@@ -80,20 +82,18 @@ $('#deleteAlumnoBasicaModal').on('show.bs.modal', function (event) {
       $('#delete_id').val(id)
     });
 
-$("#delete_representante" ).submit(function( event ) {
+$("#delete_usuario" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/representanteDelete.php",
+          url: "../ajax/alumnoEliminar.php",
           data: parametros,
-           beforeSend: function(objeto){
-            $("#resultado").html("Enviando...");
-            },
           success: function(datos){
             if (datos) {
-              toastr.warning('Se ha Elimanado correctamente', 'Representante');
+              toastr.warning('Se ha Elimanado correctamente', 'Alumno');
+              $('#alumnoBasicaTabla').load('../ajax/alumnoBasicaTabla.php');
             }
-          $('#deleteRepresentanteModal').modal('hide');
+          $('#deleteAlumnoBasicaModal').modal('hide');
           }
       });
       event.preventDefault();

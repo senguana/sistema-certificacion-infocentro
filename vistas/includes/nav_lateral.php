@@ -35,10 +35,13 @@
 					<a href="./representante.php">
 						<i class="fas fa-user-friends"></i>
 						<p>Representantes</p>
-						
 					</a>
-					
-				
+				</li>
+				<li class="nav-item">
+					<a href="./personas.php">
+						<i class="fas fa-portrait"></i>
+						<p>Personas</p>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a href="./curso.php">
