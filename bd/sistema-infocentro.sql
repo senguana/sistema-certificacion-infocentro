@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-11-2019 a las 14:40:01
+-- Tiempo de generación: 19-12-2019 a las 14:57:12
 -- Versión del servidor: 5.7.26
--- Versión de PHP: 7.0.33
+-- Versión de PHP: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,40 +73,6 @@ INSERT INTO `add_curso_estudiante` (`id_add`, `alumno_basica_id`, `curso_id`) VA
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumno`
---
-
-DROP TABLE IF EXISTS `alumno`;
-CREATE TABLE IF NOT EXISTS `alumno` (
-  `id_alum` int(20) NOT NULL AUTO_INCREMENT,
-  `dni_alum` int(10) NOT NULL,
-  `nombres_alum` varchar(80) NOT NULL,
-  `apellidos_alum` varchar(80) NOT NULL,
-  `genero_alum` varchar(10) NOT NULL,
-  `edad_alum` int(10) DEFAULT NULL,
-  `fecha_nac` date NOT NULL,
-  `cod_institucion` int(11) NOT NULL,
-  `cod_carrera` int(11) NOT NULL,
-  `estado` int(2) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id_alum`),
-  KEY `cod_institucion` (`cod_institucion`,`cod_carrera`),
-  KEY `cod_carrera` (`cod_carrera`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `alumno`
---
-
-INSERT INTO `alumno` (`id_alum`, `dni_alum`, `nombres_alum`, `apellidos_alum`, `genero_alum`, `edad_alum`, `fecha_nac`, `cod_institucion`, `cod_carrera`, `estado`) VALUES
-(2, 1450152325, 'Emilio Yankuam', 'Senguana Wisuma', 'Masculino', 19, '2019-11-04', 1, 3, 1),
-(3, 1450152378, 'Emilio', 'snguana', 'Masculino', NULL, '2019-11-11', 2, 3, 1),
-(4, 1450152367, 'Emilio', 'snguana', 'Masculino', NULL, '2019-11-11', 2, 3, 1),
-(5, 1450178687, 'Josefina Mamas', 'Senguana Wisuma', 'Femenino', NULL, '2000-01-04', 8, 3, 1),
-(6, 1450178686, 'Milady', 'Llumitaxi', 'Masculino', NULL, '2019-11-04', 2, 3, 1);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `alumno_basica`
 --
 
@@ -125,40 +91,22 @@ CREATE TABLE IF NOT EXISTS `alumno_basica` (
   PRIMARY KEY (`id_alumno_s`),
   KEY `institucion_id` (`institucion_id`),
   KEY `grado_id` (`grado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `alumno_basica`
 --
 
 INSERT INTO `alumno_basica` (`id_alumno_s`, `dni_alum_s`, `nombres_alum_s`, `apellidos_alumn_s`, `genero`, `edad`, `fech_nac`, `institucion_id`, `grado_id`, `estado`) VALUES
-(18, 1450152325, 'Emilio Yankuam', 'Senguana Wisuma', 'Masculino', 19, '2000-01-06', 8, 3, '1'),
+(18, 1450152325, 'Emilio Yankuam', 'Senguana Wisuma', 'Masculino', 19, '2000-01-06', 11, 2, '1'),
 (20, 1450172637, 'Josefina Mamas', 'Senguana Wisuma', 'Femenino', 19, '2000-01-04', 1, 1, '1'),
 (22, 1450172456, 'Nelcida Anasat', 'Senguana Wisuma', 'Femenino', 14, '2005-03-08', 9, 3, '1'),
-(23, 1450152323, 'MILADY CABRERA', 'CELIA YULI', 'Femenino', 20, '2017-08-01', 7, 2, '1'),
+(23, 1450152323, 'MILADY CABRERA', 'CELIA YULI', 'Femenino', 20, '2017-08-01', 11, 4, '1'),
 (24, 1450152326, 'CEVALLOS NARANJA', 'JUAN VILLACIS', 'Masculino', 3, '2017-05-01', 7, 2, '1'),
-(25, 145015234, 'Emilio Yankuam', 'senguana', 'nasculino', 19, '2019-11-03', 7, 2, '1');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `carrera`
---
-
-DROP TABLE IF EXISTS `carrera`;
-CREATE TABLE IF NOT EXISTS `carrera` (
-  `id_carrera` int(10) NOT NULL AUTO_INCREMENT,
-  `nombre_carrera` varchar(80) NOT NULL,
-  PRIMARY KEY (`id_carrera`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `carrera`
---
-
-INSERT INTO `carrera` (`id_carrera`, `nombre_carrera`) VALUES
-(3, 'Primero de Bachillerato '),
-(4, 'Segundo de Bachillerato');
+(25, 145015234, 'Emilio Yankuam', 'senguana', 'Masculino', 19, '2019-11-03', 1, 3, '1'),
+(27, 1450152389, 'Emilio Yankuam', 'Senguana Wisuma', 'Masculino', 19, '2000-01-06', 1, 10, '1'),
+(28, 1450152320, 'Pedro Abad', 'Sanchez Nenigno', 'Masculino', 14, '2005-06-20', 8, 10, '1'),
+(29, 1450152322, 'Josefina Mamas', 'Senguana Wisuma', 'Femenino', 18, '2001-06-05', 9, 10, '1');
 
 -- --------------------------------------------------------
 
@@ -178,6 +126,33 @@ CREATE TABLE IF NOT EXISTS `certificado` (
   KEY `add_curso_id` (`add_curso_id`),
   KEY `representante_id` (`representante_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comuna`
+--
+
+DROP TABLE IF EXISTS `comuna`;
+CREATE TABLE IF NOT EXISTS `comuna` (
+  `id_comuna` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(90) NOT NULL,
+  PRIMARY KEY (`id_comuna`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comuna`
+--
+
+INSERT INTO `comuna` (`id_comuna`, `descripcion`) VALUES
+(2, 'JUAN DE LA CRUZ'),
+(3, 'CONGOMA MEDIO'),
+(12, 'CONGOMA MEDIO'),
+(13, 'TRECE DE ABRIL'),
+(14, 'SAN MIGUEL'),
+(15, 'SAN MIGUEL DE LA CRUZ'),
+(16, 'SANTA ROSA'),
+(17, 'SAN PEDRO');
 
 -- --------------------------------------------------------
 
@@ -270,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `grado` (
   `id_grado` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(80) NOT NULL,
   PRIMARY KEY (`id_grado`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `grado`
@@ -280,7 +255,15 @@ INSERT INTO `grado` (`id_grado`, `descripcion`) VALUES
 (1, 'Primero de Básica'),
 (2, 'Segundo de Básica'),
 (3, 'Tercero de Basica'),
-(4, 'Cuarto de Básica');
+(4, 'Cuarto de Básica'),
+(5, 'Quinto de Bàsica'),
+(6, 'Sexto de Basica'),
+(7, 'Septimo de Basica'),
+(8, 'Octavo de Bàsica'),
+(9, 'Decimo de Bàsica '),
+(10, 'Primero de Bachillerato '),
+(11, 'Segundo de Bachillerato '),
+(12, 'Tercero de Bachillerato');
 
 -- --------------------------------------------------------
 
@@ -302,10 +285,9 @@ CREATE TABLE IF NOT EXISTS `institucion` (
 INSERT INTO `institucion` (`id_institucion`, `nombre_institucion`) VALUES
 (1, 'LUZ DE AMERICA'),
 (2, 'Escuela Nueva Loja'),
-(7, 'JARAMILLO'),
+(7, 'ESCUELA SAN MIGUEL'),
 (8, 'ELOY ALFARO'),
 (9, 'ANTONIO SAMANIEGO'),
-(10, 'BENIGNO RIVAS'),
 (11, 'ALONSO VITERRY GARRIDO');
 
 -- --------------------------------------------------------
@@ -320,8 +302,19 @@ CREATE TABLE IF NOT EXISTS `personas` (
   `nombres_per` varchar(50) NOT NULL,
   `apellidos_per` varchar(50) NOT NULL,
   `genero_per` varchar(10) NOT NULL,
-  PRIMARY KEY (`id_per`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `comuna` int(11) NOT NULL,
+  PRIMARY KEY (`id_per`),
+  KEY `comuna` (`comuna`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `personas`
+--
+
+INSERT INTO `personas` (`id_per`, `nombres_per`, `apellidos_per`, `genero_per`, `comuna`) VALUES
+(3, 'JUAN MARIA', 'Serekam Vargas', 'Masculino', 3),
+(5, 'FELICIA NUNKUY', 'Wisuma Sandu', 'Femenino', 14),
+(8, 'JOSELIN MAMAS', 'Senguana Wisuma', 'Femenino', 3);
 
 -- --------------------------------------------------------
 
@@ -364,15 +357,6 @@ CREATE TABLE IF NOT EXISTS `representante` (
   KEY `cod_profesion` (`cod_profesion`)
 ) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `representante`
---
-
-INSERT INTO `representante` (`id_repre`, `dni_repre`, `nombres_repre`, `apellidos_repre`, `telefono_repre`, `cod_profesion`, `genero`) VALUES
-(123, 1450152325, 'Emilio', 'Senguana', 99707717, 1, 'Masculino'),
-(127, 1450152325, 'Emilio', 'Senguana', 99707717, 1, 'Masculino'),
-(128, 1450178636, 'emil', 'Emilio', 9970708, 1, 'Masculino');
-
 -- --------------------------------------------------------
 
 --
@@ -410,8 +394,8 @@ INSERT INTO `usuario` (`id_usua`, `dni_usua`, `nombre_usua`, `apellido_usua`, `c
 -- Filtros para la tabla `add_curso`
 --
 ALTER TABLE `add_curso`
-  ADD CONSTRAINT `add_curso_ibfk_1` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`id_curso`),
-  ADD CONSTRAINT `add_curso_ibfk_2` FOREIGN KEY (`persona_id`) REFERENCES `personas` (`id_per`);
+  ADD CONSTRAINT `add_curso_ibfk_1` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `add_curso_ibfk_2` FOREIGN KEY (`persona_id`) REFERENCES `personas` (`id_per`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `add_curso_estudiante`
@@ -419,13 +403,6 @@ ALTER TABLE `add_curso`
 ALTER TABLE `add_curso_estudiante`
   ADD CONSTRAINT `add_curso_estudiante_ibfk_3` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`id_curso`) ON UPDATE CASCADE,
   ADD CONSTRAINT `add_curso_estudiante_ibfk_4` FOREIGN KEY (`alumno_basica_id`) REFERENCES `alumno_basica` (`id_alumno_s`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `alumno`
---
-ALTER TABLE `alumno`
-  ADD CONSTRAINT `alumno_ibfk_1` FOREIGN KEY (`cod_institucion`) REFERENCES `institucion` (`id_institucion`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `alumno_ibfk_2` FOREIGN KEY (`cod_carrera`) REFERENCES `carrera` (`id_carrera`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `alumno_basica`
@@ -447,6 +424,12 @@ ALTER TABLE `certificado`
 --
 ALTER TABLE `curso`
   ADD CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `docente` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `personas`
+--
+ALTER TABLE `personas`
+  ADD CONSTRAINT `personas_ibfk_1` FOREIGN KEY (`comuna`) REFERENCES `comuna` (`id_comuna`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `representante`
