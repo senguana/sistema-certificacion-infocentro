@@ -2,7 +2,7 @@
 <?php
  include_once './../bd/conexion.php'; 
 
-  $query = "SELECT p.id_per, p.dni, p.nombres_per, p.apellidos_per, p.genero_per, c.nombre_curso, c.total_horas, curso_id FROM add_curso_estudiante ad INNER JOIN personas p ON ad.persona_id = p.id_per INNER JOIN curso c ON ad.curso_id = c.id_curso GROUP BY nombre_curso, nombres_per ORDER BY id_add";
+  $query = "SELECT p.id_per, p.dni, p.nombres_per, p.apellidos_per, p.genero_per, c.nombre_curso, c.total_horas, curso_id, ad.estado FROM add_curso_estudiante ad INNER JOIN personas p ON ad.persona_id = p.id_per INNER JOIN curso c ON ad.curso_id = c.id_curso WHERE ad.estado = 1 GROUP BY nombre_curso, nombres_per ORDER BY id_add ";
  
  $stmt = $db->prepare($query);
  $stmt->execute();

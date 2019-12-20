@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 19-12-2019 a las 14:57:12
+-- Tiempo de generación: 20-12-2019 a las 12:13:27
 -- Versión del servidor: 5.7.26
--- Versión de PHP: 7.2.18
+-- Versión de PHP: 7.0.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,50 +25,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `add_curso`
---
-
-DROP TABLE IF EXISTS `add_curso`;
-CREATE TABLE IF NOT EXISTS `add_curso` (
-  `id_add_curso` int(11) NOT NULL AUTO_INCREMENT,
-  `curso_id` int(11) NOT NULL,
-  `persona_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_add_curso`),
-  KEY `curso_id` (`curso_id`),
-  KEY `persona_id` (`persona_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `add_curso_estudiante`
 --
 
 DROP TABLE IF EXISTS `add_curso_estudiante`;
 CREATE TABLE IF NOT EXISTS `add_curso_estudiante` (
   `id_add` int(11) NOT NULL AUTO_INCREMENT,
-  `alumno_basica_id` int(11) NOT NULL,
+  `alumno_basica_id` int(11) DEFAULT NULL,
+  `persona_id` int(50) DEFAULT NULL,
   `curso_id` int(11) NOT NULL,
+  `estado` int(5) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_add`),
   KEY `add_curso_estudiante_ibfk_3` (`curso_id`),
-  KEY `add_curso_estudiante_ibfk_4` (`alumno_basica_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  KEY `add_curso_estudiante_ibfk_4` (`alumno_basica_id`),
+  KEY `persona_id` (`persona_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `add_curso_estudiante`
 --
 
-INSERT INTO `add_curso_estudiante` (`id_add`, `alumno_basica_id`, `curso_id`) VALUES
-(7, 23, 23),
-(8, 23, 24),
-(9, 25, 23),
-(10, 25, 23),
-(11, 24, 23),
-(12, 23, 23),
-(13, 23, 23),
-(14, 23, 27),
-(15, 24, 26),
-(16, 25, 28);
+INSERT INTO `add_curso_estudiante` (`id_add`, `alumno_basica_id`, `persona_id`, `curso_id`, `estado`) VALUES
+(7, NULL, 10, 29, 0),
+(8, NULL, 9, 29, 0),
+(9, NULL, 1, 29, 0),
+(10, NULL, 8, 29, 0),
+(11, NULL, 3, 29, 0),
+(12, NULL, 12, 29, 0),
+(13, NULL, 6, 29, 0),
+(14, NULL, 11, 29, 0),
+(15, NULL, 7, 29, 1),
+(16, NULL, 5, 29, 1),
+(17, NULL, 4, 29, 1);
 
 -- --------------------------------------------------------
 
@@ -138,21 +126,14 @@ CREATE TABLE IF NOT EXISTS `comuna` (
   `id_comuna` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(90) NOT NULL,
   PRIMARY KEY (`id_comuna`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `comuna`
 --
 
 INSERT INTO `comuna` (`id_comuna`, `descripcion`) VALUES
-(2, 'JUAN DE LA CRUZ'),
-(3, 'CONGOMA MEDIO'),
-(12, 'CONGOMA MEDIO'),
-(13, 'TRECE DE ABRIL'),
-(14, 'SAN MIGUEL'),
-(15, 'SAN MIGUEL DE LA CRUZ'),
-(16, 'SANTA ROSA'),
-(17, 'SAN PEDRO');
+(1, 'CONGOMA MEDIO');
 
 -- --------------------------------------------------------
 
@@ -195,19 +176,14 @@ CREATE TABLE IF NOT EXISTS `curso` (
   `docente_id` int(11) NOT NULL,
   PRIMARY KEY (`id_curso`),
   KEY `curso_ibfk_1` (`docente_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `curso`
 --
 
 INSERT INTO `curso` (`id_curso`, `nombre_curso`, `fecha_inicio`, `fecha_fin`, `total_horas`, `docente_id`) VALUES
-(23, 'PROGRAMACIÓN JAVA', '2019-03-04', '2020-02-22', 25, 3),
-(24, 'PROGRAMACIÓN BASICA PHP', '2019-06-03', '2019-11-30', 40, 3),
-(25, 'HTML', '2019-03-04', '2020-03-29', 20, 1),
-(26, 'PHP', '2019-11-07', '2019-11-30', 40, 1),
-(27, 'PHP', '2019-11-07', '2019-11-30', 40, 1),
-(28, 'JS', '2019-11-07', '2019-11-30', 40, 1);
+(29, 'TIC ARTESANOS', '2019-11-20', '2019-12-23', 25, 1);
 
 -- --------------------------------------------------------
 
@@ -299,22 +275,32 @@ INSERT INTO `institucion` (`id_institucion`, `nombre_institucion`) VALUES
 DROP TABLE IF EXISTS `personas`;
 CREATE TABLE IF NOT EXISTS `personas` (
   `id_per` int(11) NOT NULL AUTO_INCREMENT,
+  `dni` bigint(10) NOT NULL,
   `nombres_per` varchar(50) NOT NULL,
   `apellidos_per` varchar(50) NOT NULL,
   `genero_per` varchar(10) NOT NULL,
   `comuna` int(11) NOT NULL,
   PRIMARY KEY (`id_per`),
   KEY `comuna` (`comuna`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `personas`
 --
 
-INSERT INTO `personas` (`id_per`, `nombres_per`, `apellidos_per`, `genero_per`, `comuna`) VALUES
-(3, 'JUAN MARIA', 'Serekam Vargas', 'Masculino', 3),
-(5, 'FELICIA NUNKUY', 'Wisuma Sandu', 'Femenino', 14),
-(8, 'JOSELIN MAMAS', 'Senguana Wisuma', 'Femenino', 3);
+INSERT INTO `personas` (`id_per`, `dni`, `nombres_per`, `apellidos_per`, `genero_per`, `comuna`) VALUES
+(1, 1707065247, ' MARIA ALEJANDRINA', 'MATUTE ERAS', 'Femenino', 1),
+(2, 1713598124, 'MAURA ELISA', 'QUINTERO ROSERO ', 'Femenino', 1),
+(3, 1708373442, 'MERO ', 'NIEVE CONCEPCION ', 'Femenino', 1),
+(4, 2300565690, 'ANGIE CAROLINA', 'BASTIDAS QUINTEROS ', 'Femenino', 1),
+(5, 2300058654, ' RUTH ANDREA', 'COYAGO BENAVIDES', 'Femenino', 1),
+(6, 1721802963, 'LORENA ADRIANA', 'COYAGO BENAVIDES', 'Femenino', 1),
+(7, 1727320549, 'NATALY ALEJANDRA', 'COYAGO BENAVIDES', 'Femenino', 1),
+(8, 1708195175, ' BLANCA OFELIA', 'CALDERÓN TORO', 'Femenino', 1),
+(9, 1705486510, ' RUTH XIMENA', 'ANDRADE ESCUDERO', 'Femenino', 1),
+(10, 1314391473, ' ARIANNA YAMILE', 'CARBONEL PERALTA', 'Femenino', 1),
+(11, 1723912430, ' ERIKA ELIZABETH', 'MARCILLO CEDEÑO', 'Femenino', 1),
+(12, 1708582372, ' MARIA ESTERFILA', 'MATUTE MELO', 'Femenino', 1);
 
 -- --------------------------------------------------------
 
@@ -327,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `profesion` (
   `id_profesion` int(10) NOT NULL AUTO_INCREMENT,
   `nombre_profesion` varchar(50) NOT NULL,
   PRIMARY KEY (`id_profesion`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `profesion`
@@ -336,7 +322,8 @@ CREATE TABLE IF NOT EXISTS `profesion` (
 INSERT INTO `profesion` (`id_profesion`, `nombre_profesion`) VALUES
 (1, 'Tecnologo(a)'),
 (2, 'Ingeniero(a)'),
-(3, 'Licenciado(a)');
+(3, 'Licenciado(a)'),
+(4, 'Magister');
 
 -- --------------------------------------------------------
 
@@ -355,7 +342,15 @@ CREATE TABLE IF NOT EXISTS `representante` (
   `genero` varchar(15) NOT NULL,
   PRIMARY KEY (`id_repre`),
   KEY `cod_profesion` (`cod_profesion`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `representante`
+--
+
+INSERT INTO `representante` (`id_repre`, `dni_repre`, `nombres_repre`, `apellidos_repre`, `telefono_repre`, `cod_profesion`, `genero`) VALUES
+(129, 1450152329, 'Ximena', 'Orosco Calderón', 997780823, 4, 'Femenino'),
+(130, 1450152352, 'Marcos', 'Gabilanes Párraga', 998808134, 3, 'Masculino');
 
 -- --------------------------------------------------------
 
@@ -391,18 +386,12 @@ INSERT INTO `usuario` (`id_usua`, `dni_usua`, `nombre_usua`, `apellido_usua`, `c
 --
 
 --
--- Filtros para la tabla `add_curso`
---
-ALTER TABLE `add_curso`
-  ADD CONSTRAINT `add_curso_ibfk_1` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `add_curso_ibfk_2` FOREIGN KEY (`persona_id`) REFERENCES `personas` (`id_per`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `add_curso_estudiante`
 --
 ALTER TABLE `add_curso_estudiante`
-  ADD CONSTRAINT `add_curso_estudiante_ibfk_3` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`id_curso`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `add_curso_estudiante_ibfk_4` FOREIGN KEY (`alumno_basica_id`) REFERENCES `alumno_basica` (`id_alumno_s`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `add_curso_estudiante_ibfk_3` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `add_curso_estudiante_ibfk_4` FOREIGN KEY (`alumno_basica_id`) REFERENCES `alumno_basica` (`id_alumno_s`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `add_curso_estudiante_ibfk_5` FOREIGN KEY (`persona_id`) REFERENCES `personas` (`id_per`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `alumno_basica`
