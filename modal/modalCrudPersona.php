@@ -16,7 +16,11 @@
 						<b id="msg_error"></b>
 						<div class="col-md-12">
 							<div class="form-group">
-								<label for="curso">Nombres</label>
+								<label for="dni">DNI</label>
+								<input type="number" class="form-control" name="dni"  placeholder="Ingrese N° de cédula">
+							</div>
+							<div class="form-group">
+								<label for="nombres">Nombres</label>
 								<input type="text" class="form-control" name="nombres"  placeholder="Ingrese nombres">
 							</div>
 							<div class="form-group">
@@ -59,7 +63,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" id="guardar_datos" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Nueva comuna</button>
+						<button type="submit" id="guardar_datos" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Nueva persona</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 						
 					</div>
@@ -75,21 +79,25 @@
 	<div class="modal-dialog modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Actualizar Curso</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Actualizar Persona</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<div  id="error1" class="btn-warning" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
+				<div  id="error1"style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
 				</div>
 				<form id="actualizar_persona" name="actualizar_persona" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<b id="msg_error"></b>
 						<div class="col-md-12">
 							<div class="form-group">
+								<label for="curso">DNI</label>
+								<input type="text" name="id_persona" id="id_persona" hidden="">
+								<input type="number" class="form-control" name="dni" id="dni"  placeholder="Ingrese nombres">
+							</div>
+							<div class="form-group">
 								<label for="curso">Nombres</label>
-								<input type="text" name="id_persona" id="id_persona">
 								<input type="text" class="form-control" name="nombres" id="nombres"  placeholder="Ingrese nombres">
 							</div>
 							<div class="form-group">
@@ -97,8 +105,12 @@
 								<input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Ingrese apellidos" >
 							</div>
 							<div class="form-group">
-								<label for="genero">Genero</label>
-								<input type="text" class="form-control" name="genero" id="genero" placeholder="Ingrese genero">
+								<label for="genero" class="col-md-2 col-form-label">Gènero</label>
+									<select class="form-control" name="genero" id="genero">
+										<option disabled="" selected="">Seleccionar...</option>
+										<option value="Masculino">Masculino</option>
+										<option value="Femenino">Femenino</option>
+									</select>
 							</div>
 							<div class="form-group">
 								<label for="comuna">Seleccionar comuna</label>
@@ -150,7 +162,7 @@
 				<div class="modal-body">					
 					<p>¿Seguro que quieres eliminar este registro?</p>
 					<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
-					<input type="text" hidden="" name="delete_id" id="delete_id">
+					<input type="text"  name="delete_id" id="delete_id">
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

@@ -10,6 +10,7 @@
            success: function(datos){
            if (datos) {
             toastr.success('Se ha registrado correctamente', 'representante');
+            $('#tablaRepre').load('./../ajax/representanteTabla.php');
            }else{
             toastr.warning('No se ha podido guardar', 'Representante')
            }

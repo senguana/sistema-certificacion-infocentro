@@ -59,6 +59,11 @@
 					<div class="collapse" id="charts">
 						<ul class="nav nav-collapse">
 							<li>
+								<a href="./generar_certificados_personas.php">
+									<span class="sub-item">Generar certificados (Personas)</span>
+								</a>
+							</li>
+							<li>
 								<a href="./asignarCursos.php">
 									<span class="sub-item">Asignar Cursos</span>
 								</a>

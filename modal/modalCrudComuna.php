@@ -41,8 +41,8 @@
 				<form id="actualizar_comuna">
 					<div class="form-group">
 						<label for="comuna">Comuna</label>
-						<input type="text" name="id_comuna" id="id_comuna" hidden="" >
-						<input type="text" class="form-control" id="comuna" name="comuna" aria-describedby="emailHelp" placeholder="Ingrese comuna">
+						<input type="text" name="id_comuna" id="id_comuna" hidden="">
+						<input type="text" class="form-control" name="edit_comuna" id="edit_comuna"  placeholder="Ingrese comuna">
 					</div>
 					
 					<div class="modal-footer">

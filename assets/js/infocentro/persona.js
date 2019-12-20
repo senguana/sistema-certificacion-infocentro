@@ -26,60 +26,61 @@
 // recuperar datos 
 $('#EditPersona').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
-      var curso = button.data('nombres') 
-      $('#nombres').val(curso)
+      var dni = button.data('dni');
+      $('#dni').val(dni)
+      
+      var nombres = button.data('nombres') 
+      $('#nombres').val(nombres)
 
-      var fechaInicio = button.data('apellidos') 
-      $('#apellidos').val(fechaInicio)
+      var apellidos = button.data('apellidos') 
+      $('#apellidos').val(apellidos)
 
-      var fechaFin = button.data('genero')
-      $('#genero').val(fechaFin)
+      var genero = button.data('genero')
+      $('#genero').val(genero)
   
-      var total_horas = button.data('comuna')
-      $('#comuna').val(total_horas)
+      var comuna = button.data('comuna')
+      $('#comuna').val(comuna)
 
-      var id = button.data('id') 
-      $('#id_persona').val(id)
+      var id_persona = button.data('id') 
+      $('#id_persona').val(id_persona)
     });
 
-// editar usuario
-$('#actualizar_curso').submit(function( event ) {
+// editar PERSONA
+$('#actualizar_persona').submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/cursoUpdate.php",
+          url: "../ajax/personaUpdate.php",
           data: parametros,
            beforeSend: function(objeto){
             $("#error1").html("Enviando...");
             },
           success: function(datos){
-          $('#error1').html(datos);
-            $('#error1').show(datos);
-             $('#TablaCurso').load('./../ajax/cursoTabla.php');
-         
-           $('#guardar_curso').modal('hide');
+           $('#error1').html(datos);
+             $('#error1').show(datos);
+              $('#TablaPersona').load('./../ajax/personaTabla.php');
           
         }
       });
       event.preventDefault();
     });
 
-// eliminar usuario
-$('#deleteCursoModal').on('show.bs.modal', function (event) {
+// eliminar PERSONA
+$('#deletePersona').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) 
       var id = button.data('id') 
       $('#delete_id').val(id)
     });
 
-$("#delete_curso" ).submit(function( event ) {
+$("#delete_persona" ).submit(function( event ) {
       var parametros = $(this).serialize();
       $.ajax({
           type: "POST",
-          url: "../ajax/cursoDelete.php",
+          url: "../ajax/personaDelete.php",
           data: parametros,
           success: function(datos){
-               $('#TablaCurso').load('./../ajax/cursoTabla.php');
-               $('#deleteCursoModal').modal('hide');
+               $('#TablaPersona').load('./../ajax/personaTabla.php');
+               $('#deletePersona').modal('hide');
           }
       });
       event.preventDefault();
@@ -115,7 +116,7 @@ $("#delete_curso" ).submit(function( event ) {
 $('#EditComuna').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var comuna = button.data('comuna') 
-      $('#comuna').val(comuna)
+      $('#edit_comuna').val(comuna)
 
       var id = button.data('id') 
       $('#id_comuna').val(id)
@@ -163,3 +164,40 @@ $("#delete_comuna" ).submit(function( event ) {
       });
       event.preventDefault();
     });
+
+
+
+//ASIGNAR CURSOS 
+$('#agregarCursoPersona').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var id = button.data('id');
+      $('#persona_id').val(id)
+    });
+
+// agregar cursos a los alumnos 
+
+$('#asignar_curso_persona').submit(function(event){
+  event.preventDefault();
+  var persona = $('#persona_id').val();
+  var curso = $('#seleccionarCurso').val();
+
+  var datos = {"persona":persona, "curso":curso}
+  if(curso ==""){
+    alert("Debes seleccionar el curso")
+  }else{
+    $.ajax({
+      url: './../ajax/asignarCursoPersona.php',
+      type: 'POST',
+      data: datos,
+      beforeSend: function(objeto){
+        $('#response').html('Enviado');
+        $('#response').show(datos)
+      },
+      success: function(datos){
+        $('#response').html(datos);
+        $('#response').show(datos)
+      }
+    })
+  }
+
+})

@@ -24,30 +24,37 @@
 
 		
 
-		$query1 = "SELECT * FROM representante r INNER JOIN profesion p ON r.cod_profesion = p.id_profesion";
+		$query1 = "SELECT * FROM representante r INNER JOIN profesion p ON r.cod_profesion = p.id_profesion WHERE id_repre = 129";
 		$consulta1=$db->prepare($query1);
 		$consulta1->execute();
 		$representante = $consulta1->fetch(PDO::FETCH_ASSOC);
 
-		$query = "SELECT * FROM configuracion";
-		$consulta = $db->prepare($query);
-		$consulta->execute();
-		if($consulta->rowCount() > 0){
-			$row= $consulta->fetch(PDO::FETCH_ASSOC);
-			$foto1 = "../../upload/".$row['imagen1'];
-			$foto2 = "../../upload/".$row['imagen2'];
-			$foto3 = "../../upload/".$row['imagen3'];
-			$foto4 = "../../upload/".$row['imagen4'];
-		}
+		$query2 = "SELECT * FROM representante r INNER JOIN profesion p ON r.cod_profesion = p.id_profesion WHERE id_repre = 130";
+		$consulta2=$db->prepare($query2);
+		$consulta2->execute();
+		$representante1 = $consulta2->fetch(PDO::FETCH_ASSOC);
 
-		$query = $db->prepare("SELECT a.dni_alum_s, a.nombres_alum_s, a.apellidos_alumn_s, c.nombre_curso, c.fecha_inicio, c.fecha_fin, c.total_horas FROM add_curso_estudiante ad INNER JOIN alumno_basica a ON ad.alumno_basica_id = a.id_alumno_s INNER JOIN curso c ON c.id_curso = ad.curso_id WHERE a.dni_alum_s = $dni AND c.id_curso = $curso");
+		
+		$query = $db->prepare("SELECT p.id_per, p.dni, p.nombres_per, p.apellidos_per, p.genero_per, fecha_inicio, fecha_fin, c.nombre_curso, c.total_horas, curso_id FROM add_curso_estudiante ad INNER JOIN personas p ON ad.persona_id = p.id_per INNER JOIN curso c ON ad.curso_id = c.id_curso WHERE p.dni = $dni AND c.id_curso = $curso");
 		$query->execute();
 
 		$result = $query->rowCount();
 		if($result > 0){
 
-			$factura = $query->fetch(PDO::FETCH_ASSOC);
-			
+			$persona = $query->fetch(PDO::FETCH_ASSOC);
+			setlocale(LC_TIME, "spanish");
+
+			$fecha_inicio = $persona['fecha_inicio'];
+		
+			$fecha_inicio = str_replace("/", "-", $fecha_inicio);			
+			$newDate = date("d-m-Y", strtotime($fecha_inicio));				
+			$mesDesc = strftime(" %d de %B de %Y", strtotime($newDate));
+
+			$fecha_fin = $persona['fecha_fin'];
+		
+			$fecha_fin = str_replace("/", "-", $fecha_fin);			
+			$newDate1 = date("d-m-Y", strtotime($fecha_fin));				
+			$mesDesc1 = strftime(" %d de %B de %Y", strtotime($newDate1));
 
 			// $no_factura = $factura['nofactura'];
 
@@ -65,7 +72,7 @@
 			// $result_detalle = mysqli_num_rows($query_productos);
 
 			ob_start();
-		    include(dirname('__FILE__').'/certificado.php');
+		    include(dirname('__FILE__').'/certificado_persona.php');
 		     $html = ob_get_clean();
 
 			// instantiate and use the dompdf class
@@ -77,7 +84,7 @@
 			// Render the HTML as PDF
 			$dompdf->render();
 			// Output the generated PDF to Browser
-			$dompdf->stream('certificado_'.$factura['nombres_alum_s'].$factura['nombre_curso'].'.pdf',array('Attachment'=>0));
+			$dompdf->stream('certificado_'.$persona['nombres_per'].$persona['nombre_curso'].'.pdf',array('Attachment'=>0));
 			exit;
 		}
 	}

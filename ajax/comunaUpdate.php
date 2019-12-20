@@ -5,12 +5,12 @@ require_once ("../bd/conexion.php");
 if (empty($_POST['id_comuna'])) {
     echo "Campo vaciò";
 
-}elseif (empty($_POST['comuna'])) {
+}elseif (empty($_POST['edit_comuna'])) {
     echo "Campo instituciòn vacio";
 
-}elseif (!empty($_POST['id_comuna']) && !empty($_POST['comuna'])) {
+}elseif (!empty($_POST['id_comuna']) && !empty($_POST['edit_comuna'])) {
 
-    $comuna = $_POST['comuna'];
+    $comuna = $_POST['edit_comuna'];
     $id_comuna= $_POST['id_comuna'];
  
     $sql = " UPDATE comuna SET descripcion =:a WHERE id_comuna =:id";

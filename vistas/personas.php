@@ -1,3 +1,4 @@
+
 <?php include_once './../core/configGeneral.php'; ?>
 <?php include_once './../bd/conexion.php'; ?>
 <?php include_once './core.php'; ?>
@@ -25,6 +26,7 @@
 									<div class="d-flex align-items-center">
 									
 										<h4 class="card-title"><i class="fas fa-portrait"></i>Registro de las personas</h4>
+
 										<button class="btn btn-primary btn ml-auto" data-toggle="modal" data-target="#NuevaComuna">
 											<i class="fas fa-portrait"></i>
 											Nuevo Comuna
@@ -34,13 +36,20 @@
 											<i class="fas fa-portrait"></i>
 											Nuevo persona
 										</button>
+										<button style="background: white;"></button>
+
+										<a href="./generar_certificados_personas.php" class="btn btn-info btn-border btn-round btn-sm"><span class="btn-label">
+													<i class="fa fa-print"></i>
+												</span>
+												Generar certificados
+											</a>
 									</div>
 								</div>	
 								<div class="card-body">	
-								<?php include("./../modal/modalCrudPersona.php");?>
-								<?php include './../modal/modalCrudComuna.php'; ?>
-								<div id="TablaPersona"></div>
-									
+									<?php include("./../modal/modalCrudPersona.php");?>
+									<?php include './../modal/modalCrudComuna.php'; ?>
+									<?php include_once './../modal/modalAsignarCursoPersona.php'; ?>
+									<div id="TablaPersona"></div>
 								</div>
 							</div>
 						</div>
@@ -51,10 +60,10 @@
 		</div>
 	</div>
 
-<?php include_once 'includes/footer.php'; ?>
+<?php include_once 'includes/footer.php'; ?> 
 <script src="./../assets/js/infocentro/persona.js" type="text/javascript" charset="utf-8" async defer></script>
-<script type="text/javascript" charset="utf-8" async defer>
-	$('document').ready(function() {
+<script>
+	
 		$('#TablaPersona').load('./../ajax/personaTabla.php');
-	}) 
+	
 </script>

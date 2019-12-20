@@ -2,7 +2,7 @@
 <?php
  include_once './../bd/conexion.php'; 
 
-  $query = "SELECT `id_per`, `nombres_per`, `apellidos_per`, `genero_per`, id_comuna, descripcion FROM personas p INNER JOIN comuna c ON p.comuna = c.id_comuna  ORDER BY id_per ASC";
+  $query = "SELECT `id_per`,dni, `nombres_per`, `apellidos_per`, `genero_per`, id_comuna, descripcion FROM personas p INNER JOIN comuna c ON p.comuna = c.id_comuna  ORDER BY id_per DESC";
  
  $stmt = $db->prepare($query);
  $stmt->execute();
@@ -11,7 +11,7 @@
 	<table id="basic-datatables" class="display table table-striped table-hover"  >
 		<thead>
 			<tr>
-				<!-- <th>#</th> -->
+				<th>DNI</th> 
 				<th>Nombres</th> 
 				<th>Apellidos</th>
 				<th>Genero</th>
@@ -25,7 +25,7 @@
  <?php while($row=$stmt->fetch(PDO::FETCH_OBJ)){ ?>
  	
 		<tr>
-
+			<td><?php echo $row->dni; ?></td>
 			<td><?php echo $row->nombres_per; ?></td>
 			<td><?php echo $row->apellidos_per; ?></td>
 			<td><?php echo $row->genero_per; ?></td>
@@ -40,8 +40,11 @@
 				</div></td>
 			<td>
 				<div class="form-button-action">
-					<button type="button"  data-toggle="modal" data-target="#EditPersona" title="Editar" class="btn btn-link btn-success" data-id = '<?php echo $row->id_per; ?>' data-nombres='<?php echo $row->nombres_per; ?>' data-apellidos = '<?php echo $row->apellidos_per; ?>' data-genero='<?php echo $row->genero_per; ?>' data-comuna='<?php echo $row->descripcion; ?>'   id="Edit"><i class="fa fa-edit"></i></button>
+					<button type="button"  data-toggle="modal" data-target="#EditPersona" title="Editar" class="btn btn-link btn-success" data-id = '<?php echo $row->id_per; ?>' data-dni='<?php echo $row->dni; ?>' data-nombres='<?php echo $row->nombres_per; ?>' data-apellidos = '<?php echo $row->apellidos_per; ?>' data-genero='<?php echo $row->genero_per; ?>' data-comuna='<?php echo $row->descripcion; ?>'   id="Edit"><i class="fa fa-edit"></i></button>
 					<button type="button" data-toggle="modal" data-target="#deletePersona" title="" class="btn btn-link btn-danger" data-id="<?php echo $row->id_per;?>"  data-original-title="Remove"><i class="fa fa-trash"></i></button>
+					
+					<button type="button" data-toggle="modal" data-target="#agregarCursoPersona" title="" class="btn btn-link btn-primary" data-id="<?php echo $row->id_per;?>"  data-original-title="Asignar cursos"><i class='fas fa-plus-square'></i></button>
+					
 				
 				</div>
 			</td>

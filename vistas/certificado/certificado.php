@@ -4,7 +4,18 @@
 	<meta charset="UTF-8">
 	<title>Certificado</title>
     <!-- <link rel="stylesheet" href="estilos.css">  -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <style type="text/css">
+    body { 
+    	background-image: url(../../assets/img/infocentro/certificado/fondo-certificado.jpg);
+    	background-repeat: no-repeat;
+    	/*width: 90%;*/
+    	height: 10px;
+
+	
+}
+    	
+    </style>
 </head>
 <body>
 <div id="page_pdf">
@@ -50,10 +61,10 @@
 			</div>
 		</td> -->
 		<td class="logo1">
-		<img src="<?php echo $foto2;?>"  width="100" height="100">
+		<img src=""  width="100" height="100">
 		</td>
 		<td class="logo2">
-		<img src="<?php echo $foto3;?>"  width="100" height="100">
+		<img src=""  width="100" height="100">
 				
 		</td>
 	</table>

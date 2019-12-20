@@ -1,121 +1,269 @@
 @import url('fonts/BrixSansRegular.css');
 @import url('fonts/BrixSansBlack.css');
-
+/*html, body{
+	margin: 0px;
+	padding: 0px;
+}
+*/
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
-p, label, span, table{
-	font-family: 'BrixSansRegular';
-	font-size: 9pt;
+
+
+/*.container { */
+	/*width: 100%;
+	max-width: 1000px;
+	margin: auto;*/
+	
+	/*background-image: url(../../assets/img/infocentro/certificado/fondo-certificado.jpg);*/
+	/*background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;*/
+	
+   /* background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            
+            margin: 0px;  
+            font-size: 15px;
+
+            background-size: 100% 100%;*/
+            
+
+            
+/*}*/
+.container{
+    position: relative;
+    display: inline-block;
+    text-align: center;
 }
-.h2{
-	font-family: 'BrixSansBlack';
-	font-size: 16pt;
-}
-.h3{
-	font-family: 'BrixSansBlack';
-	font-size: 12pt;
-	display: block;
-	background: #0a4661;
-	color: #FFF;
-	text-align: center;
-	padding: 3px;
-	margin-bottom: 5px;
-}
-#page_pdf{
-	width: 100%;
-	margin: 15px auto 10px auto;
+.container .imagen {
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	
 }
 
-#head{
-	width: 100%;
-	margin: 45px;
-	margin-bottom: 10px;
-	/* text-align: center; */
+.titulo{
+	color: rgb(37, 69, 144);
+	font-size: 25pt;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    right: 250px;
+    text-align: center;
+    width: 100%;
+}
+.otorga{
+	/*line-height: 20px;*/
+	font-size: 25pt;
+	color: rgb(227, 199, 57);
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 22.6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.certificado{
+
+	font-size: 49pt;
+	color: rgb(37, 69, 144);
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
 }
 
-.info_empresa{
-	text-align: center;
-	padding-right: 175px; 
-	padding-left: 175px;
-	/* width: 70%; */
+.asistencia {
+	font-size: 22pt;
+	color: rgb(37, 69, 144);
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
 }
-.info_empresa span{
-	font-size: 20pt;
-}
-.info_empresa p{
-	line-height: 60px;
-	font-size: 18pt;
-}
-.info_empresa .alumno{
+.persona{
+	width: 100%
+	font-family: italic;
 	line-height: 60px;
 	font-size: 25pt;
 	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 43.7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+
 }
-.info_empresa .dni{
+.cedula{
 	font-size: 17pt;
 	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
 }
 
-
-.detalle{
-	text-align: center;
-}
-.detalle span{
+.aprobado{
+	color: rgb(227, 199, 57);
 	text-align: center;
 	font-size: 15pt;
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 52.9%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
 }
-.detalle .curso{
-	line-height: 2.5;
+
+.curso{
 	font-size: 20pt;
 	font-weight: bold;
+	color: rgb(37, 69, 144);
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
 }
-.detalle .informacion{
-	line-height: 1.5;
+.informacion{
 	text-align: justify;
 	font-size: 15pt;
-}
-
-.detalle .fecha{
-	text-align: justify;
-	font-size: 10pt;
-	font-style: italic
-}
-
-.representante1{
-	width: 30%;
-	text-align: center;
-}
-.representante1 .repre1{
-	font-weight: bold;
-	font-size: 12pt;
+	color: rgb(227, 199, 57);
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 10px;
 	
 
 }
-.representante1 p{
-	font-size: 11pt;
+
+.fecha{
+	text-align: right;
+	font-size: 14pt;
+	font-style: italic;
+	color: rgb(37, 69, 144);
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 69%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
+
 }
-.representante2{
+
+.repre1{
+	/*font-weight: bold;*/
+	font-size: 12pt;
 	width: 30%;
 	text-align: center;
-	
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 80%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
 }
-.representante2 .repre2{
-	font-size: 12pt;
+
+.prof1{
 	font-weight: bold;
+	color: color: rgb(37, 69, 144);
 }
-.representante2 p{
-	font-size: 11pt;
+
+ hr{
+	margin-left: 15%;
+	width: 70%;
 }
-.logo{
-	width: 12%;
+
+.repre2{
+	/*font-weight: bold;*/
+	font-size: 12pt;
+	width: 30%;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 79%;
+    left: 44%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
 }
+
+.prof2{
+	font-weight: bold;
+	color: color: rgb(37, 69, 144);
+}
+
+ hr{
+	/*margin-left: 0%;*/
+	width: 70%;
+}
+
 .logo1{
 	width: 12%;
 	text-align: center;
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 79%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
 }
 .logo2{
 	width: 12%;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 79%;
+    left: 78%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
+}
+.logo3{
+	width: 12%;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+    position: absolute;
+    top: 79%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
 }
