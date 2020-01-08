@@ -1,22 +1,56 @@
 $('#guardar_institucion').submit(function(e) {
-	var parametros = $(this).serialize();
-  $('#error').hide();
-  
-$('input[type="text"]').val('');
-	$.ajax({
-		type: "POST",
-		url: "./../ajax/institucionNuevo.php",
-		data: parametros,
-		beforeSend: function(b) {
-			$('#error').html("Enviando");
-		},
-		success:function(datos) {
-			$('#error').html(datos);
-      $('#error').show(datos);
-			$('#tablaInstitucion').load('./../ajax/institucionTabla.php');
+  // remove the error text
+    $(".text-danger").remove();
+    // remove the form error
+    $('.form-group').removeClass('has-error').removeClass('has-success'); 
 
-		}
-	});
+  var institucion = $('#institucion').val()
+
+  if (institucion == '') {
+    $("#institucion").after('<p class="text-danger">Este campo es obligatorio</p>');
+    $('#institucion').closest('.form-group').addClass('has-error'); 
+  }else{
+    // remov error text field
+      $("#institucion").find('.text-danger').remove();
+      // success out for form 
+      $("#institucion").closest('.form-group').addClass('has-success'); 
+  }
+
+  if (institucion) {
+    
+    $.ajax({
+    type: "POST",
+    url: "./../ajax/institucionNuevo.php",
+    data: {institucion},
+    dataType: 'json',
+    success:function(response) {
+      if (response.success == true) {
+        $("#guardar_institucion")[0].reset();
+        // remove the error text
+            $(".text-danger").remove();
+            // remove the form error
+            $('.form-group').removeClass('has-error').removeClass('has-success');
+
+        $('#add-institucion-messages').html('<div class="alert alert-success">'+
+            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+            '</div>');
+        $(".alert-success").delay(500).show(10, function() {
+              $(this).delay(3000).hide(10, function() {
+                $(this).remove();
+              });
+            }); // /.alert
+          $('#tablaInstitucion').load('./../ajax/institucionTabla.php');
+
+      }else{
+         $("#institucion").after('<p class="text-danger">'+ response.messages +'</p>');
+         $('#institucion').closest('.form-group').addClass('has-error'); 
+      }
+      
+
+   }
+  });
+  }
  
 	e.preventDefault();
 });
@@ -39,13 +73,25 @@ $('#actualizar_institucion').submit(function( event ) {
           type: "POST",
           url: "../ajax/institucionUpdate.php",
           data: parametros,
+          dataType: 'json',
            beforeSend: function(objeto){
-            $("#error1").html("Enviando...");
+            $("#edit-institucion-messages").html("Enviando...");
             },
-          success: function(datos){
-          $('#error1').html(datos);
+          success: function(response){
+            if (response.success == true) {
+              $('#edit-institucion-messages').html('<div class="alert alert-success">'+
+            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+            '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
+            '</div>');
+              $(".alert-success").delay(500).show(10, function() {
+              $(this).delay(2000).hide(10, function() {
+                $(this).remove();
+              });
+            }); 
+              console.log(response)
              $('#tablaInstitucion').load('./../ajax/institucionTabla.php');
-         
+            }
+            
            // $('#EditNivel').modal('hide');
           
         }
@@ -66,15 +112,15 @@ $("#delete_institucion" ).submit(function( event ) {
           type: "POST",
           url: "../ajax/institucionDelete.php",
           data: parametros,
-           // beforeSend: function(objeto){
-           //  $("#error3").html("Enviando...");
-           //  },
-          success: function(datos){
-            
-            $('#tablaInstitucion').load('./../ajax/institucionTabla.php');
-              // toastr.success('Se ha Elimanado correctamente', 'Institucion');
+          dataType: 'json',
+          success: function(response){
+            if (response.success == true) {
+              $('#tablaInstitucion').load('./../ajax/institucionTabla.php');
+               toastr.success('<small>' + response.messages + '</small>', 'Institucion');
               
-             $('#deleteInstitucionModal').modal('hide');  
+             $('#deleteInstitucionModal').modal('hide');
+            }
+              
           }
       });
       event.preventDefault();

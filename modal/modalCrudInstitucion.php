@@ -9,14 +9,14 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div id="error"></div>
+				<div id="add-institucion-messages"></div>
 				<form id="guardar_institucion" name="guardar_institucion" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group form-inline">
 								<label for="dni_usua"  class="col-md-3 col-form-label">Institución</label>
 								<div class="col-md-9 p-0">
-									<input type="text" class="form-control input-full" name="institucion" placeholder="Ingrese nombre de la Institución" required="">
+									<input type="text" class="form-control input-full" name="institucion" id="institucion" placeholder="Ingrese nombre de la Institución">
 								</div>
 							</div>
 						</div>
@@ -24,7 +24,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" name="guardar_datos" id="guardar_datos"  class="btn btn-primary">Crear Institución</button>
+						<button type="submit" name="guardar_datos"  class="btn btn-primary">Crear Institución</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
@@ -46,7 +46,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div id="error1"></div>
+				<div id="edit-institucion-messages"></div>
 				<form id="actualizar_institucion" name="actualizar_institucion" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<div class="col-sm-12">

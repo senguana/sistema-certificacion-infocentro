@@ -1,4 +1,6 @@
-
+$(document).ready(function() {
+  $('#navUser').addClass('active');
+})
 $("#guardar_usuario" ).submit(function( event ) {
        var parametros = $(this).serialize();
 

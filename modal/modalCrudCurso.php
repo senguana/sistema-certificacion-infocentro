@@ -9,33 +9,32 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div  id="error" class="btn-warning" style="display: none; height: 30px; padding: 5px; text-align: center; border-radius: 2px;">	
-				</div>
-				<form id="guardar_curso" name="guardar_curso" autocomplete="off"   accept-charset="utf-8">
+				<div id="add-course-messages"></div>
+				<form id="guardar_curso_form" name="guardar_curso" autocomplete="off"   accept-charset="utf-8">
 					<div class="row">
 						<b id="msg_error"></b>
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="curso">Curso</label>
-								<input type="text" class="form-control" name="curso"  placeholder="Ingrese curso">
+								<input type="text" class="form-control" id="nameCurso"  placeholder="Ingrese curso">
 							</div>
 							<div class="form-group">
 								<label for="fecha_inicio">Fecha Inicio</label>
-								<input type="date" class="form-control" name="fecha_inicio" >
+								<input type="date" class="form-control" id="fechaInicio" >
 							</div>
 							<div class="form-group">
 								<label for="fecha_fin">Fecha Fin</label>
-								<input type="date" class="form-control" name="fecha_fin" >
+								<input type="date" class="form-control" id="fechaFin" >
 							</div>
 							<div class="form-group">
 								<label for="total_horas">Total Horas</label>
-								<input type="text" class="form-control" name="total_horas" >
+								<input type="text" class="form-control" id="totalHoras" placeholder="Ingresar total horas del curso">
 							</div>
 							<div class="form-group">
 								<label for="docente">Seleccionar Docente</label>
-								<select class="form-control" name="docente">
+								<select class="form-control" id="nameTeacher">
 									<option value="" selected="">Seleccionar...</option>}
-									option
+									
 									<?php 
 									$sql = "SELECT id_docente, nombre, apellido from docente ";
 									$stmt = $db->prepare($sql);
@@ -111,11 +110,8 @@
 									$sql = "SELECT id_docente, nombre, apellido from docente ";
 									$stmt = $db->prepare($sql);
 									$result_consulta = $stmt->execute();
-									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
-										<option value="<?php echo $cargar_datos->id_docente;?> "><?php echo $cargar_datos->nombre. " ". $cargar_datos->apellido; ?></option>
-										
-										
-									<?php 
+									while ($cargar_datos = $stmt->fetch(PDO::FETCH_OBJ)) {
+										echo "<option value='".$cargar_datos->id_docente."'>".$cargar_datos->nombre.$cargar_datos->apellido."</option>";		
 								}
 									
 									 ?>
@@ -128,7 +124,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" id="actualizar_curso" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Actualizar curso</button>
+						<button type="submit" class="btn btn-primary float-right mt-3 mt-sm-0 fw-bold" >Actualizar curso</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 						
 					</div>

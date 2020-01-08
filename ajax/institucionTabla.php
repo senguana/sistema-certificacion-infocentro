@@ -1,19 +1,7 @@
 
 <?php
  include_once './../bd/conexion.php'; 
-// $consulta = "SELECT * FROM grado";
 
-// $query_listar = $db->prepare($consulta);
-
-// $query_listar->execute();
-//  if (!$query_listar) {
-//  	die("Error");
-//  }else {
-//  	$arreglo['data']=$query_listar->fetch(PDO::FETCH_ASSOC);
- 		  
-    
-//     echo json_encode($arreglo);
-//  }
  $query = "SELECT * FROM institucion ORDER BY nombre_institucion ASC";
  
  $stmt = $db->prepare($query);
@@ -37,7 +25,7 @@
  	
 		<tr>
 			
-			<td><a href="alumnoBasica.php?q=<?php echo $row->id_institucion;?>"><?php echo $row->nombre_institucion; ?></a></td>
+			<td><?php echo $row->nombre_institucion; ?></td>
 			<td>
 				<div class="form-button-action">
 					<button type="button"  data-toggle="modal" data-target="#EditInstitucion" title="Editar" class="btn btn-link btn-success" data-id = '<?php echo $row->id_institucion; ?>' data-nombre='<?php echo $row->nombre_institucion; ?>' id="Edit"><i class="fa fa-edit"></i></button>

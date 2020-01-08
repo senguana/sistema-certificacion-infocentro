@@ -1,12 +1,8 @@
 
 <?php 
 include_once '../bd/conexion.php';
-if (empty($_POST['id_delete'])){
-        echo "<div  class='btn-danger' style=' height: 30px; padding: 5px; text-align: center; border-radius: 2px;'>ID vació  </div>";
-} elseif (!empty($_POST['id_delete'])){
-    
-  
-
+$valid['success'] = array('success' => false, 'messages' => array());
+if (!empty($_POST['id_delete'])){
     
 
     $id_institucion=intval($_POST['id_delete']);
@@ -17,11 +13,14 @@ if (empty($_POST['id_delete'])){
     $query->execute(array(":id" => $id_institucion));
    
     if ($query) {
-        return true;
+        $valid['success'] = true;
+        $valid['messages'] = "Eliminado exitosamente"; 
     } else {
-        return false;
+        $valid['success'] = false;
+        $valid['messages'] = "Error no se ha podido eliminar"; 
     }
 
     $db = null;
+    echo json_encode($valid);
 }
  ?>

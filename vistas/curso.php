@@ -31,24 +31,32 @@
 										</button>
 									</div>
 								</div>	
-								<div class="card-body">	
-								<?php include("./../modal/modalCrudCurso.php");?>
-								<div id="TablaCurso"></div>
-									
+								<div class="card-body">
+									<?php include("./../modal/modalCrudCurso.php");?>
+									<div class="table-responsive">
+										<table id="basic-datatables" class="display table table-striped table-hover">
+											<thead>
+												<tr>
+													<th>Curso</th>
+													<th>Fecha Inicio</th>
+													<th>Fecha Final</th>
+													<th>Total Horas</th>
+													<th>Docente</th>
+													<th style="width: 10%">Action</th>
+												</tr>
+											</thead>
+											<tbody id="TableCourse">
+											</tbody>
+	                                    </table>	
+                                    </div>		
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 
 <?php include_once 'includes/footer.php'; ?>
 <script src="./../assets/js/infocentro/curso.js" type="text/javascript" charset="utf-8" async defer></script>
-<script type="text/javascript" charset="utf-8" async defer>
-	$('document').ready(function() {
-		$('#TablaCurso').load('./../ajax/cursoTabla.php');
-	}) 
-</script>

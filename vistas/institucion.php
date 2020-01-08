@@ -32,6 +32,7 @@
 									</div>
 								</div>	
 								<div class="card-body">	
+									<div class="remove-messages"></div>
 									<?php 
 									include("./../modal/modalCrudInstitucion.php");
 									 ?>

@@ -23,7 +23,7 @@
 						<p>Inicio</p>
 					</a>
 				</li>
-				<li class="nav-item">
+				<li id="navUser" class="nav-item">
 					<a href="./usuario.php">
 						<i class="fas fa-user"></i>
 						<p>Usuario</p>

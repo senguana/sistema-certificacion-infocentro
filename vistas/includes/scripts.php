@@ -48,6 +48,6 @@
 <!-- Azzara DEMO methods, don't include it in your project! -->
 <script src="../assets/js/setting-demo.js"></script>
 <!-- <script src="../assets/js/demo.js"></script> -->
-<script src="./../assets/js/infocentro/curso.js" type="text/javascript" charset="utf-8" async defer></script>
+
 
 <script src="../assets/js/infocentro/alumno.basica.js" type="text/javascript" charset="utf-8" async defer></script>
